@@ -5,7 +5,7 @@ categories:
     - course
 tags:
     - MUI
-    - HTML5
+    - html5+
 ---
 这边博客简要介绍了使用MUI和5+开发APP的流程
 <!-- more -->

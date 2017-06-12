@@ -1,5 +1,5 @@
-﻿ ---
-title: SNMP学习笔记（3）————SNMP4J
+﻿---
+title: SNMP学习总结(3)——SNMP4J
 date: 2017-05-25 8:42:50
 categories:
   - SNMP

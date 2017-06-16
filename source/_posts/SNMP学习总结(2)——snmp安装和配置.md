@@ -1,5 +1,5 @@
 ﻿---
-title: SNMP学习总结（2）————snmp安装和配置
+title: SNMP学习总结(2)——snmp安装和配置
 date: 2017-05-25 8:42:50
 categories:
   - SNMP

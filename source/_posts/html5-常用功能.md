@@ -2,7 +2,7 @@
 title: html5+常用功能
 date: 2017-05-19 18:09:53
 categories:
-	- course
+	- DCloud
 tags:
 	- html5+
 	- native.js

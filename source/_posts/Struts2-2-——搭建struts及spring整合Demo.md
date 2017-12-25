@@ -1,5 +1,5 @@
 ---
-title: Struts2（2）- 搭建struts及spring整合Demo
+title: Struts2(2)——搭建struts及spring整合Demo
 categories:
   - Struts2
 tags:

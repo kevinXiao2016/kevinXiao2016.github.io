@@ -1,5 +1,5 @@
 ---
-title: Struts2（1）-基本认识
+title: Struts2(1)——基本认识
 categories:
   - Struts2
 tags:
@@ -265,5 +265,5 @@ struts.mapper.alwaysSelectFullNamespace=false
  
 
 
-  [1]: http://img.blog.csdn.net/20140530165433234?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGFuZXIwNTE1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center
+  [1]: https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/struts/struts2.png
   [2]: https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/struts/struts-default.xml.png

@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: xiaoyue'blog
+title: 云想衣裳花想容
 subtitle: 
 description: 天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。
 author: 肖悦
@@ -60,24 +60,24 @@ time_format: HH:mm:ss
 # 扩展设置
 # ---------------------------------------------------------------
 # yilia主题模块缺失修复
-jsonContent:
-	meta: false
-	pages: false
-	posts:
-		title: true
-		date: true
-		path: true
-		text: false
-		raw: false
-		content: false
-		slug: false
-		updated: false
-		comments: false
-		link: false
-		permalink: false
-		excerpt: false
-		categories: false
-		tags: true
+# jsonContent:
+# 	meta: false
+# 	pages: false
+# 	posts:
+# 		title: true
+# 		date: true
+# 		path: true
+# 		text: false
+# 		raw: false
+# 		content: false
+# 		slug: false
+# 		updated: false
+# 		comments: false
+# 		link: false
+# 		permalink: false
+# 		excerpt: false
+# 		categories: false
+# 		tags: true
 
 # 集成Local Search 支持站内搜索
 search:

@@ -1,5 +1,2 @@
-.deploy_git/
-.deploy_git/*
-public/
-/public/*
-/public/*.html
+public
+.deploy_git

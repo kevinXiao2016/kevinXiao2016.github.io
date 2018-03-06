@@ -46,7 +46,8 @@ function openGraphHelper(options) {
   var url = options.url || this.url;
   var siteName = options.site_name || config.title;
   var twitterCard = options.twitter_card || 'summary';
-  var updated = options.updated !== false ? (options.updated || page.updated) : false;
+  var updated = options.updated !== false ? options.updated || page.updated : false;
+  var language = options.language || page.lang || page.language || config.language;
   var result = '';
 
   if (!Array.isArray(images)) images = [images];
@@ -95,6 +96,10 @@ function openGraphHelper(options) {
   result += og('og:site_name', siteName);
   if (description) {
     result += og('og:description', description, false);
+  }
+
+  if (language) {
+    result += og('og:locale', language, false);
   }
 
   images = images.map(function(path) {

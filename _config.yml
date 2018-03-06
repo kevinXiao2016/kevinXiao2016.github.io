@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 云想衣裳花想容
+title: 每天进步一点点
 subtitle: 
 description: 天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。
 author: 肖悦
-language: zh-Hans
-timezone:
+language: zh-CN
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'

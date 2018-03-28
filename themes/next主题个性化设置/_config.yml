@@ -478,11 +478,11 @@ valine:
 
 # Support for youyan comments system.
 # You can get your uid from http://www.uyan.cc
-youyan_uid: 2158668
+# youyan_uid: 2158668
 
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
-#livere_uid: your uid
+livere_uid: MTAyMC8yODQwNi80OTc3
 
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
@@ -504,15 +504,15 @@ gitment:
 # Available value:
 #    button | slide
 # Warning: Baidu Share does not support https.
-#baidushare:
-  ##type: slide
+baidushare:
+  type: slide
 
 # Share
 # This plugin is more useful in China, make sure you known how to use it.
 # And you can find the use guide at official webiste: http://www.jiathis.com/.
 # Warning: JiaThis does not support https.
-jiathis:
-  uid: 2158668
+#jiathis:
+  ## uid: 2158668
 
 #add_this_id:
 

@@ -110,5 +110,6 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:kevinXiao2016/kevinXiao2016.github.io.git
-  branch: master
+  repo: 
+        github: git@github.com:kevinXiao2016/kevinXiao2016.github.io.git,master
+        coding: git@git.coding.net:kevinXiao2016/kevinXiao2016.git,master

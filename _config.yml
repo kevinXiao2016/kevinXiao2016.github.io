@@ -8,12 +8,14 @@ subtitle:
 description: 天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。
 author: 肖悦
 language: zh-CN
-timezone: Asia/Shanghai
+timezone: 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://kevinXiao2016.github.io
 root: /
+# 博客文章的 URL 结构，请务必写文章之前就想好！
+# 详细参数请查看：https://hexo.io/docs/permalinks.html
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -34,9 +36,10 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
+post_asset_folder: false
 relative_link: false
 future: true
+# 代码高亮设置
 highlight:
   enable: true
   line_number: true
@@ -92,6 +95,8 @@ pagination_dir: page
 
 index_generator:
   per_page: 10 ##首页默认10篇文章标题 如果值为0不分页
+## 修改归档页面、某一分类页面、某一标签页面的显示篇数
+## 参考：http://theme-next.iissnan.com/faqs.html#setting-page-size
 archive_generator:
 	per_page: 10 ##归档页面默认10篇文章标题
 	yearly: true  ##生成年视图
@@ -113,3 +118,6 @@ deploy:
   repo: 
         github: git@github.com:kevinXiao2016/kevinXiao2016.github.io.git,master
         coding: git@git.coding.net:kevinXiao2016/kevinXiao2016.git,master
+
+  #repository: https://github.com/reuixiy/reuixiy.github.io.git
+  #branch: master

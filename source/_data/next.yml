@@ -8,10 +8,10 @@
 # 这样可以避免更新 NexT 主题的时候遇到麻烦
 # 最后记得要稍微改下文件名，与下面的保持一致
 favicon:
-  small: /images/favicon-16x16
-  medium: /images/favicon-32x32
-  #apple_touch_icon: /images/apple-touch-icon-next.png
-  #safari_pinned_tab: /images/logo.svg
+  small: /images/favicon.ico
+  medium: /images/favicon.ico
+  apple_touch_icon: /images/favicon.ico
+  safari_pinned_tab: /images/favicon.ico
   #android_manifest: /images/manifest.json
   #ms_browserconfig: /images/browserconfig.xml
 
@@ -168,10 +168,7 @@ links_layout: block
 links:
   EMS规范: http://ems.top-vision.cn:8110/dm/dm.html
   #网易云音乐 : https://music.163.com/#/user/home?id=86590096
-  #Coldplay Official Website: http://coldplay.com/
-  #获取 Elon Musk 的新闻: https://elonmusknews.org/
-  #尼古拉·特斯拉：发明了现代世界的人: http://www.bilibili.com/video/av6211226/
-  #关于此博客: https://reuixiy.github.io/about/
+
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
@@ -248,7 +245,7 @@ save_scroll: false
 
 # Automatically excerpt description in homepage as preamble text.
 # 将每篇文章 Front-matter 里 description 的文字作为页面显示的文章摘要
-excerpt_description: true
+excerpt_description: false
 
 # Automatically Excerpt. Not recommend.
 # Please use <!-- more --> in the post to control excerpt accurately.
@@ -273,7 +270,7 @@ post_meta:
 # Dependencies: https://github.com/theme-next/hexo-symbols-count-time
 # 显示统计字数和估计阅读时长
 # 注意：这个要安装插件，先进入站点文件夹根目录
-# 然后：npm install hexo-wordcount --save
+# 然后：npm install hexo-symbols-count-time --save
 symbols_count_time:
   separated_meta: true
   item_text_post: true
@@ -630,7 +627,7 @@ rating:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: false
+  enable: true
   app_id: P08Jh3wwb2zPhfm9puCevcUa-gzGzoHsz
   app_key: CnhNSWBKT3kwj52vyJ36armb
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security

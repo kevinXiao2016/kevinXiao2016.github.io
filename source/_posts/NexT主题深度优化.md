@@ -1,3 +1,199 @@
+---
+title: NexT主题深度优化
+categories:
+  - course
+tags:
+  - github
+date: 2018-03-30 18:29:19
+keyword:
+  - next
+  - 优化
+  - 主题
+  - next主题
+---
+
+本文主要对next主题导入后的基本及深度优化行为做了记录。其中基本配置直接贴出了配置文件，里面写上了中文注释。深度优化方面，既有总结，也有大量的链接推荐。
+
+<!-- more -->
+
+
+## 1.开始搭建博客
+
+## 2.优化：基本功能配置
+
+接下来是配置和增强功能，如阅读统计、评论、插件之类的，这些基本配置建议在写文章之前配置好。
+
+基本功能配置大部分是修改两个文件，都叫_config.yml。一个是站点的，一个是主题的。
+
+与其将各个功能分散开来讲，不如直接贴出配置文件，打上注释，从头到尾看一遍就知道如何配置了。
+
+### 2.1 选择主题
+
+我选择的是[NexT][1],是在Github上[被Star最多][2]【2018.3.30】的一个Hexo主题。从V6.0.0开始next主仓库已从 [iissnan][3] 名下 迁移至 [theme-next ][4]。组织
+
+想要什么样的主题，去[Hexo Themes][5]上慢慢找。
+
+至于更换主题，很简单，用NexT主题举个例子。
+
+ 1. 首先，去主题所在仓库拷贝仓库地址，如下图：
+    
+    ![拷贝仓库地址][6]    
+
+ 2. 然后，到博客站点根目录下,打开 **git bash**
+
+    ```
+    // next是自定义的主题名字，可以随意更改
+    git clone https://github.com/theme-next/hexo-theme-next.git themes/next
+    ```
+
+ 3. 最后，修改站点配置文件_config.yml
+ 
+    ```
+    ## Themes: https://hexo.io/themes/
+    theme: next
+    ```
+    
+### 2.2 站点配置文件
+
+请先查看 [Hexo官方文档][7] ，再查看下面我贴出的，如果这样后你还是对有些地方比较懵，可以自行 Google。
+
+**注意：文件中所有的 : 都是英文字符，且后面都有一个空格。**
+
+【2018.3.30更新】文件位置： ~/blog/_config.yml
+
+```
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: 温故而知新
+subtitle: 
+description: 天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。
+author: 肖悦
+language: zh-CN
+timezone: 
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://kevinXiao2016.github.io
+root: /
+# 博客文章的 URL 结构，请务必写文章之前就想好！
+# 详细参数请查看：https://hexo.io/docs/permalinks.html
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+# 代码高亮设置
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+
+# ---------------------------------------------------------------
+# 扩展设置
+# ---------------------------------------------------------------
+# 集成Local Search 支持站内搜索
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+index_generator:
+  per_page: 10 ##首页默认10篇文章标题 如果值为0不分页
+## 修改归档页面、某一分类页面、某一标签页面的显示篇数
+## 参考：http://theme-next.iissnan.com/faqs.html#setting-page-size
+archive_generator:
+	per_page: 10 ##归档页面默认10篇文章标题
+	yearly: true  ##生成年视图
+	monthly: true ##生成月视图
+tag_generator:
+	per_page: 10 ##标签分类页面默认10篇文章
+category_generator: 
+	per_page: 10 ###分类页面默认10篇文章
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: next
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  # 没有做cdn映射前，请使用下面注释掉的配置
+  repo: 
+        github: git@github.com:kevinXiao2016/kevinXiao2016.github.io.git,master
+        coding: git@git.coding.net:kevinXiao2016/kevinXiao2016.git,master
+
+  #repository: https://github.com/kevinXiao2016/kevinXiao2016.github.io.git
+  #branch: master
+```
+
+### 2.3 主题配置文件
+
+如果使用的主题不是Next，那么请另 Google。建议先查看 [NexT 官方文档][8]。
+
+【2018.3.30更新】文件位置： ~/blog/themes/next/_config.yml
+
+```
+# ---------------------------------------------------------------
+# Theme Core Configuration Settings
+# ---------------------------------------------------------------
+
+# 更新相关，参考：https://github.com/iissnan/hexo-theme-next/issues/328
+# 简单说：从V6.0.0开始支持以下功能，不更改主题设置，在站点中设置主题
+# 1.在~/blog/source 目录下新建source目录，在里面新建 next.yml文件
+# 2.将主题配置文件全部拷贝过去
+# 3.设置此处override为true,表明此文件配置可被next.yml中的配置覆盖
+override: true
+
+# Allow to cache content generation. Introduced in NexT v6.0.0.
+cache:
+  enable: true
+  
+```
+
+【2018.3.30更新】文件位置： ~/blog/source/_data/next.yml
+```
 # ---------------------------------------------------------------
 # Site Information Settings
 # ---------------------------------------------------------------
@@ -8,10 +204,10 @@
 # 这样可以避免更新 NexT 主题的时候遇到麻烦
 # 最后记得要稍微改下文件名，与下面的保持一致
 favicon:
-  small: /images/favicon.ico
-  medium: /images/favicon.ico
-  apple_touch_icon: /images/favicon.ico
-  safari_pinned_tab: /images/favicon.ico
+  small: /images/favicon-16x16
+  medium: /images/favicon-32x32
+  #apple_touch_icon: /images/apple-touch-icon-next.png
+  #safari_pinned_tab: /images/logo.svg
   #android_manifest: /images/manifest.json
   #ms_browserconfig: /images/browserconfig.xml
 
@@ -69,22 +265,11 @@ footer:
 canonical: true
 
 # Change headers hierarchy on site-subtitle (will be main site description) and on all post/pages titles for better SEO-optimization.
-seo: true
+seo: false
 
 # If true, will add site-subtitle to index page, added in main hexo config.
 # subtitle: Subtitle
 index_with_subtitle: false
-
-## 站点地图
-sitemap:
-  path: sitemap.xml
-baidusitemap:
-  path: baidusitemap.xml
-
-url: http://www.greateman.top
-
-
-
 
 
 # ---------------------------------------------------------------
@@ -179,7 +364,10 @@ links_layout: block
 links:
   EMS规范: http://ems.top-vision.cn:8110/dm/dm.html
   #网易云音乐 : https://music.163.com/#/user/home?id=86590096
-
+  #Coldplay Official Website: http://coldplay.com/
+  #获取 Elon Musk 的新闻: https://elonmusknews.org/
+  #尼古拉·特斯拉：发明了现代世界的人: http://www.bilibili.com/video/av6211226/
+  #关于此博客: https://reuixiy.github.io/about/
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
@@ -256,7 +444,7 @@ save_scroll: false
 
 # Automatically excerpt description in homepage as preamble text.
 # 将每篇文章 Front-matter 里 description 的文字作为页面显示的文章摘要
-excerpt_description: false
+excerpt_description: true
 
 # Automatically Excerpt. Not recommend.
 # Please use <!-- more --> in the post to control excerpt accurately.
@@ -492,14 +680,14 @@ changyan:
   appid:
   appkey:
 
-
-# Valine.
+# leanCloud支持的评论插件
+# Valine. 
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 valine:
   enable: false
-  appid:  P08Jh3wwb2zPhfm9puCevcUa-gzGzoHsz
-  appkey:  CnhNSWBKT3kwj52vyJ36armb
+  appid:  P08Jh3wwb2zPhfm9puCevcUa-*******
+  appkey:  CnhNSWBKT3kwj52v********
   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
   verify: false # Verification code
   placeholder: Just go go # comment box placeholder
@@ -514,7 +702,7 @@ valine:
 
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
-livere_uid: MTAyMC8yODQwNi80OTc3
+livere_uid: MTAyMC8yODQwNi******
 
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
@@ -677,7 +865,7 @@ busuanzi_count:
 
 
 # Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO
-baidu_push: true
+baidu_push: false
 
 # Google Calendar
 # Share your recent schedule to others via calendar page
@@ -841,14 +1029,14 @@ pace_theme: pace-theme-minimal
 
 # Canvas-nest
 # Dependencies: https://github.com/theme-next/theme-next-canvas-nest
-canvas_nest: false
+canvas_nest: true
 
 # JavaScript 3D library.
 # Dependencies: https://github.com/theme-next/theme-next-three
 # three_waves
 three_waves: false
 # canvas_lines
-canvas_lines: true
+canvas_lines: false
 # canvas_sphere
 canvas_sphere: false
 
@@ -979,3 +1167,169 @@ images: images
 
 # Theme version
 version: 6.0.6
+```
+
+### 2.4 动态背景
+
+在主题配置文件中，靠后面，改canvas_nest: true，想要更改颜色和数量？修改文件：
+
+文件位置：~/blog/themes/next/source/lib/canvas-nest/canvas-nest.min.js
+
+怎么修改？参考[canvas-nest.js][9]。
+
+### 2.5 注脚
+
+参考[hexo-footnotes][10]。
+
+## 3.优化:高级功能配置
+
+### 3.1 大佬们的文章
+
+更多如外挂一样的功能配置，就直接贴大佬的文章了，哪些功能自己喜欢，按照大佬的教程来配置就行。不过也有坑，比如有些功能（超链接样式、侧栏头像圆形并旋转）可以直接通过在custom.styl添加 CSS 代码实现，无需更改其它文件！
+
+ 1. [打造个性超赞博客Hexo+NexT+GithubPages的超深度优化][11]
+ 2. [hexo高阶教程next主题优化][12]
+ 3. [hexo的next主题个性化教程:打造炫酷网站][13]
+ 4. [Hexo搭建博客的个性化设置][14]
+
+### 3.2 鼠标点击效果
+
+ 1. 新建mouse.js，复制[love][15]或者[富强民主...][16]中的内容到js文件中。
+ 2. 将mouse.js放到**/themes/next/source/js/src**路径下
+ 3. 打开/themes/next/layout/layout.swig文件，添加如下代码：
+    
+    ```js
+    <script type="text/javascript" src="/js/src/mouse.js"></script>
+    ```
+
+ 
+### 3.3 文章加密
+        
+参考：[hexo-blog-encrypt][17]
+
+ 1. 在博客根目录下的package.json文件中添加一行代码
+
+    ```json
+    "hexo-blog-encrypt": "2.0.*"
+    ```
+
+ 2. 在博客根目录下：  **npm install**
+ 3. 在站点配置文件中配置文章加密
+
+    ```json
+    # Security
+    encrypt:
+        enable: true
+    ```
+
+ 4. 然后在你的文章的头部添加上对应的字段，如 password, abstract, message
+
+    ```md
+    title: hello world
+    date: 2016-03-30 21:18:02
+    tags:
+        - fdsafsdaf
+    password: Mike
+    abstract: 没点开文章前显示的类容，类似于<!--more-->之前写的描述.
+    message: 点开文章后，提示输入密码的信息.
+    ```
+ 
+
+    
+
+### 3.4 博客推广及SEO优化
+
+
+建站完成后百度和Google是没有收录我们的网站的，想要搜索到我们的博客非常困难。因此优化搜索非常有必要。
+
+**博客推广**
+
+博客推广第一步，手动推广。
+
+你可以多浏览别人的博客并留下你的爪印（博客地址），比如 评论 本文；你可以去 [README.md][18]中提到的 [这个issue][19] 留下你的爪印；你可以去 [Issues页面][20] 试着回答下大家的问题并留下你的爪印。
+
+博客推广第二步，[SEO][21]（Search Engine Optimization）。
+
+**搜索引擎**
+
+直接推荐大佬文章：[【搜索优化】Hexo-next百度和谷歌搜索优化][22]
+
+### 3.5 随机生成背景图
+
+在主题下的/source/css/_custom/custom.style文件中，添加如下代码：
+
+```css
+body{   
+	background:url(https://source.unsplash.com/random/1920x1080);
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-position:50% 50%;
+}
+
+.main-inner { 
+    margin-top: 60px;
+    padding: 60px 60px 60px 60px;
+    background: #fff;
+    opacity: 0.8;
+    min-height: 500px;
+}
+```
+
+### 3.6 背景动画
+
+依赖于[theme-next-canvas-nest][23],或者[3D library][24]。
+
+ 1. 进入到主题目录，如：cd themes/next
+ 2. 下载插件
+
+    ```
+    git clone https://github.com/theme-next/theme-next-canvas-nest source/lib/canvas-nest
+    git clone https://github.com/theme-next/theme-next-three source/lib/three
+    ```
+ 3. 在主题配置文件中开启，一次只开启一个
+
+    ```
+    canvas_nest: false
+    
+    three_waves: false
+    canvas_lines: true
+    canvas_sphere: false
+    ```
+    
+ 4. 插件更新
+
+    ```
+    $ cd themes/next/source/lib/canvas-nest
+    $ git pull
+    ```
+ 
+ 
+
+ 
+
+
+  [1]: https://github.com/iissnan/hexo-theme-next
+  [2]: https://github.com/search?o=desc&q=topic:hexo-theme&s=stars&type=Repositories
+  [3]: https://github.com/iissnan/hexo-theme-next
+  [4]: https://github.com/theme-next
+  [5]: https://hexo.io/themes/
+  [6]: https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/copyLink.png
+  [7]: https://hexo.io/zh-cn/docs/configuration.html
+  [8]: http://theme-next.iissnan.com/getting-started.html
+  [9]: https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md
+  [10]: https://github.com/LouisBarranqueiro/hexo-footnotes
+  [11]: https://reuixiy.github.io/technology/computer/computer-aided-art/2017/06/09/hexo-next-optimization.html
+  [12]: http://cherryblog.site/Hexo-high-level-tutorialcloudmusic,bg-customthemes-statistical.html
+  [13]: http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html
+  [14]: http://www.dingxuewen.com/categories/Site/
+  [15]: https://github.com/kevinXiao2016/kevinXiao2016.github.io/blob/hexo/source/love.js
+  [16]: https://github.com/kevinXiao2016/kevinXiao2016.github.io/blob/hexo/source/mouse.js
+  [17]: https://github.com/MikeCoder/hexo-blog-encrypt/blob/master/ReadMe.zh.md
+  [18]: https://github.com/iissnan/hexo-theme-next#live-preview
+  [19]: https://github.com/iissnan/hexo-theme-next/issues/119
+  [20]: https://github.com/iissnan/hexo-theme-next/issuess://github.com/iissnan/hexo-theme-next/issues/119
+  [21]: https://baike.baidu.com/item/SEO
+  [22]: http://www.ehcoo.com/seo.html
+  [23]: https://github.com/theme-next/theme-next-canvas-nest
+  [24]: https://github.com/theme-next/theme-next-three

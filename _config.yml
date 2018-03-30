@@ -16,7 +16,8 @@ url: http://kevinXiao2016.github.io
 root: /
 # 博客文章的 URL 结构，请务必写文章之前就想好！
 # 详细参数请查看：https://hexo.io/docs/permalinks.html
-permalink: :year/:month/:day/:title/
+#permalink: :year/:month/:day/:title/
+permalink: :title.html
 permalink_defaults:
 
 # Directory
@@ -106,10 +107,15 @@ tag_generator:
 category_generator: 
 	per_page: 10 ###分类页面默认10篇文章
 
+# Security
+##
+encrypt:
+    enable: true
+    
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: next6.0.6
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

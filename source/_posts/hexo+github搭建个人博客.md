@@ -2,9 +2,10 @@
 title: hexo+github搭建个人博客
 date: 2017-04-27 18:54:43
 categories:
-	- 杂七杂八
+	- Blog
 tags:
-	- github
+	- Blog
+keyword:
 	- hexo
 	- next
 ---

@@ -1,9 +1,9 @@
 ---
 title: NexT主题深度优化
 categories:
-  - course
+  - Blog
 tags:
-  - github
+  - Blog
 date: 2018-03-30 18:29:19
 keyword:
   - next

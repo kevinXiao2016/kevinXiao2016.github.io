@@ -1,9 +1,13 @@
 ---
-title: Mysql--存储过程
+title: Mysql存储过程
 categories:
   - Mysql
 tags:
-  - Mysql 数据库
+  - Mysql
+  - 数据库
+keyword:
+  - Mysql
+  - 存储过程
 date: 2017-07-25 13:08:58
 ---
 ## 1. 存储过程

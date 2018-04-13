@@ -1,9 +1,13 @@
 ---
-title: Mysql——触发器
+title: Mysql触发器
 categories:
   - Mysql
 tags:
   - Mysql
+  - 数据库
+keyword:
+  - Mysql
+  - 触发器
 date: 2018-02-13 09:34:00
 ---
 触发器（TRIGGER）是MySQL的数据库对象之一，从5.0.2版本开始支持。它和函数比较相似，也需要声明和执行，但是它不用程序或人工调用，而是由事件驱动的。

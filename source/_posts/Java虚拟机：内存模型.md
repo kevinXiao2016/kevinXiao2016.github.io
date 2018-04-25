@@ -1,5 +1,5 @@
 ---
-title: 'Java虚拟机:内存模型'
+title: Java虚拟机：内存模型
 categories:
   - Java虚拟机
 tags:

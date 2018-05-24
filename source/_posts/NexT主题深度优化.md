@@ -5,6 +5,7 @@ categories:
 tags:
   - Blog
 date: 2018-03-30 18:29:19
+updated: 2018-04-23 14:55:25
 keyword:
   - next
   - 优化
@@ -1302,6 +1303,57 @@ body{
     ```
     $ cd themes/next/source/lib/canvas-nest
     $ git pull
+    ```
+
+### 3.7 底部footer加入运行时间
+
+
+ 1. ~/blog/themes/next/layout/_partials
+
+    ```js
+    <div id="days"></div>
+    </script>
+    <script language="javascript">
+    function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("05/27/2017 15:00:00");
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=setzero(Math.floor(e_hrsold));
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+        seconds=setzero(Math.floor((e_minsold-minsold)*60));
+        document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+    
+    function setzero(i){
+        if (i<10)
+            {i="0" + i};
+        return i;
+    }
+    
+    show_date_time();
+    </script>
+    ```
+    
+ 2. 要是不喜欢颜色，感觉不好看，就可以在上文所提的custom.styl加入：
+ 
+    文件位置：~/blog/themes/next/source/css/_custom/custom.styl
+
+    ```js
+    // 自定义的侧栏时间样式
+    #days {
+        display: block;
+        color: rgb(7, 179, 155);
+        font-size: 13px;
+        margin-top: 15px;
+    }
     ```
  
  

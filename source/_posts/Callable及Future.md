@@ -1,11 +1,15 @@
 ---
 title: Callable及Future
 categories:
-  - JavaSE
+  - 并发
 tags:
   - Java
-  - 多线程
+  - 并发
+keyword:
+  - Callable
+  - Future
 date: 2017-10-12 11:13:54
+updated: 2018-05-04 16:27:21
 ---
 ## 1. 概述
 在线程池中执行任务，使用execute()方法，执行的是Runnable任务，它不返回任何值。如果希望任务完成后返回结果，那么需要使用Callable接口，这也是本文要研究的主题。

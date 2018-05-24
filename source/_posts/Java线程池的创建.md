@@ -1,10 +1,14 @@
 ---
 title: Java线程池的创建
 categories:
-  - JavaSE
+  - 并发
 tags:
   - Java
+  - 并发
+keyword:
+  - 线程池
   - 多线程
+  - 并发
 date: 2017-10-12 11:13:25
 ---
 ## 1. Executor框架

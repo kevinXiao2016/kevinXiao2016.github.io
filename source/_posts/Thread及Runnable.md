@@ -1,11 +1,12 @@
 ---
-title: 多线程
+title: Thread及Runnable
 categories:
-  - JavaSE
+  - 并发
 tags:
-  - 多线程 
   - Java
+  - 并发
 date: 2017-09-30 09:22:54
+updated: 2018-05-04 16:27:21
 ---
 
 本文简单介绍了多线程的基本概念、基于Thread和Runnable实现多线程编程及简单的线程安全问题示例。

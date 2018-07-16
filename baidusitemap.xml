@@ -1093,28 +1093,6 @@
 
     
   <url>
-    <loc>http://www.greateman.top/volatile%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html</loc>
-    <lastmod>2018-05-04T08:27:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>volatile的实现原理</title>
-        <pubTime>2018-05-04T08:27:21.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="并发" url="http://www.greateman.top/categories/%E5%B9%B6%E5%8F%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.greateman.top/Thread%E5%8F%8ARunnable.html</loc>
     <lastmod>2018-05-04T08:27:21.000Z</lastmod>
     <data>
@@ -1143,6 +1121,28 @@
         <display>
         <title>Callable及Future</title>
         <pubTime>2017-10-12T03:13:54.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="并发" url="http://www.greateman.top/categories/%E5%B9%B6%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.greateman.top/volatile%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html</loc>
+    <lastmod>2018-05-04T08:27:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>volatile的实现原理</title>
+        <pubTime>2018-05-04T08:27:21.000Z</pubTime>
         
         <tag>Java</tag>
          

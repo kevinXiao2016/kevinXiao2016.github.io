@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="这篇博客简要介绍了snmp协议的基本概念">
+<meta name="keywords" content="snmp,network,snmp4j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SNMP学习总结(1)——基本概念">
+<meta property="og:url" content="http://www.greateman.top/SNMP学习总结(1)——基本概念.html">
+<meta property="og:site_name" content="温故而知新">
+<meta property="og:description" content="这篇博客简要介绍了snmp协议的基本概念">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.chinaunix.net/attachment/201206/21/23069658_1340274236dktq.jpg">
+<meta property="og:image" content="http://blog.chinaunix.net/attachment/201206/21/23069658_1340274238733S.jpg">
+<meta property="og:image" content="http://blog.chinaunix.net/attachment/201206/21/23069658_1340274240Yo8Q.jpg">
+<meta property="og:image" content="http://blog.chinaunix.net/attachment/201206/21/23069658_134027424269yP.jpg">
+<meta property="og:image" content="http://blog.chinaunix.net/attachment/201206/21/23069658_1340274245phSV.jpg">
+<meta property="og:image" content="http://blog.chinaunix.net/attachment/201206/21/23069658_1340274247srSc.jpg">
+<meta property="og:image" content="http://blog.chinaunix.net/attachment/201206/21/23069658_134027425066MR.jpg">
+<meta property="og:image" content="http://blog.chinaunix.net/attachment/201206/21/23069658_1340274252oJOX.jpg">
+<meta property="og:updated_time" content="2018-06-08T01:44:54.965Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SNMP学习总结(1)——基本概念">
+<meta name="twitter:description" content="这篇博客简要介绍了snmp协议的基本概念">
+<meta name="twitter:image" content="http://blog.chinaunix.net/attachment/201206/21/23069658_1340274236dktq.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://www.greateman.top/SNMP学习总结(1)——基本概念.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>SNMP学习总结(1)——基本概念 | 温故而知新</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">温故而知新</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+    
+      
+    
+    <a href="https://github.com/kevinXiao2016" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+    
+      </a>
+    
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.greateman.top/SNMP学习总结(1)——基本概念.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="肖悦">
+      <meta itemprop="description" content="天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="温故而知新">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">SNMP学习总结(1)——基本概念
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-25 08:42:50" itemprop="dateCreated datePublished" datetime="2017-05-25T08:42:50+08:00">2017-05-25</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SNMP/" itemprop="url" rel="index"><span itemprop="name">SNMP</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这篇博客简要介绍了snmp协议的基本概念<br><a id="more"></a></p>
+<h2 id="1-SNMP简单概述"><a href="#1-SNMP简单概述" class="headerlink" title="1 SNMP简单概述"></a>1 SNMP简单概述</h2><h3 id="1-1-什么是SNMP"><a href="#1-1-什么是SNMP" class="headerlink" title="1.1 什么是SNMP?"></a>1.1 什么是SNMP?</h3><p>　　SNMP是英文”Simple Network Management Protocol”的缩写，中文意思是“简单的网络管理协议”。它属于TCP/IP五层协议中的应用层协议，用于网络管理的协议。SNMP主要用于网络设备的管理。由于SNMP协议简单可靠 ，受到了众多厂商的欢迎，成为了目前最为广泛的网管协议。<br>　　SNMP协议主要由两大部分组成：<strong>SNMP管理站</strong>和<strong>SNMP代理</strong>。SNMP管理站是一个中心节点，负责收集维护各个SNMP元素的信息，并对这些信息进行处理，最后反馈给网络管理员；而SNMP代理是运行在各个被管理的网络节点之上，负责统计该节点的各项信息，并且负责与SNMP管理站交互，接收并执行管理站的命令，上传各种本地的网络信息。<br>　　SNMP管理站和SNMP代理之间是松散耦合。他们之间的通信是通过UDP协议完成的。一般情况下，SNMP管理站通过UDP协议向SNMP代理发送各种命令，当SNMP代理收到命令后，返回SNMP管理站需要的参数。但是当SNMP代理检测到网络元素异常的时候，也可以主动向SNMP管理站发送消息，通告当前异常状况。<br>　　SNMP的基本思想：为不同种类的设备、不同厂家生产的设备、不同型号的设备，定义为一个统一的接口和协议，使得管理员可以是使用统一的外观面对这些需要管理的网络设备进行管理。通过网络，管理员可以管理位于不同物理空间的设备，从而大大提高网络管理的效率，简化网络管理员的工作。<br>　　SNMP的工作方式：管理员需要向设备获取数据，所以SNMP提供了【读】操作；管理员需要向设备执行设置操作，所以SNMP提供了【写】操作；设备需要在重要状况改变的时候，向管理员通报事件的发生，所以SNMP提供了【Trap】操作。</p>
+<h3 id="1-2-SNMP和UDP"><a href="#1-2-SNMP和UDP" class="headerlink" title="1.2 SNMP和UDP"></a>1.2 SNMP和UDP</h3><p>SNMP采用UDP协议在管理端和agent之间传输信息。 SNMP采用UDP161端口接收和发送请求，162端口接收trap，执行SNMP的设备缺省都必须采用这些端口。SNMP消息全部通过UDP端口161接收，只有Trap信息采用UDP端口162。</p>
+<h3 id="1-3-Snmp版本"><a href="#1-3-Snmp版本" class="headerlink" title="1.3 Snmp版本"></a>1.3 Snmp版本</h3><p>SNMP目前共有v1，v2，v3这三个版本： </p>
+<ul>
+<li>SNMP v1是SNMP协议的最初版本，不过依然是众多厂家实现SNMP基本方式。 </li>
+<li>SNMP v2通常被指是基于community的SNMP V2。Community实质上就是密码。</li>
+<li>SNMP v3 是最新版本的SNMP。它对网络管理最大的贡献在于其安全性。增加了对认证和密文传输的支持。</li>
+</ul>
+<h2 id="2-SNMP工作原理"><a href="#2-SNMP工作原理" class="headerlink" title="2 SNMP工作原理"></a>2 SNMP工作原理</h2><p>　　在具体的实现上，SNMP为管理员提供了一个网管平台（NMS），又称为管理站，负责网管命令的发出、数据存储及数据分析。被监管的设备上运行一个SNMP代理（Agent），代理实现设备与管理站的SNMP通信。<br>　　<img src="http://blog.chinaunix.net/attachment/201206/21/23069658_1340274236dktq.jpg" alt="snmp工作原理"><br>　　管理站和代理端使用MIB进行接口统一，MIB定义了设备中的被管理对象。管理站和代理都实现相应的MIB对象，使得双方可以识别对方的数据，实现通信。管理站向代理请求MIB中定义的数据，代理端识别后，将管理设备提供的相关状态或参数等数据转换成MIB定义的格式，最后将该信息返回给管理站，完成一次管理操作。
+　　</p>
+<h2 id="3-SNMP报文"><a href="#3-SNMP报文" class="headerlink" title="3 SNMP报文"></a>3 SNMP报文</h2><h3 id="3-1-报文类型"><a href="#3-1-报文类型" class="headerlink" title="3.1 报文类型"></a>3.1 报文类型</h3><p>　　SNMP中定义了五种消息类型：Get-Request、Get-Response、Get-Next-Request、Set-Request和Trap。</p>
+<ul>
+<li>Get-Request 、Get-Next-Request与Get-Response<br>SNMP 管理站用Get-Request消息从拥有SNMP代理的网络设备中检索信息，而SNMP代理则用Get-Response消息响应。Get-Next- Request用于和Get-Request组合起来查询特定的表对象中的列元素。</li>
+<li>Set-Request SNMP管理站用Set-Request 可以对网络设备进行远程配置（包括设备名、设备属性、删除设备或使某一个设备属性有效/无效等）。</li>
+<li>Trap SNMP代理使用Trap向SNMP管理站发送非请求消息，一般用于描述某一事件的发生，如接口UP/DOWN，IP地址更改等。</li>
+</ul>
+<p>上面五种消息中Get-Request、Get-Next-Request和Set-Request是由管理站发送到代理侧的161端口的；后面两种Get-Response和Trap 是由代理进程发给管理进程的，其中Trap消息被发送到管理进程的162端口，所有数据都是走UDP封装。SNMP工作流程如图2：<br><img src="http://blog.chinaunix.net/attachment/201206/21/23069658_1340274238733S.jpg" alt="SNMP工作流程"></p>
+<h3 id="3-2-报文格式"><a href="#3-2-报文格式" class="headerlink" title="3.2 报文格式"></a>3.2 报文格式</h3><p>SNMP代理和管理站通过SNMP协议中的标准消息进行通信，每个消息都是一个单独的数据报。SNMP使用UDP（用户数据报协议）作为第四层协议（传输协议），进行无连接操作。SNMP消息报文包含两个部分：SNMP报头和协议数据单元PDU。<br><img src="http://blog.chinaunix.net/attachment/201206/21/23069658_1340274240Yo8Q.jpg" alt="SNMP报文格式"></p>
+<p><strong>以下部分是报文格式的具体分析，有需要可以继续学习。</strong></p>
+<p>　　在实际网络传输环境下，SNMP报文的长度取决于其所采用的编码方式。SNMP统一采用BER(Basic Encoding Rule)的编码规则，同时在正式SNMP规范中使用的是ASN.1语法，Abastract Syntax Notation v1，即抽象语法描述语言。这两个概念在后面实践环节再做进一步介绍，这里只要稍微了解一下即可，不妨碍我们对协议本身的分析。这里我们简单解释一下BER编码规则：<br>　　BER作为ANS.1的基本编码规则，描述具体的ANS.1对象如何编码为比特流在网络上进行传输。BER编码规则由三部分组成：<br>　　<img src="http://blog.chinaunix.net/attachment/201206/21/23069658_134027424269yP.jpg" alt="BER编码方式"><br>    SNMP中定义了几种基本的数据类型，其中v1和v2版有些改动，具体参见相应的RFC文档。这里我们只介绍几种最常见的类型：</p>
+<ul>
+<li>INTEGER：一个整数</li>
+<li>OCTER STRING： 0或多个8bit字节，每个字节在0~255之间取值</li>
+<li>DisplayString：0或多个8bit字节，每个字节必须是ASCII码。在MIB-II中，所有该类型变量不能超过255个字符(0个字符可以)</li>
+<li>NULL：代表相关的变量没有值</li>
+<li>IpAddress：4字节长的OCTER STRING，以网络字节序表示IP地址</li>
+<li>PhyAddress：6字节长的OCTER STRING，代表物理地址</li>
+<li>Counter：非负整数，可以从0递增到232-1()。达到最大值后归0</li>
+<li>TimeTicks：时间计数器，以0.01秒为单位递增，不同的变量可以有不同的递增幅度。所以在定义这种类型的变量时需要制定递增幅度</li>
+<li>SEQUENCE：与C语言中的结构体类似</li>
+<li>SEQUENCE OF：一个向量，参见后面ANS.1语法详细介绍章节</li>
+</ul>
+<p>SNMP报文在传输层是封装在UDP报文中的，而UDP又是基于IP网络的，因此，我们可以得到完整的报文描述结构，如下图所示：<br><img src="http://blog.chinaunix.net/attachment/201206/21/23069658_1340274245phSV.jpg" alt="SNMP协议报文格式"><br>PDU类型其实包含两个字节，第一个字节表示真实的PDU的类型；第二个字节表示后面报文所占的字节总数。针对SNMPv1，这个字段取值如下：<br>| PDU类型  | 名 称   |<br>| :——–: | :—–:  |<br>| 0     | get-request |<br>| 1        |   get-next-request   |<br>| 2        |    get-response    |<br>| 3        |    set-request   |<br>| 4        |    trap   |<br>　　也就是说，trap的类型是4。但是在数据报文中，该字段一般表示为ax，其中x取[0,4]，即a0~a3表示相应的get、set等操作，a4表示trap报文。这里除了类型字段意外，其他字段均采用BER编码方式：<br><img src="http://blog.chinaunix.net/attachment/201206/21/23069658_1340274247srSc.jpg" alt="采用BER编码的字段"><br>　　<br><strong>实战演练之报文格式分析</strong><br>　　Trap报文格式和上述图5所展示的结构有些差别，这里我们只分析SNMPv1和SNMPv2的Trap报文格式。trap报文前面的部分都一样，区别在PDU协议数据单元部分。</p>
+<p>SNMPv1 Trap报文<br>SNMPv1的Trap报文格式如下所示：<br><img src="http://blog.chinaunix.net/attachment/201206/21/23069658_134027425066MR.jpg" alt="SNMPv1的Trap报文格式"><br>注意：除了PDU类型和PDU长度字段外，后面的每个字段都是BER编码方式。<br>    trap类型”可以取以下值，其中0~6是已定义的特定trap，7及其以后的类型由供应商自定义。<br>表2 trap类型、名称及描述信息<br>| trap类型        | 名称   |  描述信息  |<br>| :——–:   | :—–:  | :—-:  |<br>| ０     | coldStart |   代理进程对自己初始化     |<br>| １        |   warmStart   |   代理进程对自己重新初始化   |<br>| ２        |   linkDown    |  一个接口已从工作状态变为故障状态(报文中的第一个变量标识此接口)  |<br>| ３     | linkUp |  一个接口已从故障状态变为工作状态(报文中的第一个变量标识此接口)     |<br>| ４        |   authenticationFailure   |   从SNMP管理进程收到无效共同体的报文   |<br>| ５        |    egpNeighborLoss    |  一个EGP邻站已变为故障状态(报文中的第一个变量包含邻站IP地址) |<br>| ６     | enterpriseSpecific |   在这个特定的代码段中查找trap信息     |<br>　　通过wireshark抓包工具，捕获一条如下的SNMP报文，接下来对其进行仔细分析。<br>SNMPv1原始报文内容：</p>
+<p><font color="green">00 23 5a 9e 58 b9</font> <font color="blue">00 4c 41 49 50 55</font> <font color="red">08 005</font> <font color="gold">45 00 00 48 00 00 40 00 40 11 a5 4e c0 a8 0a 01 c0 a8 0a 05</font> <font color="purple">0c 00 00 a2 00 34 ff e0</font> 30 2a 02 01 00 04 06 70 75 62 6c 69 63 a4 1d 06 0a 2b 06 01 04 01 bf 08 03 02 0a 40 04 c0 a8 0a 01 02 01 00 02 01 00 43 01 0e 30 00</p>
+<p>目的MAC：<font color="green">00 23 5a 9e 58 b9</font><br>源MAC：<font color="blue">00 4c 41 49 50 55</font><br>协议类型：<font color="red">08 005</font> ，为IP数据报<br>IP头：<font color="gold">45 00 00 48 00 00 40 00 40 11 a5 4e c0 a8 0a 01 c0 a8 0a 05</font><br>UDP头：<font color="purple">0c 00 00 a2 00 34 ff e0</font><br>其余部分都为SNMP报文，接下来我们对照前面的报文结构体来逐个分析一下。</p>
+<ul>
+<li>30 表示SNMP消息是ASN.1的SEQUENCE类型；</li>
+<li>2a 表示该SNMP报文的总长度是42(0x2a)个字节，该字段所表示的报文长度起始于它后面的第一个字节直到报文结束；</li>
+<li>02 01 00 表示版本号，可见其确实为BER编码方式。02表示该字段是INTEGER类型；01表示该字段占1个字节；00表示版本号，该值为“版本号-1”；</li>
+<li>04 06 70 75 62 6c 69 63 表示团体名，04表示该字段为OCTET STRING类型；06表示该字段占6个字节；70 75 62 6c 69 63 表示团体名的ANSII码的十六进制形式，这里是“public”；</li>
+<li>a4 1d 其中a4中的“4”表示这是一个trap报文，a4又叫报文的标签标记；1d表示后面还有29(0x1d)个字节的数据；</li>
+<li>06 0a 2b 06 01 04 01 bf 08 03 02 0a 企业OID标识。06表示该字段是个对象标识符，OBJECT IDENTIFIER；0a表示该字段占10(0x0a)个字节；关于SNMP的OID的编码方式有些奇特：例如1.3.6.1.2…. 取前两个数字分别记为x和y。编码时40<em>x+y，这里x=1，y=3，因此结果为40</em>1+3=43，即表示十六进制的2b。因此，这里的企业OID编码即为1.3.6.1.4.1.8072.3.2.10；</li>
+<li>40 04 c0 a8 0a 01 同样40表示该字段为OCTET STRING 类型；04表示IP地址占4个字节；IP地址为192.168.10.1；</li>
+<li>02 01 00 其中00表示trap类型为coldStart；</li>
+<li>02 01 00 其中00表示我们指定的trap即specific-trap也为coldStart类型；</li>
+<li>43 01 0e 43表示为TimeTicks类型；01表示该字段占1个字节；0e即十进制的14表示时间标签为0.14秒，这里时间计数器以0.01秒递增；</li>
+<li>30 00 30表示“键-值”值对的编码类型为SEQUENCE；00表示该字段占0个字节，即没有该字段。</li>
+</ul>
+<p>SNMPv2 Trap报文<br>SNMPv2的Trap报文格式如图8所示：<br><img src="http://blog.chinaunix.net/attachment/201206/21/23069658_1340274252oJOX.jpg" alt="SNMPv2的Trap报文格式"><br>同样的，这里除了trap类型和报文长度是标准网络字节序之外，其余协议字段也均为BER编码方式。可以看到v2版的trap报文正在向统一的报文格式发展，已经非常类似普通的SNMP请求、响应报文了。<br>SNMPv2原始报文内容：<br>00 23 5a 9e 58 b9 00 4c 41 49 50 55 08 00 45 00 00 7b 00 00 40 00 40 11 a5 1b c0 a8 0a 01 c0 a8 0a 05 0c 01 00 a2 00 67 04 bb 30 5d 02 01 01 04 06 70 75 62 6c 69 63 a7 50 02 04 17 73 2c fb 02 01 00 02 01 00 30 42 30 0d 06 08 2b 06 01 02 01 01 03 00 43 01 0e 30 17 06 0a 2b 06 01 06 03 01 01 04 01 00 06 09 2b 06 01 06 03 01 01 05 01 30 18 06 0a 2b 06 01 06 03 01 01 04 03 00 06 0a 2b 06 01 04 01 bf 08 03 02 0a</p>
+<p>目的MAC：00 23 5a 9e 58 b9<br>源MAC：00 4c 41 49 50 55<br>协议类型：08 00，IP报文<br>IP头：45 00 00 7b 00 00 40 00 40 11 a5 1b c0 a8 0a 01 c0 a8 0a 05<br>UDP头：0c 01 00 a2 00 67 04 bb<br>余下部分全为SNMP报文内容，这里我们做一下简单的约定：<br>xx 标注类型；xx 标注长度；xx 标注真正的数据。<br>这样一来上面这串原始数据就好分析多了</p>
+<ul>
+<li>30 5d 整个SNMP报文的编码方式为30，即SEQUENCE类型，报文长度93(0x5d)字节；</li>
+<li>02 01 01 版本号01即v2版本；</li>
+<li>04 06 70 75 62 6c 69 63 团体名70 75 62 6c 69 63  即英文的“public”；</li>
+<li>a7 50 a7表示trap类型为7，即厂商自定义trap；50表示PDU区段占80(0x50)字节；</li>
+<li>02 04 17 73 2c fb 请求ID为17 73 2c fb 十进制的393424123；</li>
+<li>02 01 00 错误状态0；</li>
+<li>02 01 00 错误索引0；</li>
+<li>30 42 “变量名-值”对编码类型30 即SEQUENCE类型；“变量名-值”所占总字节0x42，即66字节；</li>
+<li>30 0d 06 08 2b 06 01 02 01 01 03 00 43 01 0e 第一个“名-值”对区段编码方式30 即SEQUENCE类型；第一个“名-值”对总长度0x0d，13字节；第一个变量名的编码类型0x06，时间标签；第一个变量名占0x08个字节；第一个变量名2b 06 01 02 01 01 03 00，为1.3.6.1.2.1.1.3.0；第一个变量值为0x0e，即14；</li>
+<li>30 17 06 0a 2b 06 01 06 03 01 01 04 01 00 06 09 2b 06 01 06 03 01 01 05 01 第二个“名-值”对；变量名1.3.6.1.6.3.1.1.4.1.0；变量值1.3.6.1.6.3.1.1.5.1；</li>
+<li>30 18 06 0a 2b 06 01 06 03 01 01 04 03 00 06 0a 2b 06 01 04 01 bf 08 03 02 0a 第三个“名-值”对；变量名1.3.6.1.6.3.1.1.4.3.0；变量值1.3.6.1.4.1.8072.3.2.10；</li>
+</ul>
+<h2 id="今天我们简单对SNMP协议做个入门普及，包括它的原理，应用场景报文格式等。下面的章节，我们将以开源net-snmp为例来向大家阐述多种代理开发流程和原理，以及要注意的问题，其中每种扩展mib的方式都对应不同的开发需求。"><a href="#今天我们简单对SNMP协议做个入门普及，包括它的原理，应用场景报文格式等。下面的章节，我们将以开源net-snmp为例来向大家阐述多种代理开发流程和原理，以及要注意的问题，其中每种扩展mib的方式都对应不同的开发需求。" class="headerlink" title="今天我们简单对SNMP协议做个入门普及，包括它的原理，应用场景报文格式等。下面的章节，我们将以开源net-snmp为例来向大家阐述多种代理开发流程和原理，以及要注意的问题，其中每种扩展mib的方式都对应不同的开发需求。"></a>今天我们简单对SNMP协议做个入门普及，包括它的原理，应用场景报文格式等。下面的章节，我们将以开源net-snmp为例来向大家阐述多种代理开发流程和原理，以及要注意的问题，其中每种扩展mib的方式都对应不同的开发需求。</h2>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="肖悦 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="肖悦 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/snmp/" rel="tag"># snmp</a>
+          
+            <a href="/tags/network/" rel="tag"># network</a>
+          
+            <a href="/tags/snmp4j/" rel="tag"># snmp4j</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/html5-常用功能.html" rel="next" title="html5+常用功能">
+                <i class="fa fa-chevron-left"></i> html5+常用功能
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/SNMP学习总结(2)——snmp安装和配置.html" rel="prev" title="SNMP学习总结(2)——snmp安装和配置">
+                SNMP学习总结(2)——snmp安装和配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODQwNi80OTc3"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">肖悦</p>
+              <p class="site-description motion-element" itemprop="description">天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                神奇的链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ems.top-vision.cn:8110/dm/dm.html" title="EMS规范" target="_blank">EMS规范</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-SNMP简单概述"><span class="nav-text">1 SNMP简单概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-什么是SNMP"><span class="nav-text">1.1 什么是SNMP?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-SNMP和UDP"><span class="nav-text">1.2 SNMP和UDP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Snmp版本"><span class="nav-text">1.3 Snmp版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SNMP工作原理"><span class="nav-text">2 SNMP工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-SNMP报文"><span class="nav-text">3 SNMP报文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-报文类型"><span class="nav-text">3.1 报文类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-报文格式"><span class="nav-text">3.2 报文格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#今天我们简单对SNMP协议做个入门普及，包括它的原理，应用场景报文格式等。下面的章节，我们将以开源net-snmp为例来向大家阐述多种代理开发流程和原理，以及要注意的问题，其中每种扩展mib的方式都对应不同的开发需求。"><span class="nav-text">今天我们简单对SNMP协议做个入门普及，包括它的原理，应用场景报文格式等。下面的章节，我们将以开源net-snmp为例来向大家阐述多种代理开发流程和原理，以及要注意的问题，其中每种扩展mib的方式都对应不同的开发需求。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">肖悦</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.3.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

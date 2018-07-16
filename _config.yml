@@ -117,6 +117,13 @@ encrypt:
 ## Themes: https://hexo.io/themes/
 theme: next
 
+## 站点地图
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+# url: http://www.greateman.top
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:

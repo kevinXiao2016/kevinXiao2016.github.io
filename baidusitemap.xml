@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.greateman.top/hexo%E5%8D%9A%E5%AE%A2%E5%85%B3%E8%81%94%E5%9F%9F%E5%90%8D%EF%BC%8C%E9%83%A8%E7%BD%B2%E5%88%B0coding.html</loc>
+    <lastmod>2018-07-16T10:13:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>hexo博客关联域名，部署到coding</title>
+        <pubTime>2018-07-16T10:13:14.000Z</pubTime>
+        
+        <tag>Blog</tag>
+         
+         
+           
+             
+              <breadCrumb title="Blog" url="http://www.greateman.top/categories/Blog/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.greateman.top/Centos7%E4%B8%8B%E5%AE%89%E8%A3%85Nginx.html</loc>
     <lastmod>2018-06-13T05:03:57.000Z</lastmod>
     <data>
@@ -1095,12 +1115,12 @@
 
     
   <url>
-    <loc>http://www.greateman.top/Callable%E5%8F%8AFuture.html</loc>
+    <loc>http://www.greateman.top/Thread%E5%8F%8ARunnable.html</loc>
     <lastmod>2018-05-04T08:27:21.000Z</lastmod>
     <data>
         <display>
-        <title>Callable及Future</title>
-        <pubTime>2017-10-12T03:13:54.000Z</pubTime>
+        <title>Thread及Runnable</title>
+        <pubTime>2017-09-30T01:22:54.000Z</pubTime>
         
         <tag>Java</tag>
          
@@ -1117,12 +1137,12 @@
 
     
   <url>
-    <loc>http://www.greateman.top/Thread%E5%8F%8ARunnable.html</loc>
+    <loc>http://www.greateman.top/Callable%E5%8F%8AFuture.html</loc>
     <lastmod>2018-05-04T08:27:21.000Z</lastmod>
     <data>
         <display>
-        <title>Thread及Runnable</title>
-        <pubTime>2017-09-30T01:22:54.000Z</pubTime>
+        <title>Callable及Future</title>
+        <pubTime>2017-10-12T03:13:54.000Z</pubTime>
         
         <tag>Java</tag>
          

@@ -1073,12 +1073,12 @@
 
     
   <url>
-    <loc>http://www.greateman.top/Thread%E5%8F%8ARunnable.html</loc>
+    <loc>http://www.greateman.top/volatile%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html</loc>
     <lastmod>2018-05-04T08:27:21.000Z</lastmod>
     <data>
         <display>
-        <title>Thread及Runnable</title>
-        <pubTime>2017-09-30T01:22:54.000Z</pubTime>
+        <title>volatile的实现原理</title>
+        <pubTime>2018-05-04T08:27:21.000Z</pubTime>
         
         <tag>Java</tag>
          
@@ -1117,12 +1117,12 @@
 
     
   <url>
-    <loc>http://www.greateman.top/volatile%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html</loc>
+    <loc>http://www.greateman.top/Thread%E5%8F%8ARunnable.html</loc>
     <lastmod>2018-05-04T08:27:21.000Z</lastmod>
     <data>
         <display>
-        <title>volatile的实现原理</title>
-        <pubTime>2018-05-04T08:27:21.000Z</pubTime>
+        <title>Thread及Runnable</title>
+        <pubTime>2017-09-30T01:22:54.000Z</pubTime>
         
         <tag>Java</tag>
          

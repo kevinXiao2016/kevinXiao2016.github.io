@@ -1,0 +1,6 @@
+[config]
+监控频率=1
+实时推送=0
+实时推送文件=
+接口调用地址=http://data.zz.baidu.com/urls?site=www.greateman.top&token=aLRTvblSg7lkWwnp
+获取URL网址=https://www.greateman.top/

@@ -76,12 +76,12 @@ seo: true
 index_with_subtitle: false
 
 ## 站点地图
-sitemap:
-  path: sitemap.xml
-baidusitemap:
-  path: baidusitemap.xml
+# sitemap:
+#   path: sitemap.xml
+# baidusitemap:
+#   path: baidusitemap.xml
 
-url: http://www.greateman.top
+# url: https://www.greateman.top
 
 
 

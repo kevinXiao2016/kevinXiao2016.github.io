@@ -12,7 +12,8 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://kevinXiao2016.github.io
+#url: https://kevinXiao2016.github.io
+url: https://www.greateman.top
 root: /
 # 博客文章的 URL 结构，请务必写文章之前就想好！
 # 详细参数请查看：https://hexo.io/docs/permalinks.html
@@ -122,7 +123,7 @@ sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
-# url: http://www.greateman.top
+  url: https://www.greateman.top
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

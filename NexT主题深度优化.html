@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文主要对next主题导入后的基本及深度优化行为做了记录。其中基本配置直接贴出了配置文件，里面写上了中文注释。深度优化方面，既有总结，也有大量的链接推荐。">
+<meta name="keywords" content="Blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NexT主题深度优化">
+<meta property="og:url" content="https://www.greateman.top/NexT主题深度优化.html">
+<meta property="og:site_name" content="温故而知新">
+<meta property="og:description" content="本文主要对next主题导入后的基本及深度优化行为做了记录。其中基本配置直接贴出了配置文件，里面写上了中文注释。深度优化方面，既有总结，也有大量的链接推荐。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/copyLink.png">
+<meta property="og:updated_time" content="2018-04-23T06:55:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NexT主题深度优化">
+<meta name="twitter:description" content="本文主要对next主题导入后的基本及深度优化行为做了记录。其中基本配置直接贴出了配置文件，里面写上了中文注释。深度优化方面，既有总结，也有大量的链接推荐。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/copyLink.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://www.greateman.top/NexT主题深度优化.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>NexT主题深度优化 | 温故而知新</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">温故而知新</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+    
+      
+    
+    <a href="https://github.com/kevinXiao2016" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+    
+      </a>
+    
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/NexT主题深度优化.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="肖悦">
+      <meta itemprop="description" content="天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="温故而知新">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">NexT主题深度优化
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-30 18:29:19" itemprop="dateCreated datePublished" datetime="2018-03-30T18:29:19+08:00">2018-03-30</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文主要对next主题导入后的基本及深度优化行为做了记录。其中基本配置直接贴出了配置文件，里面写上了中文注释。深度优化方面，既有总结，也有大量的链接推荐。</p>
+<a id="more"></a>
+<h2 id="1-开始搭建博客"><a href="#1-开始搭建博客" class="headerlink" title="1.开始搭建博客"></a>1.开始搭建博客</h2><h2 id="2-优化：基本功能配置"><a href="#2-优化：基本功能配置" class="headerlink" title="2.优化：基本功能配置"></a>2.优化：基本功能配置</h2><p>接下来是配置和增强功能，如阅读统计、评论、插件之类的，这些基本配置建议在写文章之前配置好。</p>
+<p>基本功能配置大部分是修改两个文件，都叫_config.yml。一个是站点的，一个是主题的。</p>
+<p>与其将各个功能分散开来讲，不如直接贴出配置文件，打上注释，从头到尾看一遍就知道如何配置了。</p>
+<h3 id="2-1-选择主题"><a href="#2-1-选择主题" class="headerlink" title="2.1 选择主题"></a>2.1 选择主题</h3><p>我选择的是<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">NexT</a>,是在Github上<a href="https://github.com/search?o=desc&amp;q=topic:hexo-theme&amp;s=stars&amp;type=Repositories" target="_blank" rel="noopener">被Star最多</a>【2018.3.30】的一个Hexo主题。从V6.0.0开始next主仓库已从 <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">iissnan</a> 名下 迁移至 <a href="https://github.com/theme-next" target="_blank" rel="noopener">theme-next </a>。组织</p>
+<p>想要什么样的主题，去<a href="https://hexo.io/themes/" target="_blank" rel="noopener">Hexo Themes</a>上慢慢找。</p>
+<p>至于更换主题，很简单，用NexT主题举个例子。</p>
+<ol>
+<li><p>首先，去主题所在仓库拷贝仓库地址，如下图：</p>
+<p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/copyLink.png" alt="拷贝仓库地址">    </p>
+</li>
+<li><p>然后，到博客站点根目录下,打开 <strong>git bash</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// next是自定义的主题名字，可以随意更改</div><div class="line">git clone https://github.com/theme-next/hexo-theme-next.git themes/next</div></pre></td></tr></table></figure>
+</li>
+<li><p>最后，修改站点配置文件_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">## Themes: https://hexo.io/themes/</div><div class="line">theme: next</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="2-2-站点配置文件"><a href="#2-2-站点配置文件" class="headerlink" title="2.2 站点配置文件"></a>2.2 站点配置文件</h3><p>请先查看 <a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">Hexo官方文档</a> ，再查看下面我贴出的，如果这样后你还是对有些地方比较懵，可以自行 Google。</p>
+<p><strong>注意：文件中所有的 : 都是英文字符，且后面都有一个空格。</strong></p>
+<p>【2018.3.30更新】文件位置： ~/blog/_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div></pre></td><td class="code"><pre><div class="line"># Hexo Configuration</div><div class="line">## Docs: https://hexo.io/docs/configuration.html</div><div class="line">## Source: https://github.com/hexojs/hexo/</div><div class="line"></div><div class="line"># Site</div><div class="line">title: 温故而知新</div><div class="line">subtitle: </div><div class="line">description: 天下事有难易乎？&lt;br/&gt;为之，则难者亦易矣；&lt;br/&gt;不为，则易者亦难矣。</div><div class="line">author: 肖悦</div><div class="line">language: zh-CN</div><div class="line">timezone: </div><div class="line"></div><div class="line"># URL</div><div class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</div><div class="line">url: http://kevinXiao2016.github.io</div><div class="line">root: /</div><div class="line"># 博客文章的 URL 结构，请务必写文章之前就想好！</div><div class="line"># 详细参数请查看：https://hexo.io/docs/permalinks.html</div><div class="line">permalink: :year/:month/:day/:title/</div><div class="line">permalink_defaults:</div><div class="line"></div><div class="line"># Directory</div><div class="line">source_dir: source</div><div class="line">public_dir: public</div><div class="line">tag_dir: tags</div><div class="line">archive_dir: archives</div><div class="line">category_dir: categories</div><div class="line">code_dir: downloads/code</div><div class="line">i18n_dir: :lang</div><div class="line">skip_render:</div><div class="line"></div><div class="line"># Writing</div><div class="line">new_post_name: :title.md # File name of new posts</div><div class="line">default_layout: post</div><div class="line">titlecase: false # Transform title into titlecase</div><div class="line">external_link: true # Open external links in new tab</div><div class="line">filename_case: 0</div><div class="line">render_drafts: false</div><div class="line">post_asset_folder: false</div><div class="line">relative_link: false</div><div class="line">future: true</div><div class="line"># 代码高亮设置</div><div class="line">highlight:</div><div class="line">  enable: true</div><div class="line">  line_number: true</div><div class="line">  auto_detect: false</div><div class="line">  tab_replace:</div><div class="line"></div><div class="line"># Category &amp; Tag</div><div class="line">default_category: uncategorized</div><div class="line">category_map:</div><div class="line">tag_map:</div><div class="line"></div><div class="line"># Date / Time format</div><div class="line">## Hexo uses Moment.js to parse and display date</div><div class="line">## You can customize the date format as defined in</div><div class="line">## http://momentjs.com/docs/#/displaying/format/</div><div class="line">date_format: YYYY-MM-DD</div><div class="line">time_format: HH:mm:ss</div><div class="line"></div><div class="line"></div><div class="line"># ---------------------------------------------------------------</div><div class="line"># 扩展设置</div><div class="line"># ---------------------------------------------------------------</div><div class="line"># 集成Local Search 支持站内搜索</div><div class="line">search:</div><div class="line">  path: search.xml</div><div class="line">  field: post</div><div class="line">  format: html</div><div class="line">  limit: 10000</div><div class="line"># Pagination</div><div class="line">## Set per_page to 0 to disable pagination</div><div class="line">per_page: 10</div><div class="line">pagination_dir: page</div><div class="line"></div><div class="line">index_generator:</div><div class="line">  per_page: 10 ##首页默认10篇文章标题 如果值为0不分页</div><div class="line">## 修改归档页面、某一分类页面、某一标签页面的显示篇数</div><div class="line">## 参考：http://theme-next.iissnan.com/faqs.html#setting-page-size</div><div class="line">archive_generator:</div><div class="line">	per_page: 10 ##归档页面默认10篇文章标题</div><div class="line">	yearly: true  ##生成年视图</div><div class="line">	monthly: true ##生成月视图</div><div class="line">tag_generator:</div><div class="line">	per_page: 10 ##标签分类页面默认10篇文章</div><div class="line">category_generator: </div><div class="line">	per_page: 10 ###分类页面默认10篇文章</div><div class="line"></div><div class="line"># Extensions</div><div class="line">## Plugins: https://hexo.io/plugins/</div><div class="line">## Themes: https://hexo.io/themes/</div><div class="line">theme: next</div><div class="line"></div><div class="line"># Deployment</div><div class="line">## Docs: https://hexo.io/docs/deployment.html</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  # 没有做cdn映射前，请使用下面注释掉的配置</div><div class="line">  repo: </div><div class="line">        github: git@github.com:kevinXiao2016/kevinXiao2016.github.io.git,master</div><div class="line">        coding: git@git.coding.net:kevinXiao2016/kevinXiao2016.git,master</div><div class="line"></div><div class="line">  #repository: https://github.com/kevinXiao2016/kevinXiao2016.github.io.git</div><div class="line">  #branch: master</div></pre></td></tr></table></figure>
+<h3 id="2-3-主题配置文件"><a href="#2-3-主题配置文件" class="headerlink" title="2.3 主题配置文件"></a>2.3 主题配置文件</h3><p>如果使用的主题不是Next，那么请另 Google。建议先查看 <a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">NexT 官方文档</a>。</p>
+<p>【2018.3.30更新】文件位置： ~/blog/themes/next/_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># ---------------------------------------------------------------</div><div class="line"># Theme Core Configuration Settings</div><div class="line"># ---------------------------------------------------------------</div><div class="line"></div><div class="line"># 更新相关，参考：https://github.com/iissnan/hexo-theme-next/issues/328</div><div class="line"># 简单说：从V6.0.0开始支持以下功能，不更改主题设置，在站点中设置主题</div><div class="line"># 1.在~/blog/source 目录下新建source目录，在里面新建 next.yml文件</div><div class="line"># 2.将主题配置文件全部拷贝过去</div><div class="line"># 3.设置此处override为true,表明此文件配置可被next.yml中的配置覆盖</div><div class="line">override: true</div><div class="line"></div><div class="line"># Allow to cache content generation. Introduced in NexT v6.0.0.</div><div class="line">cache:</div><div class="line">  enable: true</div></pre></td></tr></table></figure>
+<p>【2018.3.30更新】文件位置： ~/blog/source/_data/next.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div><div class="line">444</div><div class="line">445</div><div class="line">446</div><div class="line">447</div><div class="line">448</div><div class="line">449</div><div class="line">450</div><div class="line">451</div><div class="line">452</div><div class="line">453</div><div class="line">454</div><div class="line">455</div><div class="line">456</div><div class="line">457</div><div class="line">458</div><div class="line">459</div><div class="line">460</div><div class="line">461</div><div class="line">462</div><div class="line">463</div><div class="line">464</div><div class="line">465</div><div class="line">466</div><div class="line">467</div><div class="line">468</div><div class="line">469</div><div class="line">470</div><div class="line">471</div><div class="line">472</div><div class="line">473</div><div class="line">474</div><div class="line">475</div><div class="line">476</div><div class="line">477</div><div class="line">478</div><div class="line">479</div><div class="line">480</div><div class="line">481</div><div class="line">482</div><div class="line">483</div><div class="line">484</div><div class="line">485</div><div class="line">486</div><div class="line">487</div><div class="line">488</div><div class="line">489</div><div class="line">490</div><div class="line">491</div><div class="line">492</div><div class="line">493</div><div class="line">494</div><div class="line">495</div><div class="line">496</div><div class="line">497</div><div class="line">498</div><div class="line">499</div><div class="line">500</div><div class="line">501</div><div class="line">502</div><div class="line">503</div><div class="line">504</div><div class="line">505</div><div class="line">506</div><div class="line">507</div><div class="line">508</div><div class="line">509</div><div class="line">510</div><div class="line">511</div><div class="line">512</div><div class="line">513</div><div class="line">514</div><div class="line">515</div><div class="line">516</div><div class="line">517</div><div class="line">518</div><div class="line">519</div><div class="line">520</div><div class="line">521</div><div class="line">522</div><div class="line">523</div><div class="line">524</div><div class="line">525</div><div class="line">526</div><div class="line">527</div><div class="line">528</div><div class="line">529</div><div class="line">530</div><div class="line">531</div><div class="line">532</div><div class="line">533</div><div class="line">534</div><div class="line">535</div><div class="line">536</div><div class="line">537</div><div class="line">538</div><div class="line">539</div><div class="line">540</div><div class="line">541</div><div class="line">542</div><div class="line">543</div><div class="line">544</div><div class="line">545</div><div class="line">546</div><div class="line">547</div><div class="line">548</div><div class="line">549</div><div class="line">550</div><div class="line">551</div><div class="line">552</div><div class="line">553</div><div class="line">554</div><div class="line">555</div><div class="line">556</div><div class="line">557</div><div class="line">558</div><div class="line">559</div><div class="line">560</div><div class="line">561</div><div class="line">562</div><div class="line">563</div><div class="line">564</div><div class="line">565</div><div class="line">566</div><div class="line">567</div><div class="line">568</div><div class="line">569</div><div class="line">570</div><div class="line">571</div><div class="line">572</div><div class="line">573</div><div class="line">574</div><div class="line">575</div><div class="line">576</div><div class="line">577</div><div class="line">578</div><div class="line">579</div><div class="line">580</div><div class="line">581</div><div class="line">582</div><div class="line">583</div><div class="line">584</div><div class="line">585</div><div class="line">586</div><div class="line">587</div><div class="line">588</div><div class="line">589</div><div class="line">590</div><div class="line">591</div><div class="line">592</div><div class="line">593</div><div class="line">594</div><div class="line">595</div><div class="line">596</div><div class="line">597</div><div class="line">598</div><div class="line">599</div><div class="line">600</div><div class="line">601</div><div class="line">602</div><div class="line">603</div><div class="line">604</div><div class="line">605</div><div class="line">606</div><div class="line">607</div><div class="line">608</div><div class="line">609</div><div class="line">610</div><div class="line">611</div><div class="line">612</div><div class="line">613</div><div class="line">614</div><div class="line">615</div><div class="line">616</div><div class="line">617</div><div class="line">618</div><div class="line">619</div><div class="line">620</div><div class="line">621</div><div class="line">622</div><div class="line">623</div><div class="line">624</div><div class="line">625</div><div class="line">626</div><div class="line">627</div><div class="line">628</div><div class="line">629</div><div class="line">630</div><div class="line">631</div><div class="line">632</div><div class="line">633</div><div class="line">634</div><div class="line">635</div><div class="line">636</div><div class="line">637</div><div class="line">638</div><div class="line">639</div><div class="line">640</div><div class="line">641</div><div class="line">642</div><div class="line">643</div><div class="line">644</div><div class="line">645</div><div class="line">646</div><div class="line">647</div><div class="line">648</div><div class="line">649</div><div class="line">650</div><div class="line">651</div><div class="line">652</div><div class="line">653</div><div class="line">654</div><div class="line">655</div><div class="line">656</div><div class="line">657</div><div class="line">658</div><div class="line">659</div><div class="line">660</div><div class="line">661</div><div class="line">662</div><div class="line">663</div><div class="line">664</div><div class="line">665</div><div class="line">666</div><div class="line">667</div><div class="line">668</div><div class="line">669</div><div class="line">670</div><div class="line">671</div><div class="line">672</div><div class="line">673</div><div class="line">674</div><div class="line">675</div><div class="line">676</div><div class="line">677</div><div class="line">678</div><div class="line">679</div><div class="line">680</div><div class="line">681</div><div class="line">682</div><div class="line">683</div><div class="line">684</div><div class="line">685</div><div class="line">686</div><div class="line">687</div><div class="line">688</div><div class="line">689</div><div class="line">690</div><div class="line">691</div><div class="line">692</div><div class="line">693</div><div class="line">694</div><div class="line">695</div><div class="line">696</div><div class="line">697</div><div class="line">698</div><div class="line">699</div><div class="line">700</div><div class="line">701</div><div class="line">702</div><div class="line">703</div><div class="line">704</div><div class="line">705</div><div class="line">706</div><div class="line">707</div><div class="line">708</div><div class="line">709</div><div class="line">710</div><div class="line">711</div><div class="line">712</div><div class="line">713</div><div class="line">714</div><div class="line">715</div><div class="line">716</div><div class="line">717</div><div class="line">718</div><div class="line">719</div><div class="line">720</div><div class="line">721</div><div class="line">722</div><div class="line">723</div><div class="line">724</div><div class="line">725</div><div class="line">726</div><div class="line">727</div><div class="line">728</div><div class="line">729</div><div class="line">730</div><div class="line">731</div><div class="line">732</div><div class="line">733</div><div class="line">734</div><div class="line">735</div><div class="line">736</div><div class="line">737</div><div class="line">738</div><div class="line">739</div><div class="line">740</div><div class="line">741</div><div class="line">742</div><div class="line">743</div><div class="line">744</div><div class="line">745</div><div class="line">746</div><div class="line">747</div><div class="line">748</div><div class="line">749</div><div class="line">750</div><div class="line">751</div><div class="line">752</div><div class="line">753</div><div class="line">754</div><div class="line">755</div><div class="line">756</div><div class="line">757</div><div class="line">758</div><div class="line">759</div><div class="line">760</div><div class="line">761</div><div class="line">762</div><div class="line">763</div><div class="line">764</div><div class="line">765</div><div class="line">766</div><div class="line">767</div><div class="line">768</div><div class="line">769</div><div class="line">770</div><div class="line">771</div><div class="line">772</div><div class="line">773</div><div class="line">774</div><div class="line">775</div><div class="line">776</div><div class="line">777</div><div class="line">778</div><div class="line">779</div><div class="line">780</div><div class="line">781</div><div class="line">782</div><div class="line">783</div><div class="line">784</div><div class="line">785</div><div class="line">786</div><div class="line">787</div><div class="line">788</div><div class="line">789</div><div class="line">790</div><div class="line">791</div><div class="line">792</div><div class="line">793</div><div class="line">794</div><div class="line">795</div><div class="line">796</div><div class="line">797</div><div class="line">798</div><div class="line">799</div><div class="line">800</div><div class="line">801</div><div class="line">802</div><div class="line">803</div><div class="line">804</div><div class="line">805</div><div class="line">806</div><div class="line">807</div><div class="line">808</div><div class="line">809</div><div class="line">810</div><div class="line">811</div><div class="line">812</div><div class="line">813</div><div class="line">814</div><div class="line">815</div><div class="line">816</div><div class="line">817</div><div class="line">818</div><div class="line">819</div><div class="line">820</div><div class="line">821</div><div class="line">822</div><div class="line">823</div><div class="line">824</div><div class="line">825</div><div class="line">826</div><div class="line">827</div><div class="line">828</div><div class="line">829</div><div class="line">830</div><div class="line">831</div><div class="line">832</div><div class="line">833</div><div class="line">834</div><div class="line">835</div><div class="line">836</div><div class="line">837</div><div class="line">838</div><div class="line">839</div><div class="line">840</div><div class="line">841</div><div class="line">842</div><div class="line">843</div><div class="line">844</div><div class="line">845</div><div class="line">846</div><div class="line">847</div><div class="line">848</div><div class="line">849</div><div class="line">850</div><div class="line">851</div><div class="line">852</div><div class="line">853</div><div class="line">854</div><div class="line">855</div><div class="line">856</div><div class="line">857</div><div class="line">858</div><div class="line">859</div><div class="line">860</div><div class="line">861</div><div class="line">862</div><div class="line">863</div><div class="line">864</div><div class="line">865</div><div class="line">866</div><div class="line">867</div><div class="line">868</div><div class="line">869</div><div class="line">870</div><div class="line">871</div><div class="line">872</div><div class="line">873</div><div class="line">874</div><div class="line">875</div><div class="line">876</div><div class="line">877</div><div class="line">878</div><div class="line">879</div><div class="line">880</div><div class="line">881</div><div class="line">882</div><div class="line">883</div><div class="line">884</div><div class="line">885</div><div class="line">886</div><div class="line">887</div><div class="line">888</div><div class="line">889</div><div class="line">890</div><div class="line">891</div><div class="line">892</div><div class="line">893</div><div class="line">894</div><div class="line">895</div><div class="line">896</div><div class="line">897</div><div class="line">898</div><div class="line">899</div><div class="line">900</div><div class="line">901</div><div class="line">902</div><div class="line">903</div><div class="line">904</div><div class="line">905</div><div class="line">906</div><div class="line">907</div><div class="line">908</div><div class="line">909</div><div class="line">910</div><div class="line">911</div><div class="line">912</div><div class="line">913</div><div class="line">914</div><div class="line">915</div><div class="line">916</div><div class="line">917</div><div class="line">918</div><div class="line">919</div><div class="line">920</div><div class="line">921</div><div class="line">922</div><div class="line">923</div><div class="line">924</div><div class="line">925</div><div class="line">926</div><div class="line">927</div><div class="line">928</div><div class="line">929</div><div class="line">930</div><div class="line">931</div><div class="line">932</div><div class="line">933</div><div class="line">934</div><div class="line">935</div><div class="line">936</div><div class="line">937</div><div class="line">938</div><div class="line">939</div><div class="line">940</div><div class="line">941</div><div class="line">942</div><div class="line">943</div><div class="line">944</div><div class="line">945</div><div class="line">946</div><div class="line">947</div><div class="line">948</div><div class="line">949</div><div class="line">950</div><div class="line">951</div><div class="line">952</div><div class="line">953</div><div class="line">954</div><div class="line">955</div><div class="line">956</div><div class="line">957</div><div class="line">958</div><div class="line">959</div><div class="line">960</div><div class="line">961</div><div class="line">962</div><div class="line">963</div><div class="line">964</div><div class="line">965</div><div class="line">966</div><div class="line">967</div><div class="line">968</div><div class="line">969</div><div class="line">970</div><div class="line">971</div><div class="line">972</div><div class="line">973</div></pre></td><td class="code"><pre><div class="line"># ---------------------------------------------------------------</div><div class="line"># Site Information Settings</div><div class="line"># ---------------------------------------------------------------</div><div class="line"></div><div class="line"># 站点图标啦，直接去 https://realfavicongenerator.net</div><div class="line"># 选项弄好后，下载压缩包，解压复制粘贴</div><div class="line"># 建议放在 hexo-site/source/images/ 里（没有自己建）</div><div class="line"># 这样可以避免更新 NexT 主题的时候遇到麻烦</div><div class="line"># 最后记得要稍微改下文件名，与下面的保持一致</div><div class="line">favicon:</div><div class="line">  small: /images/favicon-16x16</div><div class="line">  medium: /images/favicon-32x32</div><div class="line">  #apple_touch_icon: /images/apple-touch-icon-next.png</div><div class="line">  #safari_pinned_tab: /images/logo.svg</div><div class="line">  #android_manifest: /images/manifest.json</div><div class="line">  #ms_browserconfig: /images/browserconfig.xml</div><div class="line"></div><div class="line"># Set rss to false to disable feed link.</div><div class="line"># Leave rss as empty to use site&apos;s feed link.</div><div class="line"># Set rss to specific value if you have burned your feed already.</div><div class="line">rss:</div><div class="line"></div><div class="line"># 页脚配置</div><div class="line">footer:</div><div class="line">  # Specify the date when the site was setup.</div><div class="line">  # If not defined, current year will be used.</div><div class="line">  # 建站年份</div><div class="line">  since: 2017</div><div class="line"></div><div class="line">  # Icon between year and copyright info.</div><div class="line">  # 年份后面的图标，为 Font Awesome 图标</div><div class="line">  icon: </div><div class="line">    # Icon name in fontawesome, see: https://fontawesome.com/v4.7.0/icons</div><div class="line">    # `heart` is recommended with animation in red (#ff0000).</div><div class="line">    name: heart</div><div class="line">    # If you want to animate the icon, set it to true.</div><div class="line">    # 设置true时开启动画效果</div><div class="line">    animated: true</div><div class="line">    # Change the color of icon, using Hex Code.</div><div class="line">    color: &quot;#ff0000&quot;</div><div class="line"></div><div class="line">  # If not defined, will be used `author` from Hexo main config.</div><div class="line">  # 如果不定义，默认用站点配置文件的 author 名</div><div class="line">  copyright:</div><div class="line">  # -------------------------------------------------------------</div><div class="line">  # Hexo link (Powered by Hexo).</div><div class="line">  # Hexo 的链接</div><div class="line">  powered: true</div><div class="line"></div><div class="line">  theme:</div><div class="line">    # Theme &amp; scheme info link (Theme - NexT.scheme).</div><div class="line">    # 是否支持主题</div><div class="line">    enable: true</div><div class="line">    # Version info of NexT after scheme info (vX.X.X).</div><div class="line">    # 是否显示next的版本</div><div class="line">    version: true</div><div class="line">  # -------------------------------------------------------------</div><div class="line">  # Any custom text can be defined here.</div><div class="line">  # 自定义内容</div><div class="line">  #custom_text: Hosted by &lt;a target=&quot;_blank&quot; rel=&quot;external nofollow&quot; href=&quot;https://pages.coding.me&quot;&gt;&lt;b&gt;Coding Pages&lt;/b&gt;&lt;/a&gt;</div><div class="line"></div><div class="line"># ---------------------------------------------------------------</div><div class="line"># SEO Settings</div><div class="line"># ---------------------------------------------------------------</div><div class="line"></div><div class="line"># Canonical, set a canonical link tag in your hexo, you could use it for your SEO of blog.</div><div class="line"># See: https://support.google.com/webmasters/answer/139066</div><div class="line"># Tips: Before you open this tag, remember set up your URL in hexo _config.yml ( ex. url: http://yourdomain.com )</div><div class="line">canonical: true</div><div class="line"></div><div class="line"># Change headers hierarchy on site-subtitle (will be main site description) and on all post/pages titles for better SEO-optimization.</div><div class="line">seo: false</div><div class="line"></div><div class="line"># If true, will add site-subtitle to index page, added in main hexo config.</div><div class="line"># subtitle: Subtitle</div><div class="line">index_with_subtitle: false</div><div class="line"></div><div class="line"></div><div class="line"># ---------------------------------------------------------------</div><div class="line"># Menu Settings</div><div class="line"># ---------------------------------------------------------------</div><div class="line"></div><div class="line"># When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash from link value (/archives -&gt; archives).</div><div class="line"># Usage: `Key: /link/ || icon`</div><div class="line"># Key is the name of menu item. If translate for this menu will find in languages - this translate will be loaded; if not - Key name will be used. Key is case-senstive.</div><div class="line"># Value before `||` delimeter is the target link.</div><div class="line"># Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.</div><div class="line"># 菜单设置 || 菜单图标设置</div><div class="line"># 编辑 ~/blog/themes/next/languages 下的相应文件</div><div class="line"># 比如添加一个“留言”菜单，站点配置文件的 language 是 zh-Hans</div><div class="line"># 则编辑 zh-Hans.yml，在 menu: 项内添加一行 留言: 留言</div><div class="line"># 注意空格，且符号 : 为英文字符！</div><div class="line">menu:</div><div class="line">  home: / || home</div><div class="line">  about: /about/ || user</div><div class="line">  tags: /tags/ || tags</div><div class="line">  categories: /categories/ || th</div><div class="line">  archives: /archives/ || archive</div><div class="line">  #schedule: /schedule/ || calendar</div><div class="line">  #sitemap: /sitemap.xml || sitemap</div><div class="line">  #commonweal: /404/ || heartbeat</div><div class="line"></div><div class="line"># Enable/Disable menu icons / item badges.</div><div class="line"># 是否开启菜单图标</div><div class="line">menu_settings:</div><div class="line">  icons: true</div><div class="line">  badges: false</div><div class="line"></div><div class="line"># ---------------------------------------------------------------</div><div class="line"># Scheme Settings</div><div class="line"># ---------------------------------------------------------------</div><div class="line"></div><div class="line"># Schemes</div><div class="line"># 设计板式，都长啥样，去 README 里面的链接里看看</div><div class="line">#scheme: Muse</div><div class="line">scheme: Mist</div><div class="line">#scheme: Pisces</div><div class="line">#scheme: Gemini</div><div class="line"></div><div class="line"></div><div class="line"># ---------------------------------------------------------------</div><div class="line"># Sidebar Settings</div><div class="line"># ---------------------------------------------------------------</div><div class="line"></div><div class="line"># Posts / Categories / Tags in sidebar.</div><div class="line">site_state: true</div><div class="line"></div><div class="line"># 侧栏社交链接设置，与上面菜单差不多，要生效记得把前面的 # 去掉</div><div class="line"># Social Links.</div><div class="line"># Usage: `Key: permalink || icon`</div><div class="line"># Key is the link label showing to end users.</div><div class="line"># Value before `||` delimeter is the target permalink.</div><div class="line"># Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.</div><div class="line">social:</div><div class="line">  #GitHub: https://github.com/kevinXiao2016 || github</div><div class="line">  #E-Mail: mailto:yourname@gmail.com || envelope</div><div class="line">  #Google: https://plus.google.com/yourname || google</div><div class="line">  #Twitter: https://twitter.com/yourname || twitter</div><div class="line">  #FB Page: https://www.facebook.com/yourname || facebook</div><div class="line">  #VK Group: https://vk.com/yourname || vk</div><div class="line">  #StackOverflow: https://stackoverflow.com/yourname || stack-overflow</div><div class="line">  #YouTube: https://youtube.com/yourname || youtube</div><div class="line">  #Instagram: https://instagram.com/yourname || instagram</div><div class="line">  #Skype: skype:yourname?call|chat || skype</div><div class="line"></div><div class="line"># 侧栏社交链接图标设置</div><div class="line">social_icons:</div><div class="line">  enable: true</div><div class="line">  icons_only: false</div><div class="line">  transition: false</div><div class="line">  # Dependencies: exturl: true in Tags Settings section below.</div><div class="line">  # To encrypt links above use https://www.base64encode.org</div><div class="line">  # Example encoded link: `GitHub: aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQ= || github`</div><div class="line">  exturl: false</div><div class="line"></div><div class="line"># Follow me on GitHub banner in right-top corner.</div><div class="line"># Usage: `permalink || title`</div><div class="line"># Value before `||` delimeter is the target permalink.</div><div class="line"># Value after `||` delimeter is the title and aria-label name.</div><div class="line">github_banner: https://github.com/kevinXiao2016 || Follow me on GitHub</div><div class="line"></div><div class="line"># Blog rolls</div><div class="line"># 侧栏友链设置</div><div class="line">links_icon: globe</div><div class="line">links_title: 神奇的链接</div><div class="line">links_layout: block</div><div class="line">#links_layout: inline</div><div class="line">links:</div><div class="line">  EMS规范: http://ems.top-vision.cn:8110/dm/dm.html</div><div class="line">  #网易云音乐 : https://music.163.com/#/user/home?id=86590096</div><div class="line">  #Coldplay Official Website: http://coldplay.com/</div><div class="line">  #获取 Elon Musk 的新闻: https://elonmusknews.org/</div><div class="line">  #尼古拉·特斯拉：发明了现代世界的人: http://www.bilibili.com/video/av6211226/</div><div class="line">  #关于此博客: https://reuixiy.github.io/about/</div><div class="line"></div><div class="line"># Sidebar Avatar</div><div class="line"># in theme directory(source/images): /images/avatar.gif</div><div class="line"># in site  directory(source/uploads): /uploads/avatar.gif</div><div class="line"># 侧栏头像设置</div><div class="line"># 建议放在 hexo-site/source/uploads/ 里（没有自己建）</div><div class="line"># 这样可以避免更新 NexT 主题的时候遇到麻烦</div><div class="line">avatar: /images/avatar.png</div><div class="line"></div><div class="line"># Table Of Contents in the Sidebar</div><div class="line"># 侧栏文章目录设置（前提是 Markdown 书写正确）</div><div class="line">toc:</div><div class="line">  enable: true</div><div class="line"></div><div class="line">  # Automatically add list number to toc.</div><div class="line">  # 自动加数字序号</div><div class="line">  number: false</div><div class="line"></div><div class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</div><div class="line">  # 如果标题太长，则放到下一行继续显示</div><div class="line">  wrap: false</div><div class="line"></div><div class="line"># Creative Commons 4.0 International License.</div><div class="line"># http://creativecommons.org/</div><div class="line"># Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero</div><div class="line">#creative_commons: by-nc-sa</div><div class="line">#creative_commons:</div><div class="line"></div><div class="line">sidebar:</div><div class="line">  # Sidebar Position, available value: left | right (only for Pisces | Gemini).</div><div class="line">  # 侧栏位置设置，可用值：左 | 右（只对 Pisces 和 Gemini 设计版式有效！）</div><div class="line">  position: left</div><div class="line">  #position: right</div><div class="line">  </div><div class="line">  # 侧栏显示方式</div><div class="line">  # Sidebar Display, available value (only for Muse | Mist):</div><div class="line">  #  - post    expand on posts automatically. Default.</div><div class="line">  #  - always  expand for all pages automatically</div><div class="line">  #  - hide    expand only when click on the sidebar toggle icon.</div><div class="line">  #  - remove  Totally remove sidebar including sidebar toggle.</div><div class="line">  display: post</div><div class="line">  #display: always</div><div class="line">  #display: hide</div><div class="line">  #display: remove</div><div class="line"></div><div class="line">  # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).</div><div class="line">  # 只对 Pisces 和 Gemini 设计版式有效！</div><div class="line">  offset: 12</div><div class="line"></div><div class="line">  # Back to top in sidebar (only for Pisces | Gemini).</div><div class="line">  # 只对 Pisces 和 Gemini 设计版式有效！</div><div class="line">  b2t: false</div><div class="line"></div><div class="line">  # Scroll percent label in b2t button.</div><div class="line">  scrollpercent: true</div><div class="line"></div><div class="line">  # Enable sidebar on narrow view (only for Muse | Mist).</div><div class="line">  # 移动端显示侧栏，只对 Muse 和 Mist 设计版式有效！</div><div class="line">  onmobile: true</div><div class="line"></div><div class="line"></div><div class="line"># ---------------------------------------------------------------</div><div class="line"># Post Settings</div><div class="line"># ---------------------------------------------------------------</div><div class="line"></div><div class="line"># Automatically scroll page to section which is under &lt;!-- more --&gt; mark.</div><div class="line"># 点击 [Read More]，页面自动滚动到 &lt;!-- more --&gt; 标记处</div><div class="line">scroll_to_more: false</div><div class="line"></div><div class="line"># Automatically saving scroll position on each post/page in cookies.</div><div class="line"># 用 cookies 保存浏览的位置信息，意味着重新打开这个页面后</div><div class="line"># 页面就会自动滚动到上次的位置，除非读者清理浏览器 cookies</div><div class="line">save_scroll: false</div><div class="line"></div><div class="line"># Automatically excerpt description in homepage as preamble text.</div><div class="line"># 将每篇文章 Front-matter 里 description 的文字作为页面显示的文章摘要</div><div class="line">excerpt_description: true</div><div class="line"></div><div class="line"># Automatically Excerpt. Not recommend.</div><div class="line"># Please use &lt;!-- more --&gt; in the post to control excerpt accurately.</div><div class="line"># 按字数自动加入 [Read More]，不建议！</div><div class="line"># 建议在文章中加入 &lt;!-- more --&gt;</div><div class="line"># 自定义 [Read More] 按钮之前要显示的内容！</div><div class="line">auto_excerpt:</div><div class="line">  enable: false</div><div class="line">  length: 150</div><div class="line"></div><div class="line"># Post meta display settings</div><div class="line"># 文章顶部显示的文章元数据设置</div><div class="line">post_meta:</div><div class="line">  item_text: true</div><div class="line">  created_at: true</div><div class="line">  updated_at: false</div><div class="line">  # Only show &apos;updated&apos; if different from &apos;created&apos;.</div><div class="line">  updated_diff: false</div><div class="line">  categories: true</div><div class="line"></div><div class="line"># Post wordcount display settings</div><div class="line"># Dependencies: https://github.com/theme-next/hexo-symbols-count-time</div><div class="line"># 显示统计字数和估计阅读时长</div><div class="line"># 注意：这个要安装插件，先进入站点文件夹根目录</div><div class="line"># 然后：npm install hexo-symbols-count-time --save</div><div class="line">symbols_count_time:</div><div class="line">  separated_meta: true</div><div class="line">  item_text_post: true</div><div class="line">  item_text_total: false</div><div class="line">  awl: 5</div><div class="line">  wpm: 200</div><div class="line"></div><div class="line"># Manual define the border radius in codeblock</div><div class="line"># Leave it empty for the default 1</div><div class="line">codeblock:</div><div class="line">  border_radius: </div><div class="line"></div><div class="line"># Wechat Subscriber</div><div class="line">#wechat_subscriber:</div><div class="line">  #enabled: true</div><div class="line">  #qcode: /path/to/your/wechatqcode ex. /uploads/wechat-qcode.jpg</div><div class="line">  #description: ex. subscribe to my blog by scanning my public wechat account</div><div class="line"></div><div class="line"># Reward</div><div class="line">reward_comment: 坚持原创技术分享，您的支持将鼓励我继续创作！</div><div class="line">wechatpay: /images/wechat-reward-image.jpg</div><div class="line">alipay: /images/alipay-reward-image.jpg</div><div class="line">#bitcoin: /images/bitcoin.png</div><div class="line"></div><div class="line"># Related popular posts</div><div class="line"># Dependencies: https://github.com/tea3/hexo-related-popular-posts</div><div class="line">related_posts:</div><div class="line">  enable: false</div><div class="line">  title: # custom header, leave empty to use the default one</div><div class="line">  display_in_home: false</div><div class="line">  params:</div><div class="line">    maxCount: 5</div><div class="line">    #PPMixingRate: 0.0</div><div class="line">    #isDate: false</div><div class="line">    #isImage: false</div><div class="line">    #isExcerpt: false</div><div class="line"></div><div class="line"># Declare license on posts</div><div class="line">post_copyright:</div><div class="line">  enable: false</div><div class="line">  license: &lt;a href=&quot;https://creativecommons.org/licenses/by-nc-sa/4.0/&quot; rel=&quot;external nofollow&quot; target=&quot;_blank&quot;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</div><div class="line"></div><div class="line"></div><div class="line"># ---------------------------------------------------------------</div><div class="line"># Misc Theme Settings</div><div class="line"># ---------------------------------------------------------------</div><div class="line"></div><div class="line"># Reduce padding / margin indents on devices with narrow width.</div><div class="line"># 移动端把页面两边留白去除，个人不建议</div><div class="line">mobile_layout_economy: false</div><div class="line"></div><div class="line"># Android Chrome header panel color ($brand-bg / $headband-bg =&gt; $black-deep).</div><div class="line"># Android 上 Chrome 浏览器顶部颜色设置</div><div class="line">android_chrome_color: &quot;#222&quot;</div><div class="line"></div><div class="line"># Custom Logo.</div><div class="line"># !!Only available for Default Scheme currently.</div><div class="line"># Options:</div><div class="line">#   enabled: [true/false] - Replace with specific image</div><div class="line">#   image: url-of-image   - Images&apos;s url</div><div class="line">custom_logo:</div><div class="line">  enabled: false</div><div class="line">  image:</div><div class="line"></div><div class="line"># Code Highlight theme</div><div class="line"># Available values: normal | night | night eighties | night blue | night bright</div><div class="line"># https://github.com/chriskempson/tomorrow-theme</div><div class="line"># 代码高亮主题设置</div><div class="line"># 都长啥样自己点开上面的链接查看</div><div class="line">highlight_theme: normal</div><div class="line"></div><div class="line"># Enable &quot;cheers&quot; for archive page.</div><div class="line">cheers_enabled: true</div><div class="line"></div><div class="line"># Manual define the max content width</div><div class="line"># !!Only available for Gemini Scheme currently</div><div class="line"># Leave it empty for the default 75% (suggest not less than 1000px)</div><div class="line">#max_content_width: 1000px</div><div class="line"></div><div class="line"># Manual define the sidebar width</div><div class="line"># !!Only available for Gemini Scheme currently</div><div class="line"># Leave it empty for the default 240</div><div class="line">sidebar_width:</div><div class="line"></div><div class="line"># ---------------------------------------------------------------</div><div class="line"># Font Settings</div><div class="line"># - Find fonts on Google Fonts (https://www.google.com/fonts)</div><div class="line"># - All fonts set here will have the following styles:</div><div class="line">#     light, light italic, normal, normal italic, bold, bold italic</div><div class="line"># - Be aware that setting too much fonts will cause site running slowly</div><div class="line"># - Introduce in 5.0.1</div><div class="line"># ---------------------------------------------------------------</div><div class="line"># CAUTION! Safari Version 10.1.2 bug: https://github.com/iissnan/hexo-theme-next/issues/1844</div><div class="line"># To avoid space between header and sidebar in Pisces / Gemini themes recommended to use Web Safe fonts for `global` (and `logo`):</div><div class="line"># Arial | Tahoma | Helvetica | Times New Roman | Courier New | Verdana | Georgia | Palatino | Garamond | Comic Sans MS | Trebuchet MS</div><div class="line"># ---------------------------------------------------------------</div><div class="line"># 字体设置</div><div class="line">font:</div><div class="line">  enable: false</div><div class="line"></div><div class="line">  # Uri of fonts host. E.g. //fonts.googleapis.com (Default).</div><div class="line">  host:</div><div class="line"></div><div class="line">  # Font options:</div><div class="line">  # `external: true` will load this font family from `host` above.</div><div class="line">  # `family: Times New Roman`. Without any quotes.</div><div class="line">  # `size: xx`. Use `px` as unit.</div><div class="line"></div><div class="line">  # Global font settings used for all elements in &lt;body&gt;.</div><div class="line">  global:</div><div class="line">    external: true</div><div class="line">    family: Lato</div><div class="line">    size:</div><div class="line"></div><div class="line">  # Font settings for Headlines (H1, H2, H3, H4, H5, H6).</div><div class="line">  # Fallback to `global` font settings.</div><div class="line">  headings:</div><div class="line">    external: true</div><div class="line">    family:</div><div class="line">    size:</div><div class="line"></div><div class="line">  # Font settings for posts.</div><div class="line">  # Fallback to `global` font settings.</div><div class="line">  posts:</div><div class="line">    external: true</div><div class="line">    family:</div><div class="line"></div><div class="line">  # Font settings for Logo.</div><div class="line">  # Fallback to `global` font settings.</div><div class="line">  logo:</div><div class="line">    external: true</div><div class="line">    family:</div><div class="line">    size:</div><div class="line"></div><div class="line">  # Font settings for &lt;code&gt; and code blocks.</div><div class="line">  codes:</div><div class="line">    external: true</div><div class="line">    family:</div><div class="line">    size:</div><div class="line"></div><div class="line"></div><div class="line"># ---------------------------------------------------------------</div><div class="line"># Third Party Services Settings</div><div class="line"># ---------------------------------------------------------------</div><div class="line"></div><div class="line"># Math Equations Render Support</div><div class="line">math:</div><div class="line">  enable: false</div><div class="line"></div><div class="line">  # Default(true) will load mathjax/katex script on demand</div><div class="line">  # That is it only render those page who has &apos;mathjax: true&apos; in Front Matter.</div><div class="line">  # If you set it to false, it will load mathjax/katex srcipt EVERY PAGE.</div><div class="line">  per_page: true</div><div class="line"></div><div class="line">  engine: mathjax</div><div class="line">  #engine: katex</div><div class="line"></div><div class="line">  # hexo-rendering-pandoc (or hexo-renderer-kramed) needed to full MathJax support.</div><div class="line">  mathjax:</div><div class="line">    # Use 2.7.1 as default, jsdelivr as default CDN, works everywhere even in China</div><div class="line">    cdn: //cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML</div><div class="line">    # For newMathJax CDN (cdnjs.cloudflare.com) with fallback to oldMathJax (cdn.mathjax.org).</div><div class="line">    #cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</div><div class="line">    # For direct link to MathJax.js with CloudFlare CDN (cdnjs.cloudflare.com).</div><div class="line">    #cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML</div><div class="line">    # For automatic detect latest version link to MathJax.js and get from Bootcss.</div><div class="line">    #cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML</div><div class="line"></div><div class="line">  # hexo-renderer-markdown-it-plus (or hexo-renderer-markdown-it with markdown-it-katex plugin)</div><div class="line">  # needed to full Katex support.</div><div class="line">  katex:</div><div class="line">    # Use 0.7.1 as default, jsdelivr as default CDN, works everywhere even in China</div><div class="line">    cdn: //cdn.jsdelivr.net/npm/katex@0.7.1/dist/katex.min.css</div><div class="line">    # CDNJS, provided by cloudflare, maybe the best CDN, but not works in China</div><div class="line">    #cdn: //cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css</div><div class="line">    # Bootcss, works great in China, but not so well in other region</div><div class="line">    #cdn: //cdn.bootcss.com/KaTeX/0.7.1/katex.min.css</div><div class="line"></div><div class="line"># Han Support</div><div class="line"># Dependencies: https://github.com/theme-next/theme-next-han</div><div class="line"># 汉字标准格式，没用过暂时不了解</div><div class="line">han: false</div><div class="line"></div><div class="line"># Pangu Support</div><div class="line"># Dependencies: https://github.com/theme-next/theme-next-pangu</div><div class="line"># For more information: https://github.com/vinta/pangu.js</div><div class="line">pangu: false</div><div class="line"></div><div class="line"># Swiftype Search API Key</div><div class="line">#swiftype_key:</div><div class="line"></div><div class="line"># Baidu Analytics ID</div><div class="line">#baidu_analytics:</div><div class="line"></div><div class="line"># Disqus</div><div class="line">disqus:</div><div class="line">  enable: false</div><div class="line">  shortname:</div><div class="line">  count: true</div><div class="line">  lazyload: false</div><div class="line"></div><div class="line"># Hypercomments</div><div class="line">#hypercomments_id:</div><div class="line"></div><div class="line"># changyan</div><div class="line">changyan:</div><div class="line">  enable: false</div><div class="line">  appid:</div><div class="line">  appkey:</div><div class="line"></div><div class="line"># leanCloud支持的评论插件</div><div class="line"># Valine. </div><div class="line"># You can get your appid and appkey from https://leancloud.cn</div><div class="line"># more info please open https://valine.js.org</div><div class="line">valine:</div><div class="line">  enable: false</div><div class="line">  appid:  P08Jh3wwb2zPhfm9puCevcUa-*******</div><div class="line">  appkey:  CnhNSWBKT3kwj52v********</div><div class="line">  notify: false # mail notifier , https://github.com/xCss/Valine/wiki</div><div class="line">  verify: false # Verification code</div><div class="line">  placeholder: Just go go # comment box placeholder</div><div class="line">  avatar: mm # gravatar style</div><div class="line">  guest_info: nick,mail,link # custom comment header</div><div class="line">  pageSize: 10 # pagination size</div><div class="line"></div><div class="line"></div><div class="line"># Support for youyan comments system.</div><div class="line"># You can get your uid from http://www.uyan.cc</div><div class="line">#youyan_uid: your uid</div><div class="line"></div><div class="line"># Support for LiveRe comments system.</div><div class="line"># You can get your uid from https://livere.com/insight/myCode (General web site)</div><div class="line">livere_uid: MTAyMC8yODQwNi******</div><div class="line"></div><div class="line"># Gitment</div><div class="line"># Introduction: https://imsun.net/posts/gitment-introduction/</div><div class="line">gitment:</div><div class="line">  enable: false</div><div class="line">  mint: true # RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway</div><div class="line">  count: true # Show comments count in post meta area</div><div class="line">  lazy: false # Comments lazy loading with a button</div><div class="line">  cleanly: false # Hide &apos;Powered by ...&apos; on footer, and more</div><div class="line">  language: # Force language, or auto switch by theme</div><div class="line">  github_user: # MUST HAVE, Your Github Username</div><div class="line">  github_repo: # MUST HAVE, The name of the repo you use to store Gitment comments</div><div class="line">  client_id: # MUST HAVE, Github client id for the Gitment</div><div class="line">  client_secret: # EITHER this or proxy_gateway, Github access secret token for the Gitment</div><div class="line">  proxy_gateway: # Address of api proxy, See: https://github.com/aimingoo/intersect</div><div class="line">  redirect_protocol: # Protocol of redirect_uri with force_redirect_protocol when mint enabled</div><div class="line"></div><div class="line"># Baidu Share</div><div class="line"># Available value:</div><div class="line">#    button | slide</div><div class="line"># Warning: Baidu Share does not support https.</div><div class="line">#baidushare:</div><div class="line">##  type: button</div><div class="line"></div><div class="line"># Share</div><div class="line"># This plugin is more useful in China, make sure you known how to use it.</div><div class="line"># And you can find the use guide at official webiste: http://www.jiathis.com/.</div><div class="line"># Warning: JiaThis does not support https.</div><div class="line">#jiathis:</div><div class="line">  ##uid: Get this uid from http://www.jiathis.com/</div><div class="line"></div><div class="line">#add_this_id:</div><div class="line"></div><div class="line"># NeedMoreShare2</div><div class="line"># Dependencies: https://github.com/theme-next/theme-next-needmoreshare2</div><div class="line"># See: https://github.com/revir/need-more-share2</div><div class="line"># Also see: https://github.com/DzmVasileusky/needShareButton</div><div class="line"># iconStyle: default | box</div><div class="line"># boxForm: horizontal | vertical</div><div class="line"># position: top / middle / bottom + Left / Center / Right</div><div class="line"># networks: Weibo,Wechat,Douban,QQZone,Twitter,Linkedin,Mailto,Reddit,</div><div class="line">#           Delicious,StumbleUpon,Pinterest,Facebook,GooglePlus,Slashdot,</div><div class="line">#           Technorati,Posterous,Tumblr,GoogleBookmarks,Newsvine,</div><div class="line">#           Evernote,Friendfeed,Vkontakte,Odnoklassniki,Mailru</div><div class="line">needmoreshare2:</div><div class="line">  enable: false</div><div class="line">  postbottom:</div><div class="line">    enable: false</div><div class="line">    options:</div><div class="line">      iconStyle: box</div><div class="line">      boxForm: horizontal</div><div class="line">      position: bottomCenter</div><div class="line">      networks: Weibo,Wechat,Douban,QQZone,Twitter,Facebook</div><div class="line">  float:</div><div class="line">    enable: false</div><div class="line">    options:</div><div class="line">      iconStyle: box</div><div class="line">      boxForm: horizontal</div><div class="line">      position: middleRight</div><div class="line">      networks: Weibo,Wechat,Douban,QQZone,Twitter,Facebook</div><div class="line"></div><div class="line"># Google Webmaster tools verification setting</div><div class="line"># See: https://www.google.com/webmasters/</div><div class="line">#google_site_verification:</div><div class="line"></div><div class="line"># Google Analytics</div><div class="line">#google_analytics:</div><div class="line"></div><div class="line"># Bing Webmaster tools verification setting</div><div class="line"># See: https://www.bing.com/webmaster/</div><div class="line">#bing_site_verification:</div><div class="line"></div><div class="line"># Yandex Webmaster tools verification setting</div><div class="line"># See: https://webmaster.yandex.ru/</div><div class="line">#yandex_site_verification:</div><div class="line"></div><div class="line"># CNZZ count</div><div class="line">#cnzz_siteid:</div><div class="line"></div><div class="line"># Application Insights</div><div class="line"># See https://azure.microsoft.com/en-us/services/application-insights/</div><div class="line"># application_insights:</div><div class="line"></div><div class="line"># Post widgets &amp; FB/VK comments settings.</div><div class="line"># ---------------------------------------------------------------</div><div class="line"># Facebook SDK Support.</div><div class="line"># https://github.com/iissnan/hexo-theme-next/pull/410</div><div class="line">facebook_sdk:</div><div class="line">  enable:       false</div><div class="line">  app_id:       #&lt;app_id&gt;</div><div class="line">  fb_admin:     #&lt;user_id&gt;</div><div class="line">  like_button:  #true</div><div class="line">  webmaster:    #true</div><div class="line"></div><div class="line"># Facebook comments plugin</div><div class="line"># This plugin depends on Facebook SDK.</div><div class="line"># If facebook_sdk.enable is false, Facebook comments plugin is unavailable.</div><div class="line">facebook_comments_plugin:</div><div class="line">  enable:       false</div><div class="line">  num_of_posts: 10    # min posts num is 1</div><div class="line">  width:        100%  # default width is 550px</div><div class="line">  scheme:       light # default scheme is light (light or dark)</div><div class="line"></div><div class="line"># VKontakte API Support.</div><div class="line"># To get your AppID visit https://vk.com/editapp?act=create</div><div class="line">vkontakte_api:</div><div class="line">  enable:       false</div><div class="line">  app_id:       #&lt;app_id&gt;</div><div class="line">  like:         true</div><div class="line">  comments:     true</div><div class="line">  num_of_posts: 10</div><div class="line"></div><div class="line"># Star rating support to each article.</div><div class="line"># To get your ID visit https://widgetpack.com</div><div class="line">rating:</div><div class="line">  enable: false</div><div class="line">  id:     #&lt;app_id&gt;</div><div class="line">  color:  fc6423</div><div class="line"># ---------------------------------------------------------------</div><div class="line"></div><div class="line"># Show number of visitors to each article.</div><div class="line"># You can visit https://leancloud.cn get AppID and AppKey.</div><div class="line">leancloud_visitors:</div><div class="line">  enable: false</div><div class="line">  app_id: P08Jh3wwb2zPhfm9puCevcUa-gzGzoHsz</div><div class="line">  app_key: CnhNSWBKT3kwj52vyJ36armb</div><div class="line">  # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security</div><div class="line">  # If you don&apos;t care about security in lc counter and just want to use it directly</div><div class="line">  # (without hexo-leancloud-counter-security plugin), set the `security` to `false`.</div><div class="line">  security: true</div><div class="line">  betterPerformance: false</div><div class="line"></div><div class="line"># Another tool to show number of visitors to each article.</div><div class="line"># visit https://console.firebase.google.com/u/0/ to get apiKey and projectId</div><div class="line"># visit https://firebase.google.com/docs/firestore/ to get more information about firestore</div><div class="line">firestore:</div><div class="line">  enable: false</div><div class="line">  collection: articles #required, a string collection name to access firestore database</div><div class="line">  apiKey: #required</div><div class="line">  projectId: #required</div><div class="line">  bluebird: false #enable this if you want to include bluebird 3.5.1(core version) Promise polyfill</div><div class="line"></div><div class="line"># Show Views/Visitors of the website/page with busuanzi.</div><div class="line"># Get more information on http://ibruce.info/2015/04/04/busuanzi/</div><div class="line">busuanzi_count:</div><div class="line">  enable: true</div><div class="line">  total_visitors: true</div><div class="line">  total_visitors_icon: user</div><div class="line">  total_views: true</div><div class="line">  total_views_icon: eye</div><div class="line">  post_views: true</div><div class="line">  post_views_icon: eye</div><div class="line"></div><div class="line"></div><div class="line"># Tencent analytics ID</div><div class="line"># tencent_analytics:</div><div class="line"></div><div class="line"># Tencent MTA ID</div><div class="line"># tencent_mta:</div><div class="line"></div><div class="line"></div><div class="line"># Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO</div><div class="line">baidu_push: false</div><div class="line"></div><div class="line"># Google Calendar</div><div class="line"># Share your recent schedule to others via calendar page</div><div class="line">#</div><div class="line"># API Documentation:</div><div class="line"># https://developers.google.com/google-apps/calendar/v3/reference/events/list</div><div class="line">calendar:</div><div class="line">  enable: false</div><div class="line">  calendar_id: &lt;required&gt;</div><div class="line">  api_key: &lt;required&gt;</div><div class="line">  orderBy: startTime</div><div class="line">  offsetMax: 24</div><div class="line">  offsetMin: 4</div><div class="line">  timeZone:</div><div class="line">  showDeleted: false</div><div class="line">  singleEvents: true</div><div class="line">  maxResults: 250</div><div class="line"></div><div class="line"># Algolia Search</div><div class="line"># See: https://github.com/theme-next/hexo-theme-next/blob/master/docs/ALGOLIA-SEARCH.md</div><div class="line"># Dependencies: https://github.com/theme-next/theme-next-algolia-instant-search</div><div class="line">algolia_search:</div><div class="line">  enable: false</div><div class="line">  hits:</div><div class="line">    per_page: 10</div><div class="line">  labels:</div><div class="line">    input_placeholder: Search for Posts</div><div class="line">    hits_empty: &quot;We didn&apos;t find any results for the search: $&#123;query&#125;&quot;</div><div class="line">    hits_stats: &quot;$&#123;hits&#125; results found in $&#123;time&#125; ms&quot;</div><div class="line"></div><div class="line"># Local search</div><div class="line"># Dependencies: https://github.com/theme-next/hexo-generator-searchdb</div><div class="line"># 要安装插件才能使用，先进入站点文件夹根目录</div><div class="line">#  然后：npm install hexo-generator-searchdb --save</div><div class="line">local_search:</div><div class="line">  enable: true</div><div class="line">  # if auto, trigger search by changing input</div><div class="line">  # if manual, trigger search by pressing enter key or search button</div><div class="line">  trigger: auto</div><div class="line">  # show top n results per article, show all results by setting to -1</div><div class="line">  top_n_per_article: 1</div><div class="line">  # unescape html strings to the readable one</div><div class="line">  unescape: false</div><div class="line"></div><div class="line"># Bookmark Support</div><div class="line"># Dependencies: https://github.com/theme-next/theme-next-bookmark</div><div class="line">bookmark:</div><div class="line">  enable: false</div><div class="line">  # if auto</div><div class="line">  #   - save the reading position when closing the page</div><div class="line">  #   - or clicking the bookmark-icon</div><div class="line">  # if manual, only save it by clicking the bookmark-icon</div><div class="line">  save: auto</div><div class="line"></div><div class="line"></div><div class="line"># ---------------------------------------------------------------</div><div class="line"># Tags Settings</div><div class="line"># ---------------------------------------------------------------</div><div class="line"></div><div class="line"># External URL with BASE64 encrypt &amp; decrypt.</div><div class="line"># Usage: &#123;% exturl text url &quot;title&quot; %&#125;</div><div class="line"># Alias: &#123;% extlink text url &quot;title&quot; %&#125;</div><div class="line"># 用法见：</div><div class="line"># https://github.com/iissnan/hexo-theme-next/pull/1438</div><div class="line">exturl: false</div><div class="line"></div><div class="line"># 主题的标签样式，有 note、label、tabs 三种</div><div class="line"># Note tag (bs-callout).</div><div class="line">note:</div><div class="line">  # Note tag style values:</div><div class="line">  #  - simple    bs-callout old alert style. Default.</div><div class="line">  #  - modern    bs-callout new (v2-v3) alert style.</div><div class="line">  #  - flat      flat callout style with background, like on Mozilla or StackOverflow.</div><div class="line">  #  - disabled  disable all CSS styles import of note tag.</div><div class="line">  style: simple</div><div class="line">  icons: false</div><div class="line">  border_radius: 3</div><div class="line">  # Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).</div><div class="line">  # Offset also applied to label tag variables. This option can work with disabled note tag.</div><div class="line">  light_bg_offset: 0</div><div class="line"></div><div class="line"># Label tag.</div><div class="line">label: true</div><div class="line"></div><div class="line"># Tabs tag.</div><div class="line">tabs:</div><div class="line">  enable: true</div><div class="line">  transition:</div><div class="line">    tabs: false</div><div class="line">    labels: true</div><div class="line">  border_radius: 0</div><div class="line"></div><div class="line"># Reading progress bar</div><div class="line"># Dependencies: https://github.com/theme-next/theme-next-reading-progress</div><div class="line">reading_progress:</div><div class="line">  enable: false</div><div class="line">  color: &quot;#37c6c0&quot;</div><div class="line">  height: 2px</div><div class="line"></div><div class="line"></div><div class="line">#! ---------------------------------------------------------------</div><div class="line">#! DO NOT EDIT THE FOLLOWING SETTINGS</div><div class="line">#! UNLESS YOU KNOW WHAT YOU ARE DOING</div><div class="line">#! ---------------------------------------------------------------</div><div class="line"></div><div class="line"># 动画</div><div class="line"># Use velocity to animate everything.</div><div class="line">motion:</div><div class="line">  enable: true</div><div class="line">  async: false</div><div class="line">  transition:</div><div class="line">    # Transition variants:</div><div class="line">    # fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut</div><div class="line">    # swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut</div><div class="line">    # bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut</div><div class="line">    # slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut</div><div class="line">    # slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut</div><div class="line">    # perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut</div><div class="line">    post_block: fadeIn</div><div class="line">    post_header: slideDownIn</div><div class="line">    post_body: slideDownIn</div><div class="line">    coll_header: slideLeftIn</div><div class="line">    # Only for Pisces | Gemini.</div><div class="line">    sidebar: slideUpIn</div><div class="line"></div><div class="line"># Fancybox. There is support for old version 2 and new version 3.</div><div class="line"># Please, choose only any one variant, do not need to install both.</div><div class="line"># For install 2.x: https://github.com/theme-next/theme-next-fancybox</div><div class="line"># For install 3.x: https://github.com/theme-next/theme-next-fancybox3</div><div class="line"># 查看图片的</div><div class="line">fancybox: false</div><div class="line"></div><div class="line"># Added switch option for separated repo in 6.0.0.</div><div class="line"># Dependencies: https://github.com/theme-next/theme-next-fastclick</div><div class="line">fastclick: false</div><div class="line"></div><div class="line"># Added switch option for separated repo in 6.0.0.</div><div class="line"># Dependencies: https://github.com/theme-next/theme-next-jquery-lazyload</div><div class="line">lazyload: false</div><div class="line"></div><div class="line"># Progress bar in the top during page loading.</div><div class="line"># Dependencies: https://github.com/theme-next/theme-next-pace</div><div class="line">pace: false</div><div class="line"># Themes list:</div><div class="line">#pace-theme-big-counter</div><div class="line">#pace-theme-bounce</div><div class="line">#pace-theme-barber-shop</div><div class="line">#pace-theme-center-atom</div><div class="line">#pace-theme-center-circle</div><div class="line">#pace-theme-center-radar</div><div class="line">#pace-theme-center-simple</div><div class="line">#pace-theme-corner-indicator</div><div class="line">#pace-theme-fill-left</div><div class="line">#pace-theme-flash</div><div class="line">#pace-theme-loading-bar</div><div class="line">#pace-theme-mac-osx</div><div class="line">#pace-theme-minimal</div><div class="line"># For example</div><div class="line"># pace_theme: pace-theme-center-simple</div><div class="line">pace_theme: pace-theme-minimal</div><div class="line"></div><div class="line"># Canvas-nest</div><div class="line"># Dependencies: https://github.com/theme-next/theme-next-canvas-nest</div><div class="line">canvas_nest: true</div><div class="line"></div><div class="line"># JavaScript 3D library.</div><div class="line"># Dependencies: https://github.com/theme-next/theme-next-three</div><div class="line"># three_waves</div><div class="line">three_waves: false</div><div class="line"># canvas_lines</div><div class="line">canvas_lines: false</div><div class="line"># canvas_sphere</div><div class="line">canvas_sphere: false</div><div class="line"></div><div class="line"># Only fit scheme Pisces</div><div class="line"># Dependencies: https://github.com/theme-next/theme-next-canvas-ribbon</div><div class="line"># Canvas-ribbon</div><div class="line"># size: The width of the ribbon.</div><div class="line"># alpha: The transparency of the ribbon.</div><div class="line"># zIndex: The display level of the ribbon.</div><div class="line">canvas_ribbon:</div><div class="line">  enable: false</div><div class="line">  size: 300</div><div class="line">  alpha: 0.6</div><div class="line">  zIndex: -1</div><div class="line"></div><div class="line"># Script Vendors.</div><div class="line"># Set a CDN address for the vendor you want to customize.</div><div class="line"># For example</div><div class="line">#    jquery: https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js</div><div class="line"># Be aware that you should use the same version as internal ones to avoid potential problems.</div><div class="line"># Please use the https protocol of CDN files when you enable https on your site.</div><div class="line"># 相关内容用 CDN 地址取代，加速网站访问，注意版本尽可能要一致</div><div class="line">vendors:</div><div class="line">  # Internal path prefix. Please do not edit it.</div><div class="line">  _internal: lib</div><div class="line"></div><div class="line">  # Internal version: 2.1.3</div><div class="line">  jquery:</div><div class="line"></div><div class="line">  # Internal version: 2.1.5</div><div class="line">  # See: http://fancyapps.com/fancybox/</div><div class="line">  fancybox:</div><div class="line">  fancybox_css:</div><div class="line"></div><div class="line">  # Internal version: 1.0.6</div><div class="line">  # See: https://github.com/ftlabs/fastclick</div><div class="line">  fastclick:</div><div class="line"></div><div class="line">  # Internal version: 1.9.7</div><div class="line">  # See: https://github.com/tuupola/jquery_lazyload</div><div class="line">  lazyload:</div><div class="line"></div><div class="line">  # Internal version: 1.2.1</div><div class="line">  # See: http://VelocityJS.org</div><div class="line">  velocity:</div><div class="line"></div><div class="line">  # Internal version: 1.2.1</div><div class="line">  # See: http://VelocityJS.org</div><div class="line">  velocity_ui:</div><div class="line"></div><div class="line">  # Internal version: 0.7.9</div><div class="line">  # See: https://faisalman.github.io/ua-parser-js/</div><div class="line">  ua_parser:</div><div class="line"></div><div class="line">  # Internal version: 4.6.2</div><div class="line">  # See: http://fontawesome.io/</div><div class="line">  fontawesome:</div><div class="line"></div><div class="line">  # Internal version: 1</div><div class="line">  # https://www.algolia.com</div><div class="line">  algolia_instant_js:</div><div class="line">  algolia_instant_css:</div><div class="line"></div><div class="line">  # Internal version: 1.0.2</div><div class="line">  # See: https://github.com/HubSpot/pace</div><div class="line">  # Or use direct links below:</div><div class="line">  # pace: //cdn.bootcss.com/pace/1.0.2/pace.min.js</div><div class="line">  # pace_css: //cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css</div><div class="line">  pace:</div><div class="line">  pace_css:</div><div class="line"></div><div class="line">  # Internal version: 1.0.0</div><div class="line">  # https://github.com/hustcc/canvas-nest.js</div><div class="line">  canvas_nest: </div><div class="line"></div><div class="line">  # three</div><div class="line">  three:</div><div class="line"></div><div class="line">  # three_waves</div><div class="line">  # https://github.com/jjandxa/three_waves</div><div class="line">  three_waves:</div><div class="line"></div><div class="line">  # three_waves</div><div class="line">  # https://github.com/jjandxa/canvas_lines</div><div class="line">  canvas_lines:</div><div class="line"></div><div class="line">  # three_waves</div><div class="line">  # https://github.com/jjandxa/canvas_sphere</div><div class="line">  canvas_sphere:</div><div class="line"></div><div class="line">  # Internal version: 1.0.0</div><div class="line">  # https://github.com/zproo/canvas-ribbon</div><div class="line">  canvas_ribbon:</div><div class="line"></div><div class="line">  # Internal version: 3.3.0</div><div class="line">  # https://github.com/ethantw/Han</div><div class="line">  han:</div><div class="line"></div><div class="line">  # Internal version: 3.3.0</div><div class="line">  # https://github.com/vinta/pangu.js</div><div class="line">  pangu:</div><div class="line"></div><div class="line">  # needMoreShare2</div><div class="line">  # https://github.com/revir/need-more-share2</div><div class="line">  needmoreshare2_js:</div><div class="line">  needmoreshare2_css:</div><div class="line"></div><div class="line">  # bookmark</div><div class="line">  # Internal version: 1.0.0</div><div class="line">  # https://github.com/theme-next/theme-next-bookmark</div><div class="line">  bookmark:</div><div class="line"></div><div class="line">  # reading_progress</div><div class="line">  # Internal version: 1.0</div><div class="line">  # https://github.com/theme-next/theme-next-reading-progress</div><div class="line">  # Example: https://cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1.1/reading_progress.min.js</div><div class="line">  reading_progress:</div><div class="line"></div><div class="line">  # valine comment</div><div class="line">  # Example: https://cdn.jsdelivr.net/npm/valine@1.1.8/dist/Valine.min.js</div><div class="line">  valine:</div><div class="line"></div><div class="line"></div><div class="line"># Assets</div><div class="line">css: css</div><div class="line">js: js</div><div class="line">images: images</div><div class="line"></div><div class="line"># Theme version</div><div class="line">version: 6.0.6</div></pre></td></tr></table></figure></p>
+<h3 id="2-4-动态背景"><a href="#2-4-动态背景" class="headerlink" title="2.4 动态背景"></a>2.4 动态背景</h3><p>在主题配置文件中，靠后面，改canvas_nest: true，想要更改颜色和数量？修改文件：</p>
+<p>文件位置：~/blog/themes/next/source/lib/canvas-nest/canvas-nest.min.js</p>
+<p>怎么修改？参考<a href="https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md" target="_blank" rel="noopener">canvas-nest.js</a>。</p>
+<h3 id="2-5-注脚"><a href="#2-5-注脚" class="headerlink" title="2.5 注脚"></a>2.5 注脚</h3><p>参考<a href="https://github.com/LouisBarranqueiro/hexo-footnotes" target="_blank" rel="noopener">hexo-footnotes</a>。</p>
+<h2 id="3-优化-高级功能配置"><a href="#3-优化-高级功能配置" class="headerlink" title="3.优化:高级功能配置"></a>3.优化:高级功能配置</h2><h3 id="3-1-大佬们的文章"><a href="#3-1-大佬们的文章" class="headerlink" title="3.1 大佬们的文章"></a>3.1 大佬们的文章</h3><p>更多如外挂一样的功能配置，就直接贴大佬的文章了，哪些功能自己喜欢，按照大佬的教程来配置就行。不过也有坑，比如有些功能（超链接样式、侧栏头像圆形并旋转）可以直接通过在custom.styl添加 CSS 代码实现，无需更改其它文件！</p>
+<ol>
+<li><a href="https://reuixiy.github.io/technology/computer/computer-aided-art/2017/06/09/hexo-next-optimization.html" target="_blank" rel="noopener">打造个性超赞博客Hexo+NexT+GithubPages的超深度优化</a></li>
+<li><a href="http://cherryblog.site/Hexo-high-level-tutorialcloudmusic,bg-customthemes-statistical.html" target="_blank" rel="noopener">hexo高阶教程next主题优化</a></li>
+<li><a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">hexo的next主题个性化教程:打造炫酷网站</a></li>
+<li><a href="http://www.dingxuewen.com/categories/Site/" target="_blank" rel="noopener">Hexo搭建博客的个性化设置</a></li>
+</ol>
+<h3 id="3-2-鼠标点击效果"><a href="#3-2-鼠标点击效果" class="headerlink" title="3.2 鼠标点击效果"></a>3.2 鼠标点击效果</h3><ol>
+<li>新建mouse.js，复制<a href="https://github.com/kevinXiao2016/kevinXiao2016.github.io/blob/hexo/source/love.js" target="_blank" rel="noopener">love</a>或者<a href="https://github.com/kevinXiao2016/kevinXiao2016.github.io/blob/hexo/source/mouse.js" target="_blank" rel="noopener">富强民主…</a>中的内容到js文件中。</li>
+<li>将mouse.js放到<strong>/themes/next/source/js/src</strong>路径下</li>
+<li><p>打开/themes/next/layout/layout.swig文件，添加如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"/js/src/mouse.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="3-3-文章加密"><a href="#3-3-文章加密" class="headerlink" title="3.3 文章加密"></a>3.3 文章加密</h3><p>参考：<a href="https://github.com/MikeCoder/hexo-blog-encrypt/blob/master/ReadMe.zh.md" target="_blank" rel="noopener">hexo-blog-encrypt</a></p>
+<ol>
+<li><p>在博客根目录下的package.json文件中添加一行代码</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">"hexo-blog-encrypt": "2.0.*"</div></pre></td></tr></table></figure>
+</li>
+<li><p>在博客根目录下：  <strong>npm install</strong></p>
+</li>
+<li><p>在站点配置文件中配置文章加密</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># Security</div><div class="line">encrypt:</div><div class="line">    enable: true</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后在你的文章的头部添加上对应的字段，如 password, abstract, message</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">title: hello world</div><div class="line">date: 2016-03-30 21:18:02</div><div class="line">tags:</div><div class="line"><span class="code">    - fdsafsdaf</span></div><div class="line">password: Mike</div><div class="line">abstract: 没点开文章前显示的类容，类似于<span class="xml"><span class="comment">&lt;!--more--&gt;</span></span>之前写的描述.</div><div class="line">message: 点开文章后，提示输入密码的信息.</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="3-4-博客推广及SEO优化"><a href="#3-4-博客推广及SEO优化" class="headerlink" title="3.4 博客推广及SEO优化"></a>3.4 博客推广及SEO优化</h3><p>建站完成后百度和Google是没有收录我们的网站的，想要搜索到我们的博客非常困难。因此优化搜索非常有必要。</p>
+<p><strong>博客推广</strong></p>
+<p>博客推广第一步，手动推广。</p>
+<p>你可以多浏览别人的博客并留下你的爪印（博客地址），比如 评论 本文；你可以去 <a href="https://github.com/iissnan/hexo-theme-next#live-preview" target="_blank" rel="noopener">README.md</a>中提到的 <a href="https://github.com/iissnan/hexo-theme-next/issues/119" target="_blank" rel="noopener">这个issue</a> 留下你的爪印；你可以去 <a href="https://github.com/iissnan/hexo-theme-next/issuess://github.com/iissnan/hexo-theme-next/issues/119" target="_blank" rel="noopener">Issues页面</a> 试着回答下大家的问题并留下你的爪印。</p>
+<p>博客推广第二步，<a href="https://baike.baidu.com/item/SEO" target="_blank" rel="noopener">SEO</a>（Search Engine Optimization）。</p>
+<p><strong>搜索引擎</strong></p>
+<p>直接推荐大佬文章：<a href="http://www.ehcoo.com/seo.html" target="_blank" rel="noopener">【搜索优化】Hexo-next百度和谷歌搜索优化</a></p>
+<h3 id="3-5-随机生成背景图"><a href="#3-5-随机生成背景图" class="headerlink" title="3.5 随机生成背景图"></a>3.5 随机生成背景图</h3><p>在主题下的/source/css/_custom/custom.style文件中，添加如下代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span>&#123;   </div><div class="line">	<span class="attribute">background</span>:<span class="built_in">url</span>(https://source.unsplash.com/random/1920x1080);</div><div class="line">	<span class="attribute">background-size</span>:cover;</div><div class="line">	<span class="attribute">background-repeat</span>:no-repeat;</div><div class="line">	<span class="attribute">background-attachment</span>:fixed;</div><div class="line">	<span class="attribute">background-position</span>:<span class="number">50%</span> <span class="number">50%</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.main-inner</span> &#123; </div><div class="line">    <span class="attribute">margin-top</span>: <span class="number">60px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">60px</span> <span class="number">60px</span> <span class="number">60px</span> <span class="number">60px</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="number">#fff</span>;</div><div class="line">    <span class="attribute">opacity</span>: <span class="number">0.8</span>;</div><div class="line">    <span class="attribute">min-height</span>: <span class="number">500px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-6-背景动画"><a href="#3-6-背景动画" class="headerlink" title="3.6 背景动画"></a>3.6 背景动画</h3><p>依赖于<a href="https://github.com/theme-next/theme-next-canvas-nest" target="_blank" rel="noopener">theme-next-canvas-nest</a>,或者<a href="https://github.com/theme-next/theme-next-three" target="_blank" rel="noopener">3D library</a>。</p>
+<ol>
+<li>进入到主题目录，如：cd themes/next</li>
+<li><p>下载插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/theme-next/theme-next-canvas-nest source/lib/canvas-nest</div><div class="line">git clone https://github.com/theme-next/theme-next-three source/lib/three</div></pre></td></tr></table></figure>
+</li>
+<li><p>在主题配置文件中开启，一次只开启一个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">canvas_nest: false</div><div class="line"></div><div class="line">three_waves: false</div><div class="line">canvas_lines: true</div><div class="line">canvas_sphere: false</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>插件更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd themes/next/source/lib/canvas-nest</div><div class="line">$ git pull</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="3-7-底部footer加入运行时间"><a href="#3-7-底部footer加入运行时间" class="headerlink" title="3.7 底部footer加入运行时间"></a>3.7 底部footer加入运行时间</h3><ol>
+<li><p>~/blog/themes/next/layout/_partials</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&lt;div id="days"&gt;&lt;/div&gt;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;script language="javascript"&gt;</div><div class="line">function show_date_time()&#123;</div><div class="line">    window.setTimeout("show_date_time()", 1000);</div><div class="line">    BirthDay=new Date("05/27/2017 15:00:00");</div><div class="line">    today=new Date();</div><div class="line">    timeold=(today.getTime()-BirthDay.getTime());</div><div class="line">    sectimeold=timeold/1000</div><div class="line">    secondsold=Math.floor(sectimeold);</div><div class="line">    msPerDay=24*60*60*1000</div><div class="line">    e_daysold=timeold/msPerDay</div><div class="line">    daysold=Math.floor(e_daysold);</div><div class="line">    e_hrsold=(e_daysold-daysold)*24;</div><div class="line">    hrsold=setzero(Math.floor(e_hrsold));</div><div class="line">    e_minsold=(e_hrsold-hrsold)*60;</div><div class="line">    minsold=setzero(Math.floor((e_hrsold-hrsold)*60));</div><div class="line">    seconds=setzero(Math.floor((e_minsold-minsold)*60));</div><div class="line">    document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";</div><div class="line">&#125;</div><div class="line"></div><div class="line">function setzero(i)&#123;</div><div class="line">    if (i&lt;10)</div><div class="line">        &#123;i="0" + i&#125;;</div><div class="line">    return i;</div><div class="line">&#125;</div><div class="line"></div><div class="line">show_date_time();</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>要是不喜欢颜色，感觉不好看，就可以在上文所提的custom.styl加入：</p>
+<p>文件位置：~/blog/themes/next/source/css/_custom/custom.styl</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 自定义的侧栏时间样式</div><div class="line">#days &#123;</div><div class="line">    display: block;</div><div class="line">    color: rgb(7, 179, 155);</div><div class="line">    font-size: 13px;</div><div class="line">    margin-top: 15px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="肖悦 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="肖悦 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blog/" rel="tag"># Blog</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/观察者模式.html" rel="next" title="观察者模式">
+                <i class="fa fa-chevron-left"></i> 观察者模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Mysql视图的简单使用.html" rel="prev" title="Mysql视图的简单使用">
+                Mysql视图的简单使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODQwNi80OTc3"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">肖悦</p>
+              <p class="site-description motion-element" itemprop="description">天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                神奇的链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ems.top-vision.cn:8110/dm/dm.html" title="EMS规范" target="_blank">EMS规范</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-开始搭建博客"><span class="nav-text">1.开始搭建博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-优化：基本功能配置"><span class="nav-text">2.优化：基本功能配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-选择主题"><span class="nav-text">2.1 选择主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-站点配置文件"><span class="nav-text">2.2 站点配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-主题配置文件"><span class="nav-text">2.3 主题配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-动态背景"><span class="nav-text">2.4 动态背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-注脚"><span class="nav-text">2.5 注脚</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-优化-高级功能配置"><span class="nav-text">3.优化:高级功能配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-大佬们的文章"><span class="nav-text">3.1 大佬们的文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-鼠标点击效果"><span class="nav-text">3.2 鼠标点击效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-文章加密"><span class="nav-text">3.3 文章加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-博客推广及SEO优化"><span class="nav-text">3.4 博客推广及SEO优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-随机生成背景图"><span class="nav-text">3.5 随机生成背景图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-背景动画"><span class="nav-text">3.6 背景动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-底部footer加入运行时间"><span class="nav-text">3.7 底部footer加入运行时间</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">肖悦</span>
+  <!--以下3行为一条竖线和Coding Page-->
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.3.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <<!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/mouse.js"></script>
+</body>
+</html>

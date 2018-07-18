@@ -45,7 +45,11 @@ footer:
   # -------------------------------------------------------------
   # Hexo link (Powered by Hexo).
   # Hexo 的链接
-  powered: true
+  powered: 
+    # Hexo link (Powered by Hexo).
+    enable: false
+    # Version info of Hexo after Hexo link (vX.X.X).
+    version: true
 
   theme:
     # Theme & scheme info link (Theme - NexT.scheme).
@@ -178,7 +182,7 @@ links_layout: block
 #links_layout: inline
 links:
   EMS规范: http://ems.top-vision.cn:8110/dm/dm.html
-  #网易云音乐 : https://music.163.com/#/user/home?id=86590096
+  # 网易云音乐 : https://music.163.com/#/user/home?id=86590096
 
 
 # Sidebar Avatar
@@ -187,7 +191,7 @@ links:
 # 侧栏头像设置
 # 建议放在 hexo-site/source/uploads/ 里（没有自己建）
 # 这样可以避免更新 NexT 主题的时候遇到麻烦
-avatar: /images/avatar.png
+avatar: /images/avatar.jpg
 
 # Table Of Contents in the Sidebar
 # 侧栏文章目录设置（前提是 Markdown 书写正确）
@@ -773,7 +777,7 @@ tabs:
 # Reading progress bar
 # Dependencies: https://github.com/theme-next/theme-next-reading-progress
 reading_progress:
-  enable: false
+  enable: true
   color: "#37c6c0"
   height: 2px
 
@@ -808,7 +812,7 @@ motion:
 # For install 2.x: https://github.com/theme-next/theme-next-fancybox
 # For install 3.x: https://github.com/theme-next/theme-next-fancybox3
 # 查看图片的
-fancybox: false
+fancybox: true
 
 # Added switch option for separated repo in 6.0.0.
 # Dependencies: https://github.com/theme-next/theme-next-fastclick

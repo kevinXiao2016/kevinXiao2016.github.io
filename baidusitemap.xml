@@ -85,11 +85,11 @@
 
     
   <url>
-    <loc>https://www.greateman.top/Centos7%E4%B8%8B%E5%AE%89%E8%A3%85Nginx.html</loc>
+    <loc>https://www.greateman.top/%E3%80%90Linux%E3%80%91Centos7%E4%B8%8B%E5%AE%89%E8%A3%85Nginx.html</loc>
     <lastmod>2018-06-13T05:03:57.000Z</lastmod>
     <data>
         <display>
-        <title>Centos7下安装Nginx</title>
+        <title>【Linux】Centos7下安装Nginx</title>
         <pubTime>2018-06-13T05:03:57.000Z</pubTime>
         
         <tag>Linux</tag>
@@ -1154,6 +1154,28 @@
 
     
   <url>
+    <loc>https://www.greateman.top/volatile%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html</loc>
+    <lastmod>2018-05-04T08:27:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>volatile的实现原理</title>
+        <pubTime>2018-05-04T08:27:21.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="并发" url="https://www.greateman.top/categories/%E5%B9%B6%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.greateman.top/Callable%E5%8F%8AFuture.html</loc>
     <lastmod>2018-05-04T08:27:21.000Z</lastmod>
     <data>
@@ -1182,28 +1204,6 @@
         <display>
         <title>Thread及Runnable</title>
         <pubTime>2017-09-30T01:22:54.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="并发" url="https://www.greateman.top/categories/%E5%B9%B6%E5%8F%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.greateman.top/volatile%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html</loc>
-    <lastmod>2018-05-04T08:27:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>volatile的实现原理</title>
-        <pubTime>2018-05-04T08:27:21.000Z</pubTime>
         
         <tag>Java</tag>
          

@@ -112,28 +112,27 @@
 
 
 
-  <meta name="description" content="1、简介struts2中很多的核心功能都是拦截器完成的。比如：params(封装动态参数)、staticParams（静态参数封装）、i18n(国际化)、modelDrivern（模型驱动）、servletConfig（注入servletAPI）等。 作用：在执行动作前或后进行拦截">
-<meta name="keywords" content="Struts2">
+  <meta name="description" content="安装步骤概述.">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Struts2(5)——拦截器">
-<meta property="og:url" content="https://www.greateman.top/Struts2-5-——拦截器.html">
+<meta property="og:title" content="【Linux】CentOS7下安装Tomcat详细过程">
+<meta property="og:url" content="https://www.greateman.top/【Linux】CentOS7下安装Tomcat详细过程.html">
 <meta property="og:site_name" content="温故而知新">
-<meta property="og:description" content="1、简介struts2中很多的核心功能都是拦截器完成的。比如：params(封装动态参数)、staticParams（静态参数封装）、i18n(国际化)、modelDrivern（模型驱动）、servletConfig（注入servletAPI）等。 作用：在执行动作前或后进行拦截">
+<meta property="og:description" content="安装步骤概述.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/struts/struts2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/struts/Interceptor.png">
-<meta property="og:updated_time" content="2018-06-08T01:44:54.983Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/Linux/dowlondTomcat.png">
+<meta property="og:updated_time" content="2018-07-24T00:34:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Struts2(5)——拦截器">
-<meta name="twitter:description" content="1、简介struts2中很多的核心功能都是拦截器完成的。比如：params(封装动态参数)、staticParams（静态参数封装）、i18n(国际化)、modelDrivern（模型驱动）、servletConfig（注入servletAPI）等。 作用：在执行动作前或后进行拦截">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/struts/struts2.png">
+<meta name="twitter:title" content="【Linux】CentOS7下安装Tomcat详细过程">
+<meta name="twitter:description" content="安装步骤概述.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/Linux/dowlondTomcat.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://www.greateman.top/Struts2-5-——拦截器.html"/>
+  <link rel="canonical" href="https://www.greateman.top/【Linux】CentOS7下安装Tomcat详细过程.html"/>
 
 
 
@@ -143,7 +142,7 @@
   };
 </script>
 
-  <title>Struts2(5)——拦截器 | 温故而知新</title>
+  <title>【Linux】CentOS7下安装Tomcat详细过程 | 温故而知新</title>
   
 
 
@@ -356,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Struts2-5-——拦截器.html">
+    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/【Linux】CentOS7下安装Tomcat详细过程.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="肖悦">
@@ -373,7 +372,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Struts2(5)——拦截器
+          <h2 class="post-title" itemprop="name headline">【Linux】CentOS7下安装Tomcat详细过程
               
             
           </h2>
@@ -398,7 +397,7 @@
                 
               
 
-              <time title="创建时间：2017-12-21 15:41:25" itemprop="dateCreated datePublished" datetime="2017-12-21T15:41:25+08:00">2017-12-21</time>
+              <time title="创建时间：2018-07-24 08:34:48" itemprop="dateCreated datePublished" datetime="2018-07-24T08:34:48+08:00">2018-07-24</time>
             
 
             
@@ -416,7 +415,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Struts2/" itemprop="url" rel="index"><span itemprop="name">Struts2</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -458,35 +457,38 @@
       
 
       
-        <h2 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h2><p>struts2中很多的核心功能都是拦截器完成的。比如：params(封装动态参数)、staticParams（静态参数封装）、i18n(国际化)、modelDrivern（模型驱动）、servletConfig（注入servletAPI）等。</p>
-<p><font color="red">作用：在执行动作前或后进行拦截</font><br><a id="more"></a></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">default-interceptor-ref</span> <span class="attr">name</span>=<span class="string">"defaultStack"</span>/&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">interceptor-stack</span> <span class="attr">name</span>=<span class="string">"defaultStack"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"exception"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"alias"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"servletConfig"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"i18n"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"prepare"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"chain"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"scopedModelDriven"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"modelDriven"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"fileUpload"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"checkbox"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"datetime"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"multiselect"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"staticParams"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"actionMappingParams"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"params"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"conversionError"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"validation"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"excludeMethods"</span>&gt;</span>input,back,cancel,browse<span class="tag">&lt;/<span class="name">param</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">interceptor-ref</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"workflow"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"excludeMethods"</span>&gt;</span>input,back,cancel,browse<span class="tag">&lt;/<span class="name">param</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">interceptor-ref</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"debugging"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"deprecation"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">interceptor-stack</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="2、运作图"><a href="#2、运作图" class="headerlink" title="2、运作图"></a>2、运作图</h2><p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/struts/struts2.png" alt="此处输入图片的描述"></p>
-<p>结论：<br>    动作方法执行前：拦截器会按照顺序依次进行拦截<br>    执行动作方法<br>    返回结果视图<br>拦截器会按照原来的顺序的相反顺序再次进行拦截</p>
-<p>执行过程中：ActionInvocation保存了需要用到的数据</p>
-<h2 id="3、自定义拦截器"><a href="#3、自定义拦截器" class="headerlink" title="3、自定义拦截器"></a>3、自定义拦截器</h2><p>熟悉拦截器的体系：所有的拦截器都直接或间接的实现了Interceptor接口</p>
-<p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/struts/Interceptor.png" alt="此处输入图片的描述"></p>
-<h3 id="3-1-创建拦截器类，继承AbstractInterceptor或实现Interceotor"><a href="#3-1-创建拦截器类，继承AbstractInterceptor或实现Interceotor" class="headerlink" title="3.1 创建拦截器类，继承AbstractInterceptor或实现Interceotor"></a>3.1 创建拦截器类，继承AbstractInterceptor或实现Interceotor</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterceptor</span> <span class="keyword">extends</span> <span class="title">AbstractInterceptor</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">828084112876621948L</span>;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">intercept</span><span class="params">(ActionInvocation invocation)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        System.out.println(<span class="string">"MyInterceptor拦截前"</span>);</div><div class="line">        String invoke = invocation.invoke();<span class="comment">//放行</span></div><div class="line">        System.out.println(<span class="string">"MyInterceptor拦截后"</span>);</div><div class="line">        <span class="keyword">return</span> invoke;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="3-2-注册拦截器"><a href="#3-2-注册拦截器" class="headerlink" title="3.2 注册拦截器"></a>3.2 注册拦截器</h3><p>在struts.xml中注册拦截器，可以针对单个action配置，也可全局配置</p>
-<ol>
-<li><p>针对单个action配置</p>
-<p>首先在package中声明拦截器</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">interceptors</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">interceptor</span> <span class="attr">name</span>=<span class="string">"myInterceptor"</span> <span class="attr">class</span>=<span class="string">"com.topvision.s2sm.plantform.interceptor.MyInterceptor"</span>&gt;</span><span class="tag">&lt;/<span class="name">interceptor</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">interceptors</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>然后在action中声明引用该拦截器</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">   <span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"loginTest"</span> <span class="attr">class</span>=<span class="string">"com.topvision.s2sm.login.action.LoginAction"</span> <span class="attr">method</span>=<span class="string">"loginTest"</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- </span></div><div class="line">		如果没有声明拦截器，默认使用struts-default.xml中的defaultStack</div><div class="line">		如果声明了，则defaultStack失效</div><div class="line">	 --&gt;</div><div class="line">	<span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"myInterceptor"</span>&gt;</span><span class="tag">&lt;/<span class="name">interceptor-ref</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">result</span>&gt;</span>/WEB-INF/jsp/login/login.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"input"</span>&gt;</span>/error.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>但是一般不用这种，因为Struts2有这么一种机制，一旦为Action指定了拦截器，那么就不会再为这个Action执行默认拦截器了，即defaultStack这个拦截器栈中的拦截器都不会执行，也就是说，这个Action没有输入校验、没有参数注入、没有国际化、没有…，这是不行的，所以我们需要在这个<action>元素中再引用defaultStack拦截器栈。</action></p>
+        <p>安装步骤概述.<br><a id="more"></a></p>
+<h2 id="1、安装-JDK"><a href="#1、安装-JDK" class="headerlink" title="1、安装 JDK"></a>1、安装 JDK</h2><p>具体步骤见  <a href="https://www.zybuluo.com/MrXiao/note/1219090" target="_blank" rel="noopener">【Linux】CentOS7下安装JDK详细过程</a></p>
+<h2 id="2、安装-Tomcat"><a href="#2、安装-Tomcat" class="headerlink" title="2、安装 Tomcat"></a>2、安装 Tomcat</h2><h3 id="2-1-下载Tomcat"><a href="#2-1-下载Tomcat" class="headerlink" title="2.1 下载Tomcat"></a>2.1 下载Tomcat</h3><p>官方下载地址：<a href="https://tomcat.apache.org/download-90.cgi" target="_blank" rel="noopener">tomcat9官方下载地址</a></p>
+<p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/Linux/dowlondTomcat.png" alt="tomcat9"></p>
+<p>在命令窗口键入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-9/v9.0.10/bin/apache-tomcat-9.0.10.tar.gz</div></pre></td></tr></table></figure>
+<p>或者windows下载后，上传到Linux服务器</p>
+<h3 id="2-2-解压"><a href="#2-2-解压" class="headerlink" title="2.2 解压"></a>2.2 解压</h3><p>在命令窗口键入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf apache-tomcat-9.0.10.tar.gz</div></pre></td></tr></table></figure>
+<h2 id="3、执行"><a href="#3、执行" class="headerlink" title="3、执行"></a>3、执行</h2><ol>
+<li>进入bin目录 cd /usr/java/tomcat9/bin</li>
+<li><p>启动 ./startup.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@localhost bin]# ./startup.sh </div><div class="line">Using CATALINA_BASE:   /usr/java/tomcat9</div><div class="line">Using CATALINA_HOME:   /usr/java/tomcat9</div><div class="line">Using CATALINA_TMPDIR: /usr/java/tomcat9/temp</div><div class="line">Using JRE_HOME:        /usr/java/jdk1.8.0_181/jre</div><div class="line">Using CLASSPATH:       /usr/java/tomcat9/bin/bootstrap.jar:/usr/java/tomcat9/bin/tomcat-juli.jar</div><div class="line">Tomcat started.</div></pre></td></tr></table></figure>
 </li>
-<li><p>全局配置（常用）</p>
-<p>创建一个拦截器栈，包含默认拦截器栈和自定义拦截器。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"default"</span> <span class="attr">extends</span>=<span class="string">"struts-default"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">interceptors</span>&gt;</span></div><div class="line"> 	<span class="comment">&lt;!-- 自定义拦截器 --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">interceptor</span> <span class="attr">name</span>=<span class="string">"myInterceptor"</span> <span class="attr">class</span>=<span class="string">"com.topvision.s2sm.plantform.interceptor.MyInterceptor"</span>&gt;</span><span class="tag">&lt;/<span class="name">interceptor</span>&gt;</span></div><div class="line">		<span class="comment">&lt;!-- 自定义拦截器栈 --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">interceptor-stack</span> <span class="attr">name</span>=<span class="string">"myStack"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"defaultStack"</span>/&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"myInterceptor"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">interceptor-stack</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">interceptors</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- 指定默认拦截器 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">default-interceptor-ref</span> <span class="attr">name</span>=<span class="string">"myStack"</span>&gt;</span><span class="tag">&lt;/<span class="name">default-interceptor-ref</span>&gt;</span></div></pre></td></tr></table></figure>
+<li><p>访问服务器ip地址  服务器ip:8080</p>
 </li>
 </ol>
-<h2 id="4、MethodFilterInterceptor"><a href="#4、MethodFilterInterceptor" class="headerlink" title="4、MethodFilterInterceptor"></a>4、MethodFilterInterceptor</h2><p>是AbstractInterceptor的子类：<br>setIncludeMethods(String includeMethods):设置需要拦截的方法，多个方法用逗号分隔<br>setExcludeMethods(String excludeMethods):设置不需要拦截的方法，多个方法用逗号分隔</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MethodInterDemo</span> <span class="keyword">extends</span> <span class="title">MethodFilterInterceptor</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">9060068603523571867L</span>;</div><div class="line">    </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">doIntercept</span><span class="params">(ActionInvocation invocation)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="comment">//拦截前操作</span></div><div class="line">        String invoke = invocation.invoke();</div><div class="line">        <span class="comment">//拦截后操作</span></div><div class="line">        <span class="keyword">return</span> invoke;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>配置xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"default"</span> <span class="attr">extends</span>=<span class="string">"struts-default"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">interceptors</span>&gt;</span></div><div class="line">    	<span class="comment">&lt;!-- 自定义拦截器 --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">interceptor</span> <span class="attr">name</span>=<span class="string">"myInterceptor"</span> <span class="attr">class</span>=<span class="string">"com.topvision.s2sm.plantform.interceptor.MyInterceptor"</span>&gt;</span><span class="tag">&lt;/<span class="name">interceptor</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">interceptor</span> <span class="attr">name</span>=<span class="string">"methodInterceptor"</span> <span class="attr">class</span>=<span class="string">"com.topvision.s2sm.plantform.interceptor.MethodInterDemo"</span>&gt;</span><span class="tag">&lt;/<span class="name">interceptor</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="comment">&lt;!-- 自定义拦截器栈 --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">interceptor-stack</span> <span class="attr">name</span>=<span class="string">"myStack"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"defaultStack"</span>/&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"myInterceptor"</span>/&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"methodInterceptor"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">interceptor-stack</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">interceptors</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- 指定默认拦截器 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">default-interceptor-ref</span> <span class="attr">name</span>=<span class="string">"myStack"</span>&gt;</span><span class="tag">&lt;/<span class="name">default-interceptor-ref</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">package</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>设置指定action</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"login"</span> <span class="attr">namespace</span>=<span class="string">"/"</span> <span class="attr">extends</span>=<span class="string">"default"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"loginTest"</span> <span class="attr">class</span>=<span class="string">"com.topvision.s2sm.login.action.LoginAction"</span> <span class="attr">method</span>=<span class="string">"loginTest"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"myStack"</span>&gt;</span></div><div class="line">			<span class="comment">&lt;!-- 设置不需要methodInterDemo拦截的方法 --&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"methodInterDemo.excludeMethods"</span>&gt;</span>loginTest<span class="tag">&lt;/<span class="name">param</span>&gt;</span></div><div class="line">			<span class="comment">&lt;!-- 设置需要methodInterDemo拦截的方法 --&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"methodInterDemo.includeMethods"</span>&gt;</span>aaa<span class="tag">&lt;/<span class="name">param</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">interceptor-ref</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="tag">&lt;<span class="name">result</span>&gt;</span>/WEB-INF/jsp/login/login.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"input"</span>&gt;</span>/error.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">action</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">package</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="4、tomcat启动后外网无法访问"><a href="#4、tomcat启动后外网无法访问" class="headerlink" title="4、tomcat启动后外网无法访问"></a>4、tomcat启动后外网无法访问</h2><p>iptables防火墙设置参考文章地址：<br><a href="https://blog.csdn.net/u010071211/article/details/79244404" target="_blank" rel="noopener">CentOS7.4 关闭firewall防火墙，改用iptables</a><br><a href="https://blog.csdn.net/l1028386804/article/details/50779761" target="_blank" rel="noopener">CentOS之——CentOS7安装iptables防火墙</a></p>
+<ol>
+<li><p>查看防火墙状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service iptables status</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加8080端口允许外网访问</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+<li><p>保存规则设定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service iptables save</div></pre></td></tr></table></figure>
+</li>
+<li><p>重启防火墙</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service iptables restart</div></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
     </div>
@@ -536,7 +538,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Struts2/" rel="tag"># Struts2</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -549,8 +551,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Struts2-4-——数据封装和类型转换.html" rel="next" title="Struts2(4)——数据封装和类型转换">
-                <i class="fa fa-chevron-left"></i> Struts2(4)——数据封装和类型转换
+              <a href="/【Linux】CentOS7下安装JDK详细过程.html" rel="next" title="【Linux】CentOS7下安装JDK详细过程">
+                <i class="fa fa-chevron-left"></i> 【Linux】CentOS7下安装JDK详细过程
               </a>
             
           </div>
@@ -559,8 +561,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Struts2-6-——Struts标签、国际化、文件上传下载.html" rel="prev" title="Struts2(6)——Struts标签、国际化、文件上传下载">
-                Struts2(6)——Struts标签、国际化、文件上传下载 <i class="fa fa-chevron-right"></i>
+              <a href="/【Linux】CentOS7下搭建Redis集群详细过程.html" rel="prev" title="【Linux】CentOS7下搭建Redis集群详细过程">
+                【Linux】CentOS7下搭建Redis集群详细过程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -818,7 +820,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、简介"><span class="nav-text">1、简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、运作图"><span class="nav-text">2、运作图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、自定义拦截器"><span class="nav-text">3、自定义拦截器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-创建拦截器类，继承AbstractInterceptor或实现Interceotor"><span class="nav-text">3.1 创建拦截器类，继承AbstractInterceptor或实现Interceotor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-注册拦截器"><span class="nav-text">3.2 注册拦截器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、MethodFilterInterceptor"><span class="nav-text">4、MethodFilterInterceptor</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装-JDK"><span class="nav-text">1、安装 JDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、安装-Tomcat"><span class="nav-text">2、安装 Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-下载Tomcat"><span class="nav-text">2.1 下载Tomcat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-解压"><span class="nav-text">2.2 解压</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、执行"><span class="nav-text">3、执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、tomcat启动后外网无法访问"><span class="nav-text">4、tomcat启动后外网无法访问</span></a></li></ol></div>
             
 
           </div>

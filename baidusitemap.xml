@@ -24,6 +24,26 @@
 
     
   <url>
+    <loc>https://www.greateman.top/%E3%80%90Linux%E3%80%91CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85Tomcat%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B.html</loc>
+    <lastmod>2018-07-24T00:34:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>【Linux】CentOS7下安装Tomcat详细过程</title>
+        <pubTime>2018-07-24T00:34:48.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://www.greateman.top/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.greateman.top/%E3%80%90Linux%E3%80%91CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85JDK%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B.html</loc>
     <lastmod>2018-07-24T00:34:31.000Z</lastmod>
     <data>
@@ -1156,12 +1176,12 @@
 
     
   <url>
-    <loc>https://www.greateman.top/volatile%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html</loc>
+    <loc>https://www.greateman.top/Thread%E5%8F%8ARunnable.html</loc>
     <lastmod>2018-05-04T08:27:21.000Z</lastmod>
     <data>
         <display>
-        <title>volatile的实现原理</title>
-        <pubTime>2018-05-04T08:27:21.000Z</pubTime>
+        <title>Thread及Runnable</title>
+        <pubTime>2017-09-30T01:22:54.000Z</pubTime>
         
         <tag>Java</tag>
          
@@ -1178,12 +1198,12 @@
 
     
   <url>
-    <loc>https://www.greateman.top/Thread%E5%8F%8ARunnable.html</loc>
+    <loc>https://www.greateman.top/volatile%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html</loc>
     <lastmod>2018-05-04T08:27:21.000Z</lastmod>
     <data>
         <display>
-        <title>Thread及Runnable</title>
-        <pubTime>2017-09-30T01:22:54.000Z</pubTime>
+        <title>volatile的实现原理</title>
+        <pubTime>2018-05-04T08:27:21.000Z</pubTime>
         
         <tag>Java</tag>
          

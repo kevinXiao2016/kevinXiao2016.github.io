@@ -112,28 +112,29 @@
 
 
 
-  <meta name="description" content="1、特性 保证变量在线程之间的可见性 通过内存屏障来阻止指令重排，是happens-before规范的具体的一种实现 解决了long类型和double类型数据的8字节赋值问题">
-<meta name="keywords" content="Java,并发">
+  <meta name="description" content="Linux上一般会安装Open JDK,关于OpenJDK和JDK的区别：【JDK和Open JDK】平常使用的JDK和Open JDK有什么区别。">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="volatile的实现原理">
-<meta property="og:url" content="https://www.greateman.top/volatile的实现原理.html">
+<meta property="og:title" content="【Linux】CentOS7下安装JDK详细过程">
+<meta property="og:url" content="https://www.greateman.top/【Linux】CentOS7下安装JDK详细过程.html">
 <meta property="og:site_name" content="温故而知新">
-<meta property="og:description" content="1、特性 保证变量在线程之间的可见性 通过内存屏障来阻止指令重排，是happens-before规范的具体的一种实现 解决了long类型和double类型数据的8字节赋值问题">
+<meta property="og:description" content="Linux上一般会安装Open JDK,关于OpenJDK和JDK的区别：【JDK和Open JDK】平常使用的JDK和Open JDK有什么区别。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/NtO5sialJZGricHmm50IzXNiaAMroheficIiaoP0yvpTjvtYXECkp5GNib77GCbu7s5ticlhJ7wP6icxHRbgVLmhKj1vAg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/381060/201702/381060-20170208174537963-1251333114.jpg">
-<meta property="og:updated_time" content="2018-05-04T08:27:21.000Z">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/978388/201709/978388-20170907223117179-1206697422.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/978388/201709/978388-20170907223341444-542280232.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/978388/201709/978388-20170907230232522-1003727369.png">
+<meta property="og:updated_time" content="2018-07-24T00:34:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="volatile的实现原理">
-<meta name="twitter:description" content="1、特性 保证变量在线程之间的可见性 通过内存屏障来阻止指令重排，是happens-before规范的具体的一种实现 解决了long类型和double类型数据的8字节赋值问题">
-<meta name="twitter:image" content="http://mmbiz.qpic.cn/mmbiz_png/NtO5sialJZGricHmm50IzXNiaAMroheficIiaoP0yvpTjvtYXECkp5GNib77GCbu7s5ticlhJ7wP6icxHRbgVLmhKj1vAg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1">
+<meta name="twitter:title" content="【Linux】CentOS7下安装JDK详细过程">
+<meta name="twitter:description" content="Linux上一般会安装Open JDK,关于OpenJDK和JDK的区别：【JDK和Open JDK】平常使用的JDK和Open JDK有什么区别。">
+<meta name="twitter:image" content="https://images2017.cnblogs.com/blog/978388/201709/978388-20170907223117179-1206697422.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://www.greateman.top/volatile的实现原理.html"/>
+  <link rel="canonical" href="https://www.greateman.top/【Linux】CentOS7下安装JDK详细过程.html"/>
 
 
 
@@ -143,7 +144,7 @@
   };
 </script>
 
-  <title>volatile的实现原理 | 温故而知新</title>
+  <title>【Linux】CentOS7下安装JDK详细过程 | 温故而知新</title>
   
 
 
@@ -356,7 +357,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/volatile的实现原理.html">
+    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/【Linux】CentOS7下安装JDK详细过程.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="肖悦">
@@ -373,7 +374,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">volatile的实现原理
+          <h2 class="post-title" itemprop="name headline">【Linux】CentOS7下安装JDK详细过程
               
             
           </h2>
@@ -398,7 +399,7 @@
                 
               
 
-              <time title="创建时间：2018-05-04 16:27:21" itemprop="dateCreated datePublished" datetime="2018-05-04T16:27:21+08:00">2018-05-04</time>
+              <time title="创建时间：2018-07-24 08:34:31" itemprop="dateCreated datePublished" datetime="2018-07-24T08:34:31+08:00">2018-07-24</time>
             
 
             
@@ -416,7 +417,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -458,41 +459,67 @@
       
 
       
-        <h2 id="1、特性"><a href="#1、特性" class="headerlink" title="1、特性"></a>1、特性</h2><ol>
-<li>保证变量在线程之间的可见性</li>
-<li>通过内存屏障来阻止指令重排，是happens-before规范的具体的一种实现</li>
-<li>解决了long类型和double类型数据的8字节赋值问题</li>
-</ol>
+        <p>Linux上一般会安装Open JDK,关于OpenJDK和JDK的区别：<a href="http://www.cnblogs.com/sxdcgaq8080/p/7487369.html" target="_blank" rel="noopener">【JDK和Open JDK】平常使用的JDK和Open JDK有什么区别</a>。</p>
 <a id="more"></a>
-<h2 id="2、可见性"><a href="#2、可见性" class="headerlink" title="2、可见性"></a>2、可见性</h2><p>JMM(Java Memeory Model)是JVM定义的一种抽象规范，用来屏蔽不同硬件和操作系统的内存访问差异。</p>
-<p><img src="http://mmbiz.qpic.cn/mmbiz_png/NtO5sialJZGricHmm50IzXNiaAMroheficIiaoP0yvpTjvtYXECkp5GNib77GCbu7s5ticlhJ7wP6icxHRbgVLmhKj1vAg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="此处输入图片的描述"></p>
-<ul>
-<li>主内存：简单理解为计算机当中的内存，但并不完全等同。被所有线程共享，存储着共享变量的“本尊”。</li>
-<li>工作内存：简单理解为计算机当中的CPU高速缓存，但又不完全等同。每一个线程拥有自己的工作内存，对于一个共享变量来说，工作内存当中存储了它的“副本”。</li>
-</ul>
-<p>线程对共享变量的所有操作都必须在工作内存进行，不能直接读写主内存中的变量。不同线程之间也无法访问彼此的工作内存，变量值的传递只能通过主内存来进行。</p>
-<p>当一个变量被volatile修饰后，表示着线程本地内存无效，当一个线程修改共享变量后他会立即被更新到主内存中，当其他线程读取共享变量时，它会直接从主内存中读取。<br>当然，synchronize和锁都可以保证可见性。</p>
-<h2 id="3、有序性"><a href="#3、有序性" class="headerlink" title="3、有序性"></a>3、有序性</h2><p>在Java内存模型中，为了效率是允许编译器和处理器对指令进行重排序，当然重排序它不会影响单线程的运行结果，但是对多线程会有影响。</p>
-<p>Java提供volatile来保证一定的有序性。最著名的例子就是单例模式里面的DCL（双重检查锁）。</p>
-<p><strong>happen-before</strong></p>
-<ol>
-<li>同一个线程中的，前面的操作happen-before后续的操作。（即单线程内按代码顺序执行。但是，在不影响在单线程环境执行结果的前提下，编译器和处理器可以进行重排序，这是合法的。换句话说，这一是规则无法保证编译重排和指令重排）。</li>
-<li>监视器上的解锁操作 happen-before 其后续的加锁操作。（Synchronized 规则）</li>
-<li>对volatile变量的写操作 happen-before 后续的读操作。（volatile 规则）</li>
-<li>线程的start() 方法 happen-before 该线程所有的后续操作。（线程启动规则）</li>
-<li>线程所有的操作 happen-before 其他线程在该线程上调用 join 返回成功后的操作。</li>
-<li>如果 a happen-before b，b happen-before c，则a happen-before c（传递性）。</li>
-</ol>
-<p>重点关注第3条，使用volatile修饰的变量，在指令重排时，会产生额外的lock前缀指令，也就是内存屏障。</p>
-<p><img src="http://images2015.cnblogs.com/blog/381060/201702/381060-20170208174537963-1251333114.jpg" alt="此处输入图片的描述"></p>
-<h2 id="4、局限性及使用场景"><a href="#4、局限性及使用场景" class="headerlink" title="4、局限性及使用场景"></a>4、局限性及使用场景</h2><ul>
-<li>局限性<br> 不能保证原子性</li>
-<li>场景<br> 运行结果并不依赖变量的当前值，或者能够确保只有单一的线程修改变量的值<br> 不参与多个volatile变量的不变约束。</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://www.cnblogs.com/chenssy/p/6379280.html" target="_blank" rel="noopener">【死磕Java并发】—–深入分析volatile的实现原理</a></li>
-<li><a href="https://mp.weixin.qq.com/s/DZkGRTan2qSzJoDAx7QJag" target="_blank" rel="noopener">漫画：什么是volatile关键字？（整合版）</a></li>
-</ol>
+<h2 id="1、卸载系统自带的OpenJDK以及相关的java文件"><a href="#1、卸载系统自带的OpenJDK以及相关的java文件" class="headerlink" title="1、卸载系统自带的OpenJDK以及相关的java文件"></a>1、卸载系统自带的OpenJDK以及相关的java文件</h2><h3 id="1-1-在命令窗口键入："><a href="#1-1-在命令窗口键入：" class="headerlink" title="1.1 在命令窗口键入："></a>1.1 在命令窗口键入：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -version</div></pre></td></tr></table></figure>
+<p><img src="https://images2017.cnblogs.com/blog/978388/201709/978388-20170907223117179-1206697422.png" alt="java -version"></p>
+<p>可以看到系统自带的OpenJDK版本信息。</p>
+<h3 id="1-2-在命令窗口键入："><a href="#1-2-在命令窗口键入：" class="headerlink" title="1.2 在命令窗口键入："></a>1.2 在命令窗口键入：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -qa | grep java</div></pre></td></tr></table></figure>
+<pre><code>命令说明：
+rpm 　　管理套件    
+-qa 　　使用询问模式，查询所有套件
+grep　　查找文件里符合条件的字符串
+java 　　查找包含java字符串的文件
+</code></pre><p><img src="https://images2017.cnblogs.com/blog/978388/201709/978388-20170907223341444-542280232.png" alt="此处输入图片的描述"></p>
+<p>以上文件中：下面这几个可以删除</p>
+<pre><code>java-1.7.0-openjdk-1.7.0.111-2.6.7.8.el7.x86_64
+java-1.8.0-openjdk-1.8.0.102-4.b14.el7.x86_64
+java-1.8.0-openjdk-headless-1.8.0.102-4.b14.el7.x86_64
+java-1.7.0-openjdk-headless-1.7.0.111-2.6.7.8.el7.x86_64
+</code></pre><p>以下文件可以不用删除</p>
+<pre><code>python-javapackages-3.4.1-11.el7.noarch
+tzdata-java-2016g-2.el7.noarch
+javapackages-tools-3.4.1-11.el7.noarch
+</code></pre><h3 id="1-3-在命令窗口键入："><a href="#1-3-在命令窗口键入：" class="headerlink" title="1.3 在命令窗口键入："></a>1.3 在命令窗口键入：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">su</div></pre></td></tr></table></figure>
+<p>输入密码，进入超级用户角色</p>
+<h3 id="1-4-在命令窗口键入："><a href="#1-4-在命令窗口键入：" class="headerlink" title="1.4 在命令窗口键入："></a>1.4 在命令窗口键入：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.111-2.6.7.8.el7.x86_64</div><div class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.102-4.b14.el7.x86_64</div><div class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.102-4.b14.el7.x86_64</div><div class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.111-2.6.7.8.el7.x86_64</div></pre></td></tr></table></figure>
+<pre><code>命令介绍：
+rpm 　　　　管理套件  
+-e　　　　　删除指定的套件
+--nodeps　　不验证套件档的相互关联性
+</code></pre><h3 id="1-5-检查是否已经删除成功"><a href="#1-5-检查是否已经删除成功" class="headerlink" title="1.5  检查是否已经删除成功"></a>1.5  检查是否已经删除成功</h3><p>在命令窗口键入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -version</div></pre></td></tr></table></figure>
+<p><img src="https://images2017.cnblogs.com/blog/978388/201709/978388-20170907230232522-1003727369.png" alt="此处输入图片的描述"></p>
+<p>代表已经删除成功了。</p>
+<h2 id="2、安装-Sun-JDK"><a href="#2、安装-Sun-JDK" class="headerlink" title="2、安装 Sun JDK"></a>2、安装 Sun JDK</h2><p><strong>【注意】:JDK安装在哪个用户下，就是给哪个用户使用</strong></p>
+<h3 id="2-1-下载"><a href="#2-1-下载" class="headerlink" title="2.1 下载"></a>2.1 下载</h3><p>当前最新版本下载地址：<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a><br>历史版本下载地址：　　<a href="http://www.oracle.com/technetwork/java/javase/archive-139210.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/archive-139210.html</a>
+　　</p>
+<p>在命令窗口键入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz?AuthParam=1531986242_deb391e0a43953c12051f2d1eae8afad</div></pre></td></tr></table></figure>
+<p>或者windows下载后，使用xftp工具上传到Linux服务器。</p>
+<h3 id="2-2-解压"><a href="#2-2-解压" class="headerlink" title="2.2 解压"></a>2.2 解压</h3><p>将jdk-8u181-linux-x64.tar.gz文件拷贝一份到/usr/java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp jdk-8u181-linux-x64.tar.gz /usr/java</div></pre></td></tr></table></figure>
+<p>进入 /usr/java 目录，解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /usr/java</div><div class="line">tar -zxvf jdk-8u181-linux-x64.tar.gz</div></pre></td></tr></table></figure>
+<h3 id="2-3-配置环境变量"><a href="#2-3-配置环境变量" class="headerlink" title="2.3 配置环境变量"></a>2.3 配置环境变量</h3><p>使用vim /etc/profile 编辑profile文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/profil</div></pre></td></tr></table></figure>
+<p>向文件里面追加以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#set java environment</div><div class="line">JAVA_HOME=/usr/java/jdk1.8.0_181</div><div class="line">JRE_HOME=$JAVA_HOME/jre</div><div class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</div><div class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</div><div class="line">export JAVA_HOME JRE_HOME PATH CLASSPATH</div></pre></td></tr></table></figure>
+<pre><code>注释：
+
+JAVA_HOME指明JDK安装路径，就是刚才安装时所选择的路径，此路径下包括lib，bin，jre等文件夹（tomcat，Eclipse的运行都需要依靠此变量）。
+
+CLASSPATH为java加载类(class or lib)路径，只有类在classpath中，java命令才能识别，设：.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib。CLASSPATH变量值中的.表示当前目录
+
+PATH使得系统可以在任何路径下识别java命令，设为：$JAVA_HOME/bin:$JRE_HOME/bin。
+
+特别注意：环境变量值的结尾没有任何符号，不同值之间用:隔开（windows中用;）。
+</code></pre><h3 id="2-4-使配置文件生效"><a href="#2-4-使配置文件生效" class="headerlink" title="2.4 使配置文件生效"></a>2.4 使配置文件生效</h3><p>在命令窗口键入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source /etc/profile</div></pre></td></tr></table></figure>
+<h3 id="2-5-测试配置是否成功"><a href="#2-5-测试配置是否成功" class="headerlink" title="2.5 测试配置是否成功"></a>2.5 测试配置是否成功</h3><p>在命令窗口键入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -version</div></pre></td></tr></table></figure>
+<p>如下显示，则配置成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost java]# java -version</div><div class="line">java version &quot;1.8.0_181&quot;</div><div class="line">Java(TM) SE Runtime Environment (build 1.8.0_181-b13)</div><div class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -542,9 +569,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
-            <a href="/tags/并发/" rel="tag"># 并发</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -557,8 +582,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/代理模式.html" rel="next" title="代理模式">
-                <i class="fa fa-chevron-left"></i> 代理模式
+              <a href="/hexo博客关联域名，部署到coding.html" rel="next" title="hexo博客关联域名，部署到coding">
+                <i class="fa fa-chevron-left"></i> hexo博客关联域名，部署到coding
               </a>
             
           </div>
@@ -567,8 +592,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/单例模式.html" rel="prev" title="单例模式">
-                单例模式 <i class="fa fa-chevron-right"></i>
+              <a href="/【Linux】CentOS7下搭建Redis集群详细过程.html" rel="prev" title="【Linux】CentOS7下搭建Redis集群详细过程">
+                【Linux】CentOS7下搭建Redis集群详细过程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -826,7 +851,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、特性"><span class="nav-text">1、特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、可见性"><span class="nav-text">2、可见性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、有序性"><span class="nav-text">3、有序性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、局限性及使用场景"><span class="nav-text">4、局限性及使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、卸载系统自带的OpenJDK以及相关的java文件"><span class="nav-text">1、卸载系统自带的OpenJDK以及相关的java文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-在命令窗口键入："><span class="nav-text">1.1 在命令窗口键入：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-在命令窗口键入："><span class="nav-text">1.2 在命令窗口键入：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-在命令窗口键入："><span class="nav-text">1.3 在命令窗口键入：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-在命令窗口键入："><span class="nav-text">1.4 在命令窗口键入：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-检查是否已经删除成功"><span class="nav-text">1.5  检查是否已经删除成功</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、安装-Sun-JDK"><span class="nav-text">2、安装 Sun JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-下载"><span class="nav-text">2.1 下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-解压"><span class="nav-text">2.2 解压</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-配置环境变量"><span class="nav-text">2.3 配置环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-使配置文件生效"><span class="nav-text">2.4 使配置文件生效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-测试配置是否成功"><span class="nav-text">2.5 测试配置是否成功</span></a></li></ol></li></ol></div>
             
 
           </div>

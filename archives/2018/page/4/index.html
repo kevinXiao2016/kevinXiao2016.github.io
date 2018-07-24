@@ -112,28 +112,23 @@
 
 
 
-  <meta name="description" content="1、特性 保证变量在线程之间的可见性 通过内存屏障来阻止指令重排，是happens-before规范的具体的一种实现 解决了long类型和double类型数据的8字节赋值问题">
-<meta name="keywords" content="Java,并发">
-<meta property="og:type" content="article">
-<meta property="og:title" content="volatile的实现原理">
-<meta property="og:url" content="https://www.greateman.top/volatile的实现原理.html">
+  <meta name="description" content="天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="温故而知新">
+<meta property="og:url" content="https://www.greateman.top/archives/2018/page/4/index.html">
 <meta property="og:site_name" content="温故而知新">
-<meta property="og:description" content="1、特性 保证变量在线程之间的可见性 通过内存屏障来阻止指令重排，是happens-before规范的具体的一种实现 解决了long类型和double类型数据的8字节赋值问题">
+<meta property="og:description" content="天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/NtO5sialJZGricHmm50IzXNiaAMroheficIiaoP0yvpTjvtYXECkp5GNib77GCbu7s5ticlhJ7wP6icxHRbgVLmhKj1vAg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/381060/201702/381060-20170208174537963-1251333114.jpg">
-<meta property="og:updated_time" content="2018-05-04T08:27:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="volatile的实现原理">
-<meta name="twitter:description" content="1、特性 保证变量在线程之间的可见性 通过内存屏障来阻止指令重排，是happens-before规范的具体的一种实现 解决了long类型和double类型数据的8字节赋值问题">
-<meta name="twitter:image" content="http://mmbiz.qpic.cn/mmbiz_png/NtO5sialJZGricHmm50IzXNiaAMroheficIiaoP0yvpTjvtYXECkp5GNib77GCbu7s5ticlhJ7wP6icxHRbgVLmhKj1vAg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1">
+<meta name="twitter:title" content="温故而知新">
+<meta name="twitter:description" content="天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。">
 
 
 
 
 
 
-  <link rel="canonical" href="https://www.greateman.top/volatile的实现原理.html"/>
+  <link rel="canonical" href="https://www.greateman.top/archives/2018/page/4/"/>
 
 
 
@@ -143,7 +138,7 @@
   };
 </script>
 
-  <title>volatile的实现原理 | 温故而知新</title>
+  <title>归档 | 温故而知新</title>
   
 
 
@@ -190,7 +185,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-archive">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,7 +230,7 @@
         
         
           
-          <li class="menu-item menu-item-archives">
+          <li class="menu-item menu-item-archives menu-item-active">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
   </li>
@@ -279,6 +274,28 @@
 
   
     
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
 
   
 
@@ -338,271 +355,120 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block archive">
+    <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
 
-  
+      
+      <span class="archive-page-counter">
+        
+        
+         
+          
+        不错! 目前共计 58 篇日志。 继续努力。
+      </span>
+      
 
-  
-  
-  
+      
 
-  
-    <div class="reading-progress-bar"></div>
-  
+        
+        
+        
+
+        
+          
+          <div class="collection-title">
+            <h2 class="archive-year" id="archive-year-2018">2018</h2>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/volatile的实现原理.html">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="肖悦">
-      <meta itemprop="description" content="天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="温故而知新">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h3 class="post-title">
         
+            <a class="post-title-link" href="/Mybatis-1-——入门.html" itemprop="url">
+              
+                <span itemprop="name">Mybatis(1)——入门</span>
+              
+            </a>
         
-          <h2 class="post-title" itemprop="name headline">volatile的实现原理
-              
-            
-          </h2>
-        
+      </h3>
 
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-04 16:27:21" itemprop="dateCreated datePublished" datetime="2018-05-04T16:27:21+08:00">2018-05-04</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon"
-            >
-            <i class="fa fa-eye"></i>
-             阅读次数： 
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="1、特性"><a href="#1、特性" class="headerlink" title="1、特性"></a>1、特性</h2><ol>
-<li>保证变量在线程之间的可见性</li>
-<li>通过内存屏障来阻止指令重排，是happens-before规范的具体的一种实现</li>
-<li>解决了long类型和double类型数据的8字节赋值问题</li>
-</ol>
-<a id="more"></a>
-<h2 id="2、可见性"><a href="#2、可见性" class="headerlink" title="2、可见性"></a>2、可见性</h2><p>JMM(Java Memeory Model)是JVM定义的一种抽象规范，用来屏蔽不同硬件和操作系统的内存访问差异。</p>
-<p><img src="http://mmbiz.qpic.cn/mmbiz_png/NtO5sialJZGricHmm50IzXNiaAMroheficIiaoP0yvpTjvtYXECkp5GNib77GCbu7s5ticlhJ7wP6icxHRbgVLmhKj1vAg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="此处输入图片的描述"></p>
-<ul>
-<li>主内存：简单理解为计算机当中的内存，但并不完全等同。被所有线程共享，存储着共享变量的“本尊”。</li>
-<li>工作内存：简单理解为计算机当中的CPU高速缓存，但又不完全等同。每一个线程拥有自己的工作内存，对于一个共享变量来说，工作内存当中存储了它的“副本”。</li>
-</ul>
-<p>线程对共享变量的所有操作都必须在工作内存进行，不能直接读写主内存中的变量。不同线程之间也无法访问彼此的工作内存，变量值的传递只能通过主内存来进行。</p>
-<p>当一个变量被volatile修饰后，表示着线程本地内存无效，当一个线程修改共享变量后他会立即被更新到主内存中，当其他线程读取共享变量时，它会直接从主内存中读取。<br>当然，synchronize和锁都可以保证可见性。</p>
-<h2 id="3、有序性"><a href="#3、有序性" class="headerlink" title="3、有序性"></a>3、有序性</h2><p>在Java内存模型中，为了效率是允许编译器和处理器对指令进行重排序，当然重排序它不会影响单线程的运行结果，但是对多线程会有影响。</p>
-<p>Java提供volatile来保证一定的有序性。最著名的例子就是单例模式里面的DCL（双重检查锁）。</p>
-<p><strong>happen-before</strong></p>
-<ol>
-<li>同一个线程中的，前面的操作happen-before后续的操作。（即单线程内按代码顺序执行。但是，在不影响在单线程环境执行结果的前提下，编译器和处理器可以进行重排序，这是合法的。换句话说，这一是规则无法保证编译重排和指令重排）。</li>
-<li>监视器上的解锁操作 happen-before 其后续的加锁操作。（Synchronized 规则）</li>
-<li>对volatile变量的写操作 happen-before 后续的读操作。（volatile 规则）</li>
-<li>线程的start() 方法 happen-before 该线程所有的后续操作。（线程启动规则）</li>
-<li>线程所有的操作 happen-before 其他线程在该线程上调用 join 返回成功后的操作。</li>
-<li>如果 a happen-before b，b happen-before c，则a happen-before c（传递性）。</li>
-</ol>
-<p>重点关注第3条，使用volatile修饰的变量，在指令重排时，会产生额外的lock前缀指令，也就是内存屏障。</p>
-<p><img src="http://images2015.cnblogs.com/blog/381060/201702/381060-20170208174537963-1251333114.jpg" alt="此处输入图片的描述"></p>
-<h2 id="4、局限性及使用场景"><a href="#4、局限性及使用场景" class="headerlink" title="4、局限性及使用场景"></a>4、局限性及使用场景</h2><ul>
-<li>局限性<br> 不能保证原子性</li>
-<li>场景<br> 运行结果并不依赖变量的当前值，或者能够确保只有单一的线程修改变量的值<br> 不参与多个volatile变量的不变约束。</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://www.cnblogs.com/chenssy/p/6379280.html" target="_blank" rel="noopener">【死磕Java并发】—–深入分析volatile的实现原理</a></li>
-<li><a href="https://mp.weixin.qq.com/s/DZkGRTan2qSzJoDAx7QJag" target="_blank" rel="noopener">漫画：什么是volatile关键字？（整合版）</a></li>
-</ol>
-
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      <div>
-        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
-  </button>
-  <div id="QR" style="display: none;">
-
-    
-      <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="肖悦 微信支付"/>
-        <p>微信支付</p>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-02-27T11:15:13+08:00"
+              content="2018-02-27" >
+          02-27
+        </time>
       </div>
-    
 
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="肖悦 支付宝"/>
-        <p>支付宝</p>
-      </div>
-    
-
-    
-
-  </div>
-</div>
-
-      </div>
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
-            <a href="/tags/并发/" rel="tag"># 并发</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/代理模式.html" rel="next" title="代理模式">
-                <i class="fa fa-chevron-left"></i> 代理模式
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/单例模式.html" rel="prev" title="单例模式">
-                单例模式 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
       
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+            <a class="post-title-link" href="/Mysql触发器.html" itemprop="url">
+              
+                <span itemprop="name">Mysql触发器</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-02-13T09:34:00+08:00"
+              content="2018-02-13" >
+          02-13
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
     </div>
   </div>
+  
+  
+  
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/archives/2018/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/2018/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
+
 
 
           </div>
           
-
-  
-    <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODQwNi80OTc3"></div>
-    </div>
-
-  
-
-
 
         </div>
         
@@ -625,17 +491,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -816,22 +673,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、特性"><span class="nav-text">1、特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、可见性"><span class="nav-text">2、可见性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、有序性"><span class="nav-text">3、有序性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、局限性及使用场景"><span class="nav-text">4、局限性及使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -1022,10 +863,6 @@ show_date_time();
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
-
-
 
   
 
@@ -1050,17 +887,6 @@ show_date_time();
 
 
 
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
   
 
 

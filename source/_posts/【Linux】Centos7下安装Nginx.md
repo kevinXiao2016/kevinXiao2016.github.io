@@ -1,7 +1,7 @@
 ---
 title: 【Linux】Centos7下安装Nginx
 categories:
-  - Nginx
+  - Linux
 tags:
   - Linux
   - Nginx

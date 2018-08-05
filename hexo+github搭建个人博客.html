@@ -123,7 +123,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/newRepository.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/step2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/step3.png">
-<meta property="og:updated_time" content="2018-08-05T08:42:41.885Z">
+<meta property="og:updated_time" content="2018-08-05T08:46:50.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo+github搭建个人博客">
 <meta name="twitter:description" content="1.前言使用github pages服务搭建博客的好处有：1.全是静态文件，访问速度快；2.免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；3.可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；4.数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；5.博客内容可以轻松打包、转移、发布到其它平台；">
@@ -478,7 +478,7 @@
 <p>###2.2绑定域名</p>
 <p>这一步不是必须，若不绑定则可用默认的<a href="http://xxx.github.io来访问" target="_blank" rel="noopener">http://xxx.github.io来访问</a>;</p>
 <p><a href="https://greateman.top/hexo%E5%8D%9A%E5%AE%A2%E5%85%B3%E8%81%94%E5%9F%9F%E5%90%8D%EF%BC%8C%E9%83%A8%E7%BD%B2%E5%88%B0coding.html" target="_blank" rel="noopener">hexo博客关联域名，部署到coding</a></p>
-<h2 id="3-配置SSH-key"><a href="#3-配置SSH-key" class="headerlink" title="3.配置SSH key"></a>3.配置SSH key</h2><p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。<br>在电脑任意位置进入<strong>git bash</strong></p>
+<h2 id="3-配置SSH-key"><a href="#3-配置SSH-key" class="headerlink" title="3.配置SSH key"></a>3.配置SSH key</h2><p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。<br>在电脑任意位置进入<strong>git bash</strong>。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ cd ~/.ssh #检查本机已存在的ssh密钥</div><div class="line">``` </div><div class="line"></div><div class="line">如果提示：No such file or directory 说明你是第一次使用git</div><div class="line"></div><div class="line">```cli</div><div class="line">ssh-keygen -t rsa -C &quot;邮件地址&quot;</div></pre></td></tr></table></figure>
 <p>然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到<strong>.ssh\id_rsa.pub</strong>文件，文本编辑器打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：将刚复制的内容粘贴到key那里，title随便填，保存。</p>
 <p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/step3.png" alt="步骤三"></p>

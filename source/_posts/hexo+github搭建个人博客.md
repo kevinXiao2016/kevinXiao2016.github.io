@@ -17,50 +17,81 @@ keyword:
 4.数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；
 5.博客内容可以轻松打包、转移、发布到其它平台；
 <!-- more -->
-6.等等；
 
 ### 1.1准备工作
 
- - 创建github账号       [github注册地址](https://github.com/)
- - 安装node.js、npm     [node.js下载地址](https://nodejs.org/en/download/)
- - 安装git for windows  [git下载地址](https://git-scm.com/downloads)
+ - 创建github账号       [github注册地址][1]
+ - 安装node.js、npm     [node.js下载地址][2]
+ - 安装git for windows  [git下载地址][3]
  
 **本文所使用的环境**
- - windows10
+
+ - windows7
  - git@1.9.5
  - node.js@6.10.2
- - hexo@
+ - hexo@3.7
 
 ## 2.搭建github博客
 ### 2.1创建仓库
-登陆github,打开新建页面，如图![步骤一](/images/blog/newRepository.png)
-![步骤二](/images/blog/step2.png)
+登陆github,打开新建页面，如图
+![步骤一][4]
+![步骤二][5]
 新建仓库名必须为**你的用户名.github.io**,假如说你的用户名是test,那仓库名为test.github.io,将来的博客访问地址就是http://test.github.io 了，是不是很方便？
 由此可见，每一个github账户最多只能创建一个这样可以直接使用域名访问的仓库。
+
 **几个注意的地方：**
+
 1.注册的邮箱一定要验证，否则不会成功；
 2.仓库名字必须是：username.github.io，其中username是你的用户名；
 3.仓库创建成功不会立即生效，需要过一段时间，大概10-30分钟，或者更久
+
 ###2.2绑定域名
-这一步不是必须，若不绑定则可用默认的http://xxx.github.io来访问，若想自己拥有一个域名，则需要注册，这一步留待以后再将，直接下一步。
+
+这一步不是必须，若不绑定则可用默认的http://xxx.github.io来访问;
+
+[hexo博客关联域名，部署到coding][6]
+
 ## 3.配置SSH key
+
 为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。
-在电脑任意位置进入**git bash**
-`$ cd ~/. ssh #检查本机已存在的ssh密钥` 
+在电脑任意位置进入**git bash**。
+
+```cli
+$ cd ~/.ssh #检查本机已存在的ssh密钥
+``` 
+
 如果提示：No such file or directory 说明你是第一次使用git
-`ssh-keygen -t rsa -C "邮件地址"`
+
+```cli
+ssh-keygen -t rsa -C "邮件地址"
+```
+
 然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到**.ssh\id_rsa.pub**文件，文本编辑器打开并复制里面的内容，打开你的github主页，进入个人设置 -> SSH and GPG keys -> New SSH key：将刚复制的内容粘贴到key那里，title随便填，保存。
-![步骤三](/images/blog/step3.png)
+
+![步骤三][7]
+
 **测试是否设置成功**
-`$ ssh -T git@github.com # 注意邮箱地址不用改`
+
+```
+$ ssh -T git@github.com # 注意邮箱地址不用改
+```
+
 如果提示Are you sure you want to continue connecting (yes/no)?，输入yes，然后会看到：
 
 Hi xiaoyue! You've successfully authenticated, but GitHub does not provide shell access.
 
 看到这个信息说明SSH已配置成功！
+
+测试Coding的连接：
+
+```
+$ ssh -T git@git.coding.net # 注意邮箱地址不用改
+```
+
 此时你还需要配置：
-```bash
-$ git config --global user.name "liuxianan"// 你的github用户名，非昵称
+
+```
+$ git config --global user.name "kevinXiao2016"// 你的github用户名，非昵称
 $ git config --global user.email  "xxx@qq.com"// 填写你的github注册邮箱
 ```
 
@@ -80,17 +111,35 @@ github: https://github.com/hexojs/hexo
  3. hexo有2种_config.yml文件，一个是根目录下的全局的_config.yml，一个是各个theme下的；
 
 **安装hexo**
-`$ npm install -g hexo`
-若上面的命令失败，建议使用下面的代理命令
-`此处输入代码`
+
+```
+$ npm install -g hexo
+```
+
+npm更换淘宝镜像，提升下载速度
+
+```
+临时使用：npm config set registry https://registry.npm.taobao.org
+永久使用：npm config set registry https://registry.npm.taobao.org
+验证：npm config get registry
+```
 
 **初始化**
+
 在电脑的某个地方新建一个名为hexo的文件夹（名字可以随便取），比如我的是*F:\Workspaces\hexo*，由于这个文件夹将来就作为你存放代码的地方，所以最好不要随便放。
-`$ cd /f/Workspaces/hexo/`
-`$ hexo init`
+
+```
+$ cd /f/Workspaces/hexo/
+$ hexo init
+```
+
 hexo会自动下载一些文件到这个目录，包括node_modules。继续执行下面两条命令
-`$ hexo g # 生成`
-`$ hexo s # 启动服务`
+
+```
+$ hexo g # 生成
+$ hexo s # 启动服务
+```
+
 执行以上命令之后，hexo就会在public文件夹生成相关html文件，这些文件将来都是要提交到github去的。
 
 **hexo s**是开启本地预览服务，打开浏览器访问 http://localhost:4000 即可看到内容，很多人会碰到浏览器一直在转圈但是就是加载不出来的问题，一般情况下是因为端口占用的缘故，因为4000这个端口太常见了，解决端口冲突问题请参考这篇文章：
@@ -114,3 +163,11 @@ http://blog.liuxianan.com/windows-port-bind.html
 
 如果出现一些莫名其妙的问题，可以先执行**hexo clean**来清理一下public的内容，然后再来重新生成和发布。
 
+
+  [1]: https://github.com/
+  [2]: https://nodejs.org/en/download/
+  [3]: https://git-scm.com/downloads
+  [4]: https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/newRepository.png
+  [5]: https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/step2.png
+  [6]: https://greateman.top/hexo%E5%8D%9A%E5%AE%A2%E5%85%B3%E8%81%94%E5%9F%9F%E5%90%8D%EF%BC%8C%E9%83%A8%E7%BD%B2%E5%88%B0coding.html
+  [7]: https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/step3.png

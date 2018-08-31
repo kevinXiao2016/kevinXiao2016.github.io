@@ -112,18 +112,18 @@
 
 
 
-  <meta name="description" content="1、关闭默认的firewall123systemctl stop firewalld.service    #停止firewallsystemctl disable firewalld.service #禁止firewall开机启动firewall-cmd --state    #查看默认防火墙状态（关闭后显示notrunning，开启后显示running） 2、开启iptables1234yu">
+  <meta name="description" content="关闭firewall防火墙，改用iptables">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Linux】Centos7关闭firewall防火墙，改用iptables">
 <meta property="og:url" content="https://www.greateman.top/【Linux】Centos7关闭firewall防火墙，改用iptables.html">
 <meta property="og:site_name" content="温故而知新">
-<meta property="og:description" content="1、关闭默认的firewall123systemctl stop firewalld.service    #停止firewallsystemctl disable firewalld.service #禁止firewall开机启动firewall-cmd --state    #查看默认防火墙状态（关闭后显示notrunning，开启后显示running） 2、开启iptables1234yu">
+<meta property="og:description" content="关闭firewall防火墙，改用iptables">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-08-31T01:37:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Linux】Centos7关闭firewall防火墙，改用iptables">
-<meta name="twitter:description" content="1、关闭默认的firewall123systemctl stop firewalld.service    #停止firewallsystemctl disable firewalld.service #禁止firewall开机启动firewall-cmd --state    #查看默认防火墙状态（关闭后显示notrunning，开启后显示running） 2、开启iptables1234yu">
+<meta name="twitter:description" content="关闭firewall防火墙，改用iptables">
 
 
 
@@ -455,7 +455,7 @@
       
 
       
-        <a id="more"></a>
+        <p>关闭firewall防火墙，改用iptables<br><a id="more"></a></p>
 <h2 id="1、关闭默认的firewall"><a href="#1、关闭默认的firewall" class="headerlink" title="1、关闭默认的firewall"></a>1、关闭默认的firewall</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl stop firewalld.service    #停止firewall</div><div class="line">systemctl disable firewalld.service #禁止firewall开机启动</div><div class="line">firewall-<span class="built_in">cmd</span> --state    #查看默认防火墙状态（关闭后显示notrunning，开启后显示running）</div></pre></td></tr></table></figure>
 <h2 id="2、开启iptables"><a href="#2、开启iptables" class="headerlink" title="2、开启iptables"></a>2、开启iptables</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum install iptables    #（根据centOS7的版本和内核，有些版本已经装过，可以跳过此命令）</div><div class="line">yum install iptables-services</div><div class="line">service iptables restart</div><div class="line">chkconfig iptables on 或者 systemctl enable iptables.service开机自启&lt;/span&gt;</div></pre></td></tr></table></figure>
 <h2 id="3、编辑防火墙文件"><a href="#3、编辑防火墙文件" class="headerlink" title="3、编辑防火墙文件"></a>3、编辑防火墙文件</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/sysconfig/iptables</div></pre></td></tr></table></figure>

@@ -187,4 +187,4 @@ nginx 不仅支持 http 协议，还支持 https（即在ssl协议上传输http�
 
   [1]: https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/nginx/nginx_start.png
   [2]: https://blog.csdn.net/qq_36441027/article/details/80636526
-  [3]: https://blog.csdn.net/u010071211/article/details/79244404
+  [3]: https://greateman.top/%E3%80%90Linux%E3%80%91Centos7%E5%85%B3%E9%97%ADfirewall%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%8C%E6%94%B9%E7%94%A8iptables.html

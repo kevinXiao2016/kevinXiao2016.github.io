@@ -112,27 +112,25 @@
 
 
 
-  <meta name="description" content="Nginx 是 C语言 开发，建议在 Linux 上运行，当然，也可以安装 Windows 版本，本篇则使用 CentOS 7 作为安装环境。">
-<meta name="keywords" content="Linux,Nginx">
+  <meta name="description" content="1、备份1mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup 2、更换源 Centos5  1wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo  或者  1curl -o">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Linux】Centos7下安装Nginx">
-<meta property="og:url" content="https://www.greateman.top/【Linux】Centos7下安装Nginx.html">
+<meta property="og:title" content="【Linux】更新yum源 改成阿里云源">
+<meta property="og:url" content="https://www.greateman.top/【Linux】更新yum源-改成阿里云源.html">
 <meta property="og:site_name" content="温故而知新">
-<meta property="og:description" content="Nginx 是 C语言 开发，建议在 Linux 上运行，当然，也可以安装 Windows 版本，本篇则使用 CentOS 7 作为安装环境。">
+<meta property="og:description" content="1、备份1mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup 2、更换源 Centos5  1wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo  或者  1curl -o">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/nginx/nginx_start.png">
-<meta property="og:updated_time" content="2018-06-13T05:03:57.000Z">
+<meta property="og:updated_time" content="2018-08-31T01:36:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【Linux】Centos7下安装Nginx">
-<meta name="twitter:description" content="Nginx 是 C语言 开发，建议在 Linux 上运行，当然，也可以安装 Windows 版本，本篇则使用 CentOS 7 作为安装环境。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/nginx/nginx_start.png">
+<meta name="twitter:title" content="【Linux】更新yum源 改成阿里云源">
+<meta name="twitter:description" content="1、备份1mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup 2、更换源 Centos5  1wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo  或者  1curl -o">
 
 
 
 
 
 
-  <link rel="canonical" href="https://www.greateman.top/【Linux】Centos7下安装Nginx.html"/>
+  <link rel="canonical" href="https://www.greateman.top/【Linux】更新yum源-改成阿里云源.html"/>
 
 
 
@@ -142,7 +140,7 @@
   };
 </script>
 
-  <title>【Linux】Centos7下安装Nginx | 温故而知新</title>
+  <title>【Linux】更新yum源 改成阿里云源 | 温故而知新</title>
   
 
 
@@ -355,7 +353,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/【Linux】Centos7下安装Nginx.html">
+    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/【Linux】更新yum源-改成阿里云源.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="肖悦">
@@ -372,7 +370,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">【Linux】Centos7下安装Nginx
+          <h2 class="post-title" itemprop="name headline">【Linux】更新yum源 改成阿里云源
               
             
           </h2>
@@ -397,7 +395,7 @@
                 
               
 
-              <time title="创建时间：2018-06-13 13:03:57" itemprop="dateCreated datePublished" datetime="2018-06-13T13:03:57+08:00">2018-06-13</time>
+              <time title="创建时间：2018-08-31 09:36:30" itemprop="dateCreated datePublished" datetime="2018-08-31T09:36:30+08:00">2018-08-31</time>
             
 
             
@@ -457,115 +455,37 @@
       
 
       
-        <p>Nginx 是 C语言 开发，建议在 Linux 上运行，当然，也可以安装 Windows 版本，本篇则使用 CentOS 7 作为安装环境。</p>
-<a id="more"></a>
-<h2 id="1、配置环境"><a href="#1、配置环境" class="headerlink" title="1、配置环境"></a>1、配置环境</h2><p>Nginx 是 C语言 开发，建议在 Linux 上运行，当然，也可以安装 Windows 版本，本篇则使用 CentOS 7 作为安装环境。</p>
-<ol>
-<li><p>gcc 安装<br>安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc 环境，则需要安装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y gcc-c++</div></pre></td></tr></table></figure>
+        <a id="more"></a>
+<h2 id="1、备份"><a href="#1、备份" class="headerlink" title="1、备份"></a>1、备份</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</div></pre></td></tr></table></figure>
+<h2 id="2、更换源"><a href="#2、更换源" class="headerlink" title="2、更换源"></a>2、更换源</h2><ul>
+<li><p>Centos5</p>
+ <figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-<span class="number">5</span>.repo</div></pre></td></tr></table></figure>
+<p> 或者</p>
+ <figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-<span class="number">5</span>.repo</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<ol>
-<li><p>PCRE pcre-devel 安装<br>PCRE(Perl Compatible Regular Expressions) 是一个Perl库，包括 perl 兼容的正则表达式库。nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库，pcre-devel 是使用 pcre 开发的一个二次开发库。nginx也需要此库。命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y pcre pcre-devel</div></pre></td></tr></table></figure>
+</ul>
+<ul>
+<li><p>CentOS 6</p>
+ <figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-<span class="number">6</span>.repo</div></pre></td></tr></table></figure>
+<p> 或者</p>
+ <figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-<span class="number">6</span>.repo</div></pre></td></tr></table></figure>
 </li>
-<li><p>zlib 安装<br>zlib 库提供了很多种压缩和解压缩的方式， nginx 使用 zlib 对 http 包的内容进行 gzip ，所以需要在 Centos 上安装 zlib 库。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y zlib zlib-devel</div></pre></td></tr></table></figure>
+</ul>
+<ul>
+<li><p>CentOS 7</p>
+ <figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-<span class="number">7</span>.repo</div></pre></td></tr></table></figure>
+<p> 或者</p>
+ <figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-<span class="number">7</span>.repo</div></pre></td></tr></table></figure>
 </li>
-<li><p>OpenSSL 安装<br>OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及 SSL 协议，并提供丰富的应用程序供测试或其它目的使用。<br>nginx 不仅支持 http 协议，还支持 https（即在ssl协议上传输http），所以需要在 Centos 安装 OpenSSL 库。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y openssl openssl-devel</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="2、安装Nginx"><a href="#2、安装Nginx" class="headerlink" title="2、安装Nginx"></a>2、安装Nginx</h2><ol>
-<li><p>下载.tar.gz</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -c https://nginx.org/download/nginx-1.14.0.tar.gz</div></pre></td></tr></table></figure>
-</li>
-<li><p>解压</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -zxvf nginx-1.14.0.tar.gz </div><div class="line">cd nginx-1.14.0</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li><p>配置</p>
-<p>3.1 使用默认配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<pre><code>3.2 自定义配置（推荐）
-
-
-    ./configure \
-    --prefix=/usr/local/nginx \
-    --conf-path=/usr/local/nginx/conf/nginx.conf \
-    --pid-path=/usr/local/nginx/conf/nginx.pid \
-    --lock-path=/var/lock/nginx.lock \
-    --error-log-path=/var/log/nginx/error.log \
-    --http-log-path=/var/log/nginx/access.log \
-    --with-http_gzip_static_module \
-    --http-client-body-temp-path=/var/temp/nginx/client \
-    --http-proxy-temp-path=/var/temp/nginx/proxy \
-    --http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
-    --http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
-    --http-scgi-temp-path=/var/temp/nginx/scgi
-
-
-&lt;font color=&quot;red&quot;&gt;注意：上边将临时文件目录指定为/var/temp/nginx，需要在/var下创建temp及nginx目录&lt;/font&gt;
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p /var/temp/nginx</div></pre></td></tr></table></figure>
-</code></pre><ol>
-<li><p>编译安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!--编译--&gt;</div><div class="line">make</div><div class="line">&lt;!--安装--&gt;</div><div class="line">make install</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li><p>开启pid-path</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!--进入安装目录--&gt;</div><div class="line">cd /usr/local/nginx</div><div class="line"></div><div class="line">&lt;!--编辑nginx.conf--&gt;</div><div class="line">vi conf/nginx.conf</div><div class="line"></div><div class="line">&lt;!--开启pid，并设值--&gt;</div><div class="line">pid /usr/local/nginx/logs/nginx.pid;</div><div class="line"></div><div class="line">&lt;!--创建目录--&gt;</div><div class="line">mkdir /usr/local/nginx/logs</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="3、启动Nginx"><a href="#3、启动Nginx" class="headerlink" title="3、启动Nginx"></a>3、启动Nginx</h2><ol>
-<li><p>启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/nginx/sbin/nginx</div></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/nginx/nginx_start.png" alt="此处输入图片的描述"></p>
-</li>
-<li><p>停止</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/nginx/sbin/nginx -s stop</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<pre><code>推荐下面这条命令：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/nginx/sbin/nginx -s quit</div></pre></td></tr></table></figure>
-</code></pre><ol>
-<li><p>重启</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/nginx/sbin/nginx -s reload</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li><p>配置文件位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/nginx/sbin/nginx -t</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="4、开机启动"><a href="#4、开机启动" class="headerlink" title="4、开机启动"></a>4、开机启动</h2><p>参照这篇文章：<a href="https://blog.csdn.net/qq_36441027/article/details/80636526" target="_blank" rel="noopener">CentOS7+Nginx设置Systemctl restart nginx.service服务</a></p>
-<pre><code>启动nginx服务
-systemctl start nginx.service　
-
-设置开机自启动
-systemctl enable nginx.service
-
-停止开机自启动
-systemctl disable nginx.service
-
-查看服务当前状态
-systemctl status nginx.service
-
-重新启动服务
-systemctl restart nginx.service　
-
-查看所有已启动的服务
-systemctl list-units --type=service
-</code></pre><h2 id="5、问题汇总"><a href="#5、问题汇总" class="headerlink" title="5、问题汇总"></a>5、问题汇总</h2><ol>
-<li><p>window无法访问虚拟机的nginx服务</p>
-<p>首先确认windows是否能ping通linux，确认可以的情况下，很有可能是linux的防火墙开启且屏蔽了80端口。参照 <a href="https://blog.csdn.net/u010071211/article/details/79244404" target="_blank" rel="noopener">CentOS7.4 关闭firewall防火墙，改用iptables</a> 这篇文章设置，改用iptables，并放开80端口。</p>
-</li>
-</ol>
-
+</ul>
+<h2 id="3、清理并生成缓存"><a href="#3、清理并生成缓存" class="headerlink" title="3、清理并生成缓存"></a>3、清理并生成缓存</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum clean all</div><div class="line">yum makecache</div></pre></td></tr></table></figure>
+<h2 id="4、yum基本语法"><a href="#4、yum基本语法" class="headerlink" title="4、yum基本语法"></a>4、yum基本语法</h2><h3 id="4-1-语法"><a href="#4-1-语法" class="headerlink" title="4.1 语法"></a>4.1 语法</h3><p>yum [options] [command] [package …]<br>参数：<br>options：可选，包括-h（帮助），-y（安装过程中提示全部选yes），-q（不显示安装过程）<br>command：要进行的操作<br>package：操作的对象</p>
+<h3 id="4-2-常用命令"><a href="#4-2-常用命令" class="headerlink" title="4.2 常用命令"></a>4.2 常用命令</h3><p>1）列出所有可更新的软件清单命令：yum check-update<br>2）更新所有软件命令：yum update<br>3）仅安装指定的软件命令：yum install <package_name><br>4）仅更新指定的软件命令：yum update <package_name><br>5）列出所有可安裝的软件清单命令：yum list，list后面可以接各种参数，详情请man yum<br>6）删除软件包命令：yum remove <package_name><br>7）查找软件包 命令：yum search <keyword><br>8）清除缓存命令:</keyword></package_name></package_name></package_name></p>
+<pre><code>yum clean packages: 清除缓存目录下的软件包
+yum clean headers: 清除缓存目录下的 headers
+yum clean oldheaders: 清除缓存目录下旧的 headers
+yum clean, yum clean all (= yum clean packages; yum clean oldheaders):清除缓存目录下的软件包及旧的headers
+</code></pre>
       
     </div>
 
@@ -616,8 +536,6 @@ systemctl list-units --type=service
           
             <a href="/tags/Linux/" rel="tag"># Linux</a>
           
-            <a href="/tags/Nginx/" rel="tag"># Nginx</a>
-          
         </div>
       
 
@@ -629,8 +547,8 @@ systemctl list-units --type=service
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/IDEA永久破解.html" rel="next" title="IDEA永久破解">
-                <i class="fa fa-chevron-left"></i> IDEA永久破解
+              <a href="/【Solr7】数据导入.html" rel="next" title="【Solr7】数据导入">
+                <i class="fa fa-chevron-left"></i> 【Solr7】数据导入
               </a>
             
           </div>
@@ -639,8 +557,8 @@ systemctl list-units --type=service
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/hexo博客关联域名，部署到coding.html" rel="prev" title="hexo博客关联域名，部署到coding">
-                hexo博客关联域名，部署到coding <i class="fa fa-chevron-right"></i>
+              <a href="/【Linux】Centos7关闭firewall防火墙，改用iptables.html" rel="prev" title="【Linux】Centos7关闭firewall防火墙，改用iptables">
+                【Linux】Centos7关闭firewall防火墙，改用iptables <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -900,7 +818,7 @@ systemctl list-units --type=service
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、配置环境"><span class="nav-text">1、配置环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、安装Nginx"><span class="nav-text">2、安装Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、启动Nginx"><span class="nav-text">3、启动Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、开机启动"><span class="nav-text">4、开机启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、问题汇总"><span class="nav-text">5、问题汇总</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、备份"><span class="nav-text">1、备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、更换源"><span class="nav-text">2、更换源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、清理并生成缓存"><span class="nav-text">3、清理并生成缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、yum基本语法"><span class="nav-text">4、yum基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-语法"><span class="nav-text">4.1 语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-常用命令"><span class="nav-text">4.2 常用命令</span></a></li></ol></li></ol></div>
             
 
           </div>

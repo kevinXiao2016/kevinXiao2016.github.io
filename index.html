@@ -350,6 +350,349 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/【Linux】Centos7关闭firewall防火墙，改用iptables.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="肖悦">
+      <meta itemprop="description" content="天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="温故而知新">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/【Linux】Centos7关闭firewall防火墙，改用iptables.html" itemprop="url">
+                  【Linux】Centos7关闭firewall防火墙，改用iptables
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-31 09:37:31" itemprop="dateCreated datePublished" datetime="2018-08-31T09:37:31+08:00">2018-08-31</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<h2 id="1、关闭默认的firewall"><a href="#1、关闭默认的firewall" class="headerlink" title="1、关闭默认的firewall"></a>1、关闭默认的firewall</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl stop firewalld.service    #停止firewall</div><div class="line">systemctl disable firewalld.service #禁止firewall开机启动</div><div class="line">firewall-<span class="built_in">cmd</span> --state    #查看默认防火墙状态（关闭后显示notrunning，开启后显示running）</div></pre></td></tr></table></figure>
+<h2 id="2、开启iptables"><a href="#2、开启iptables" class="headerlink" title="2、开启iptables"></a>2、开启iptables</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum install iptables    #（根据centOS7的版本和内核，有些版本已经装过，可以跳过此命令）</div><div class="line">yum install iptables-services</div><div class="line">service iptables restart</div><div class="line">chkconfig iptables on 或者 systemctl enable iptables.service开机自启&lt;/span&gt;</div></pre></td></tr></table></figure>
+<h2 id="3、编辑防火墙文件"><a href="#3、编辑防火墙文件" class="headerlink" title="3、编辑防火墙文件"></a>3、编辑防火墙文件</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/sysconfig/iptables</div></pre></td></tr></table></figure>
+<p>开启21,22,80,3306端口</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;span style="font-size:<span class="number">18</span>px;"&gt;# sampleconfiguration <span class="keyword">for</span> iptables service </div><div class="line"># # you can edit thismanually or use system-config-firewall </div><div class="line"># # please <span class="keyword">do</span> <span class="keyword">not</span> askus to add additional ports/services to this default configuration </div><div class="line">*filter </div><div class="line">:INPUT ACCEPT [<span class="number">0</span>:<span class="number">0</span>] </div><div class="line">:FORWARD ACCEPT [<span class="number">0</span>:<span class="number">0</span>] </div><div class="line">:OUTPUT ACCEPT [<span class="number">0</span>:<span class="number">0</span>] </div><div class="line">-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT </div><div class="line">-A INPUT -p icmp -j ACCEPT </div><div class="line">-A INPUT -i lo -j ACCEPT </div><div class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport <span class="number">21</span> -j ACCEPT </div><div class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport <span class="number">22</span> -j ACCEPT </div><div class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport <span class="number">80</span> -j ACCEPT </div><div class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport <span class="number">3306</span> -j ACCEPT </div><div class="line">-A INPUT -j REJECT --reject-with icmp-host-prohibited </div><div class="line">-A FORWARD -j REJECT --reject-with icmp-host-prohibited </div><div class="line">COMMIT &lt;/span&gt;</div></pre></td></tr></table></figure>
+<h2 id="4、查看iptables"><a href="#4、查看iptables" class="headerlink" title="4、查看iptables"></a>4、查看iptables</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -L -n</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/【Linux】更新yum源-改成阿里云源.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="肖悦">
+      <meta itemprop="description" content="天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="温故而知新">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/【Linux】更新yum源-改成阿里云源.html" itemprop="url">
+                  【Linux】更新yum源 改成阿里云源
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-31 09:36:30" itemprop="dateCreated datePublished" datetime="2018-08-31T09:36:30+08:00">2018-08-31</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<h2 id="1、备份"><a href="#1、备份" class="headerlink" title="1、备份"></a>1、备份</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</div></pre></td></tr></table></figure>
+<h2 id="2、更换源"><a href="#2、更换源" class="headerlink" title="2、更换源"></a>2、更换源</h2><ul>
+<li><p>Centos5</p>
+ <figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-<span class="number">5</span>.repo</div></pre></td></tr></table></figure>
+<p> 或者</p>
+ <figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-<span class="number">5</span>.repo</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>CentOS 6</p>
+ <figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-<span class="number">6</span>.repo</div></pre></td></tr></table></figure>
+<p> 或者</p>
+ <figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-<span class="number">6</span>.repo</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>CentOS 7</p>
+ <figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-<span class="number">7</span>.repo</div></pre></td></tr></table></figure>
+<p> 或者</p>
+ <figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-<span class="number">7</span>.repo</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="3、清理并生成缓存"><a href="#3、清理并生成缓存" class="headerlink" title="3、清理并生成缓存"></a>3、清理并生成缓存</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum clean all</div><div class="line">yum makecache</div></pre></td></tr></table></figure>
+<h2 id="4、yum基本语法"><a href="#4、yum基本语法" class="headerlink" title="4、yum基本语法"></a>4、yum基本语法</h2><h3 id="4-1-语法"><a href="#4-1-语法" class="headerlink" title="4.1 语法"></a>4.1 语法</h3><p>yum [options] [command] [package …]<br>参数：<br>options：可选，包括-h（帮助），-y（安装过程中提示全部选yes），-q（不显示安装过程）<br>command：要进行的操作<br>package：操作的对象</p>
+<h3 id="4-2-常用命令"><a href="#4-2-常用命令" class="headerlink" title="4.2 常用命令"></a>4.2 常用命令</h3><p>1）列出所有可更新的软件清单命令：yum check-update<br>2）更新所有软件命令：yum update<br>3）仅安装指定的软件命令：yum install <package_name><br>4）仅更新指定的软件命令：yum update <package_name><br>5）列出所有可安裝的软件清单命令：yum list，list后面可以接各种参数，详情请man yum<br>6）删除软件包命令：yum remove <package_name><br>7）查找软件包 命令：yum search <keyword><br>8）清除缓存命令:</keyword></package_name></package_name></package_name></p>
+<pre><code>yum clean packages: 清除缓存目录下的软件包
+yum clean headers: 清除缓存目录下的 headers
+yum clean oldheaders: 清除缓存目录下旧的 headers
+yum clean, yum clean all (= yum clean packages; yum clean oldheaders):清除缓存目录下的软件包及旧的headers
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.greateman.top/【Solr7】数据导入.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1599,322 +1942,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Quartz学习.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="肖悦">
-      <meta itemprop="description" content="天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="温故而知新">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Quartz学习.html" itemprop="url">
-                  Quartz学习
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-24 19:39:48" itemprop="dateCreated datePublished" datetime="2018-05-24T19:39:48+08:00">2018-05-24</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Quartz是一个开源的作业调度框架，可以让计划的任务在一个预先设计好的日期和时间运行。Quartz可以用来创建简单或复杂的日程安排执行几十，几百，甚至是十万的作业数，支持集群。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Quartz学习.html" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/单例模式.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="肖悦">
-      <meta itemprop="description" content="天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="温故而知新">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/单例模式.html" itemprop="url">
-                  单例模式
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-10 11:24:45" itemprop="dateCreated datePublished" datetime="2018-05-10T11:24:45+08:00">2018-05-10</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://mmbiz.qpic.cn/mmbiz_png/NtO5sialJZGqrmA4Qiac4QWjgUAXuZPQgsLxNf7CiaP7kJfNTwG2Ok1ShdbAoQibEJXdPoPmicuAiaXFSic4nSZL6VxPw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="此处输入图片的描述"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/单例模式.html" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1964,7 +1991,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-count">63</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://www.greateman.top/%E3%80%90Git%E3%80%91%E5%BF%BD%E7%95%A5%E8%A7%84%E5%88%99%E5%8F%8A%E4%B8%8D%E7%94%9F%E6%95%88%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html</loc>
+    <lastmod>2018-09-06T01:53:31.000Z</lastmod>
+    <data>
+        <display>
+        <title>【Git】忽略规则及不生效解决办法</title>
+        <pubTime>2018-09-06T01:53:31.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="版本控制" url="https://www.greateman.top/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.greateman.top/%E3%80%90Linux%E3%80%91Centos7%E5%85%B3%E9%97%ADfirewall%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%8C%E6%94%B9%E7%94%A8iptables.html</loc>
     <lastmod>2018-08-31T01:37:31.000Z</lastmod>
     <data>
@@ -198,12 +218,12 @@
 
     
   <url>
-    <loc>https://www.greateman.top/%E4%BD%BF%E7%94%A8i18next%E5%AE%8C%E6%88%90%E5%89%8D%E7%AB%AF%E5%9B%BD%E9%99%85%E5%8C%96.html</loc>
+    <loc>https://www.greateman.top/%E4%BD%BF%E7%94%A8jquery-i18n%E5%AE%8C%E6%88%90%E5%89%8D%E7%AB%AF%E5%9B%BD%E9%99%85%E5%8C%96.html</loc>
     <lastmod>2018-07-27T00:48:19.223Z</lastmod>
     <data>
         <display>
-        <title>使用i18next完成前端国际化</title>
-        <pubTime>2017-09-30T01:53:44.000Z</pubTime>
+        <title>使用jquery.i18n完成前端国际化</title>
+        <pubTime>2017-08-31T05:15:33.000Z</pubTime>
         
         <tag>国际化</tag>
          
@@ -218,12 +238,12 @@
 
     
   <url>
-    <loc>https://www.greateman.top/%E4%BD%BF%E7%94%A8jquery-i18n%E5%AE%8C%E6%88%90%E5%89%8D%E7%AB%AF%E5%9B%BD%E9%99%85%E5%8C%96.html</loc>
+    <loc>https://www.greateman.top/%E4%BD%BF%E7%94%A8i18next%E5%AE%8C%E6%88%90%E5%89%8D%E7%AB%AF%E5%9B%BD%E9%99%85%E5%8C%96.html</loc>
     <lastmod>2018-07-27T00:48:19.223Z</lastmod>
     <data>
         <display>
-        <title>使用jquery.i18n完成前端国际化</title>
-        <pubTime>2017-08-31T05:15:33.000Z</pubTime>
+        <title>使用i18next完成前端国际化</title>
+        <pubTime>2017-09-30T01:53:44.000Z</pubTime>
         
         <tag>国际化</tag>
          
@@ -258,26 +278,6 @@
 
     
   <url>
-    <loc>https://www.greateman.top/%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html</loc>
-    <lastmod>2018-07-27T00:48:19.221Z</lastmod>
-    <data>
-        <display>
-        <title>什么是设计模式</title>
-        <pubTime>2018-03-26T08:56:22.000Z</pubTime>
-        
-        <tag>设计模式</tag>
-         
-         
-           
-             
-              <breadCrumb title="设计模式" url="https://www.greateman.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://www.greateman.top/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html</loc>
     <lastmod>2018-07-27T00:48:19.221Z</lastmod>
     <data>
@@ -291,6 +291,26 @@
            
              
               <breadCrumb title="算法" url="https://www.greateman.top/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.greateman.top/%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html</loc>
+    <lastmod>2018-07-27T00:48:19.221Z</lastmod>
+    <data>
+        <display>
+        <title>什么是设计模式</title>
+        <pubTime>2018-03-26T08:56:22.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="https://www.greateman.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
           
         </display>
     </data>
@@ -1234,12 +1254,12 @@
 
     
   <url>
-    <loc>https://www.greateman.top/Thread%E5%8F%8ARunnable.html</loc>
+    <loc>https://www.greateman.top/volatile%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html</loc>
     <lastmod>2018-05-04T08:27:21.000Z</lastmod>
     <data>
         <display>
-        <title>Thread及Runnable</title>
-        <pubTime>2017-09-30T01:22:54.000Z</pubTime>
+        <title>volatile的实现原理</title>
+        <pubTime>2018-05-04T08:27:21.000Z</pubTime>
         
         <tag>Java</tag>
          
@@ -1256,12 +1276,12 @@
 
     
   <url>
-    <loc>https://www.greateman.top/volatile%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html</loc>
+    <loc>https://www.greateman.top/Thread%E5%8F%8ARunnable.html</loc>
     <lastmod>2018-05-04T08:27:21.000Z</lastmod>
     <data>
         <display>
-        <title>volatile的实现原理</title>
-        <pubTime>2018-05-04T08:27:21.000Z</pubTime>
+        <title>Thread及Runnable</title>
+        <pubTime>2017-09-30T01:22:54.000Z</pubTime>
         
         <tag>Java</tag>
          

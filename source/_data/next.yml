@@ -290,8 +290,8 @@ symbols_count_time:
   separated_meta: true
   item_text_post: true
   item_text_total: false
-  awl: 5
-  wpm: 200
+  awl: 4
+  wpm: 275
 
 # Manual define the border radius in codeblock
 # Leave it empty for the default 1
@@ -867,6 +867,9 @@ canvas_ribbon:
   size: 300
   alpha: 0.6
   zIndex: -1
+
+# 更新时间
+display_updated: true
 
 # Script Vendors.
 # Set a CDN address for the vendor you want to customize.

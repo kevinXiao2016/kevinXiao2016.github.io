@@ -108,6 +108,12 @@ tag_generator:
 category_generator: 
 	per_page: 10 ###分类页面默认10篇文章
 
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+
 # Security
 ##
 encrypt:

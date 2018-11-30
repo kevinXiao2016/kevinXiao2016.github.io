@@ -116,16 +116,15 @@
 <meta name="keywords" content="Blog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo博客关联域名，部署到coding">
-<meta property="og:url" content="https://www.greateman.top/hexo博客关联域名，部署到coding.html">
+<meta property="og:url" content="https://www.greateman.top/【Blog】hexo博客关联域名，部署到coding.html">
 <meta property="og:site_name" content="温故而知新">
 <meta property="og:description" content="使用了一段时间在github上搭建的hexo个人博客空间，使用markdown写博客既方便，展示出来的样式也还算满意，唯一的缺点就是域名 github.io 总觉得有点累赘，另外就是访问速度比较慢，今天就试着来解决这两个：把访问域名替换成自己的域名,访问站点指向国内的coding.net">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/createCodingReposity.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/gongyao.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/bingdomain.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/jiexi.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/adddomainjiexi.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/pingIp.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/addjiexi.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/specialDomain.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/deployRepository.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/deployResult.png">
 <meta property="og:updated_time" content="2018-11-30T08:13:14.000Z">
@@ -139,7 +138,7 @@
 
 
 
-  <link rel="canonical" href="https://www.greateman.top/hexo博客关联域名，部署到coding.html">
+  <link rel="canonical" href="https://www.greateman.top/【Blog】hexo博客关联域名，部署到coding.html">
 
 
 
@@ -360,7 +359,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/hexo博客关联域名，部署到coding.html">
+    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/【Blog】hexo博客关联域名，部署到coding.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="肖悦">
@@ -513,13 +512,11 @@ fatal: Could not read from remote repository.
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@git.coding.NET</span><br></pre></td></tr></table></figure>
 <p>假如出现以下输出结果，表示公钥绑定成功：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xy@xy-PC MINGW64 ~</span><br><span class="line">$ ssh -T git@git.coding.NET</span><br><span class="line">Coding 提示: Hello kevinXiao2016, You&apos;ve connected to Coding.net via SSH. This is a deploy key.</span><br><span class="line">kevinXiao2016，你好，你已经通过 SSH 协议认证 Coding.net 服务，这是一个部署公钥</span><br></pre></td></tr></table></figure>
-<h3 id="2-4-绑定个人域名"><a href="#2-4-绑定个人域名" class="headerlink" title="2.4 绑定个人域名"></a>2.4 绑定个人域名</h3><p>点击设置-&gt;Pages服务，绑定自己购买的域名。</p>
-<p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/bingdomain.png" alt="此处输入图片的描述"></p>
-<h3 id="2-5-解析域名"><a href="#2-5-解析域名" class="headerlink" title="2.5 解析域名"></a>2.5 解析域名</h3><p>登陆阿里云</p>
+<h3 id="2-4-解析域名"><a href="#2-4-解析域名" class="headerlink" title="2.4 解析域名"></a>2.4 解析域名</h3><p>登陆阿里云</p>
 <p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/jiexi.png" alt="此处输入图片的描述"></p>
-<p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/adddomainjiexi.png" alt="此处输入图片的描述"></p>
-<p>如红框中所示，添加两条记录，记录值处的ip为 coding上仓库的ip，可以ping 仓库地址得到，仓库地址为 用户名.coding.me</p>
-<p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/pingIp.png" alt="此处输入图片的描述"></p>
+<p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/addjiexi.png" alt="此处输入图片的描述"></p>
+<h3 id="2-5-绑定个人域名"><a href="#2-5-绑定个人域名" class="headerlink" title="2.5 绑定个人域名"></a>2.5 绑定个人域名</h3><p>点击设置-&gt;Pages服务，绑定自己购买的域名。</p>
+<p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/specialDomain.png" alt="此处输入图片的描述"></p>
 <h2 id="3、修改hexo配置"><a href="#3、修改hexo配置" class="headerlink" title="3、修改hexo配置"></a>3、修改hexo配置</h2><h3 id="3-1-关联coding仓库"><a href="#3-1-关联coding仓库" class="headerlink" title="3.1 关联coding仓库"></a>3.1 关联coding仓库</h3><p>打开hexo本地的配置文件 _config.yml，修改 deploy 的配置内容，这里设置了运行hexo d之后部署的目的地址，原本只有Github地址，现在添加多Coding.net的地址，其中kevinXiao2016是注册该平台的 用户名：</p>
 <p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/blog/deployRepository.png" alt="此处输入图片的描述"></p>
 <h3 id="3-2-创建Statifile"><a href="#3-2-创建Statifile" class="headerlink" title="3.2 创建Statifile"></a>3.2 创建Statifile</h3><p>在source目录下新建一个文件，命名为Statifile，不带文件后缀。</p>
@@ -865,7 +862,7 @@ fatal: Could not read from remote repository.
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、购买一个私人域名"><span class="nav-text">1、购买一个私人域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Coding上建库"><span class="nav-text">2、Coding上建库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-注册Coding-net账号"><span class="nav-text">2.1 注册Coding.net账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-新建项目"><span class="nav-text">2.2 新建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-添加公钥"><span class="nav-text">2.3 添加公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-绑定个人域名"><span class="nav-text">2.4 绑定个人域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-解析域名"><span class="nav-text">2.5 解析域名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、修改hexo配置"><span class="nav-text">3、修改hexo配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-关联coding仓库"><span class="nav-text">3.1 关联coding仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-创建Statifile"><span class="nav-text">3.2 创建Statifile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-部署博客"><span class="nav-text">3.3 部署博客</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、访问"><span class="nav-text">4、访问</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、购买一个私人域名"><span class="nav-text">1、购买一个私人域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Coding上建库"><span class="nav-text">2、Coding上建库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-注册Coding-net账号"><span class="nav-text">2.1 注册Coding.net账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-新建项目"><span class="nav-text">2.2 新建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-添加公钥"><span class="nav-text">2.3 添加公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-解析域名"><span class="nav-text">2.4 解析域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-绑定个人域名"><span class="nav-text">2.5 绑定个人域名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、修改hexo配置"><span class="nav-text">3、修改hexo配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-关联coding仓库"><span class="nav-text">3.1 关联coding仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-创建Statifile"><span class="nav-text">3.2 创建Statifile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-部署博客"><span class="nav-text">3.3 部署博客</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、访问"><span class="nav-text">4、访问</span></a></li></ol></div>
             
 
           </div>

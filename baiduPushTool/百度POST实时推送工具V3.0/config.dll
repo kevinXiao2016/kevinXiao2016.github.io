@@ -1,6 +1,6 @@
 [config]
 监控频率=1
 实时推送=0
-实时推送文件=
+实时推送文件=E:\github\Blog\baiduPushTool\百度POST实时推送工具V3.0\网址.txt
 接口调用地址=http://data.zz.baidu.com/urls?site=www.greateman.top&token=aLRTvblSg7lkWwnp
 获取URL网址=https://www.greateman.top/

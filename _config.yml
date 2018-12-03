@@ -121,6 +121,16 @@ encrypt:
     
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+
+## RSS订阅
+plugin:
+- hexo-generator-feed
+#Feed Atom
+feed:
+type: atom
+path: atom.xml
+limit: 20
+
 ## Themes: https://hexo.io/themes/
 theme: next
 

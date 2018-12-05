@@ -79,18 +79,6 @@ seo: true
 # subtitle: Subtitle
 index_with_subtitle: false
 
-## 站点地图
-# sitemap:
-#   path: sitemap.xml
-# baidusitemap:
-#   path: baidusitemap.xml
-
-# url: https://www.greateman.top
-
-
-
-
-
 # ---------------------------------------------------------------
 # Menu Settings
 # ---------------------------------------------------------------
@@ -147,8 +135,8 @@ site_state: true
 # Value before `||` delimeter is the target permalink.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
-  #GitHub: https://github.com/kevinXiao2016 || github
-  #E-Mail: mailto:yourname@gmail.com || envelope
+  GitHub: https://github.com/kevinXiao2016 || github
+  E-Mail: mailto:785554043@qq.com || envelope
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
@@ -292,6 +280,7 @@ symbols_count_time:
   item_text_total: false
   awl: 4
   wpm: 275
+  suffix: mins 
 
 # Manual define the border radius in codeblock
 # Leave it empty for the default 1
@@ -564,16 +553,16 @@ gitment:
 #           Technorati,Posterous,Tumblr,GoogleBookmarks,Newsvine,
 #           Evernote,Friendfeed,Vkontakte,Odnoklassniki,Mailru
 needmoreshare2:
-  enable: false
+  enable: true
   postbottom:
-    enable: false
+    enable: true
     options:
       iconStyle: box
       boxForm: horizontal
       position: bottomCenter
       networks: Weibo,Wechat,Douban,QQZone,Twitter,Facebook
   float:
-    enable: false
+    enable: true
     options:
       iconStyle: box
       boxForm: horizontal

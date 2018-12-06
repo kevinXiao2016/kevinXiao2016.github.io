@@ -8,7 +8,7 @@ https://www.greateman.top/【Solr7】安装及部署.html
 https://www.greateman.top/【Linux】CentOS7下搭建Redis集群详细过程.html
 https://www.greateman.top/【Linux】CentOS7下安装Tomcat详细过程.html
 https://www.greateman.top/【Linux】CentOS7下安装JDK详细过程.html
-https://www.greateman.top/【Blog】hexo博客关联域名，部署到coding.html
+https://www.greateman.top/hexo博客关联域名，部署到coding.html
 https://www.greateman.top/【Linux】Centos7下安装Nginx.html
 https://www.greateman.top/IDEA永久破解.html
 https://www.greateman.top/Quartz学习.html
@@ -21,7 +21,7 @@ https://www.greateman.top/web-xml不同版本之间的差异.html
 https://www.greateman.top/Mysql事务的隔离级别.html
 https://www.greateman.top/Mysql索引的简单使用.html
 https://www.greateman.top/Mysql视图的简单使用.html
-https://www.greateman.top/【Blog】NexT主题深度优化.html
+https://www.greateman.top/NexT主题深度优化.html
 https://www.greateman.top/观察者模式.html
 https://www.greateman.top/什么是设计模式.html
 https://www.greateman.top/NM3000消息推送框架简介.html
@@ -63,4 +63,4 @@ https://www.greateman.top/SNMP学习笔记(3)——snmp4j.html
 https://www.greateman.top/SNMP学习总结(2)——snmp安装和配置.html
 https://www.greateman.top/html5-常用功能.html
 https://www.greateman.top/基于MUI及Html5-开发app.html
-https://www.greateman.top/【Blog】hexo+github搭建个人博客.html
+https://www.greateman.top/hexo+github搭建个人博客.html

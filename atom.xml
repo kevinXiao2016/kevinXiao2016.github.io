@@ -36,6 +36,8 @@
     
       <category term="Next" scheme="https://www.greateman.top/tags/Next/"/>
     
+      <category term="Blog" scheme="https://www.greateman.top/tags/Blog/"/>
+    
   </entry>
   
   <entry>
@@ -58,6 +60,8 @@
     
     
       <category term="Next" scheme="https://www.greateman.top/tags/Next/"/>
+    
+      <category term="Blog" scheme="https://www.greateman.top/tags/Blog/"/>
     
   </entry>
   
@@ -238,9 +242,9 @@
   </entry>
   
   <entry>
-    <title>【Blog】hexo博客关联域名，部署到coding</title>
-    <link href="https://www.greateman.top/%E3%80%90Blog%E3%80%91hexo%E5%8D%9A%E5%AE%A2%E5%85%B3%E8%81%94%E5%9F%9F%E5%90%8D%EF%BC%8C%E9%83%A8%E7%BD%B2%E5%88%B0coding.html"/>
-    <id>https://www.greateman.top/【Blog】hexo博客关联域名，部署到coding.html</id>
+    <title>hexo博客关联域名，部署到coding</title>
+    <link href="https://www.greateman.top/hexo%E5%8D%9A%E5%AE%A2%E5%85%B3%E8%81%94%E5%9F%9F%E5%90%8D%EF%BC%8C%E9%83%A8%E7%BD%B2%E5%88%B0coding.html"/>
+    <id>https://www.greateman.top/hexo博客关联域名，部署到coding.html</id>
     <published>2018-07-16T10:13:14.000Z</published>
     <updated>2018-11-30T08:13:14.000Z</updated>
     
@@ -254,6 +258,8 @@
     
       <category term="Blog" scheme="https://www.greateman.top/categories/Blog/"/>
     
+    
+      <category term="Next" scheme="https://www.greateman.top/tags/Next/"/>
     
       <category term="Blog" scheme="https://www.greateman.top/tags/Blog/"/>
     

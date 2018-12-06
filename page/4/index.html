@@ -355,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Spring-MVC-3-——参数绑定.html">
+    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/volatile的实现原理.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="肖悦">
@@ -374,8 +374,8 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Spring-MVC-3-——参数绑定.html" itemprop="url">
-                  Spring MVC(3)——参数绑定
+                <a class="post-title-link" href="/volatile的实现原理.html" itemprop="url">
+                  volatile的实现原理
                 </a>
               
             
@@ -401,20 +401,13 @@
                 
               
 
-              <time title="创建时间：2018-03-06 16:13:28" itemprop="dateCreated datePublished" datetime="2018-03-06T16:13:28+08:00">2018-03-06</time>
+              <time title="创建时间：2018-05-04 16:27:21" itemprop="dateCreated datePublished" datetime="2018-05-04T16:27:21+08:00">2018-05-04</time>
             
 
             
           </span>
 
           
-		  	<span class="post-updated">
-			    &nbsp; | &nbsp; 更新于
-			    <time itemprop="dateUpdated" datetime="2018-07-27T08:48:19+08:00" content="2018-07-27">
-			      2018-07-27
-			    </time>
-			</span>
-		  
 
 
           
@@ -429,7 +422,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
 
                 
                 
@@ -457,7 +450,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.3k</span>
+                <span title="本文字数">1.2k</span>
               
 
               
@@ -471,7 +464,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">0:04</span>
+                <span title="阅读时长">0:01</span>
               
             </div>
           
@@ -492,10 +485,14 @@
 
       
         
-          <p>springmvc接收请求的key/value串（比如：id=2&amp;type=101），经过类型转换，将转换后的值赋值给controller方法的形参，这个过程就叫参数绑定。</p>
+          <h2 id="1、特性"><a href="#1、特性" class="headerlink" title="1、特性"></a>1、特性</h2><ol>
+<li>保证变量在线程之间的可见性</li>
+<li>通过内存屏障来阻止指令重排，是happens-before规范的具体的一种实现</li>
+<li>解决了long类型和double类型数据的8字节赋值问题</li>
+</ol>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Spring-MVC-3-——参数绑定.html" rel="contents">
+            <a class="btn" href="/volatile的实现原理.html" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -551,7 +548,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Spring-MVC-2-——整合spring-mybatis.html">
+    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/代理模式.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="肖悦">
@@ -570,8 +567,8 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Spring-MVC-2-——整合spring-mybatis.html" itemprop="url">
-                  Spring MVC(2)——整合spring-mybatis
+                <a class="post-title-link" href="/代理模式.html" itemprop="url">
+                  代理模式
                 </a>
               
             
@@ -597,7 +594,7 @@
                 
               
 
-              <time title="创建时间：2018-03-06 15:46:58" itemprop="dateCreated datePublished" datetime="2018-03-06T15:46:58+08:00">2018-03-06</time>
+              <time title="创建时间：2018-04-25 14:03:07" itemprop="dateCreated datePublished" datetime="2018-04-25T14:03:07+08:00">2018-04-25</time>
             
 
             
@@ -625,7 +622,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a></span>
 
                 
                 
@@ -653,7 +650,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">16k</span>
+                <span title="本文字数">4.8k</span>
               
 
               
@@ -667,7 +664,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">0:14</span>
+                <span title="阅读时长">0:04</span>
               
             </div>
           
@@ -688,17 +685,18 @@
 
       
         
-          <p>这边博客介绍了springmvc与spring及mybatis的继承。<br>
+          <p>Java本身给我们提供了静态代理和动态代理两种代理方式，spring提供了基于类的代理方式：cglib.</p>
+<p>在代理模式（Proxy Pattern）中，一个类代表另一个类的功能。这种类型的设计模式属于结构型模式。<br>在代理模式中，我们创建<strong>具有现有对象的对象</strong>，以便向外界提供功能接口。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Spring-MVC-2-——整合spring-mybatis.html" rel="contents">
+            <a class="btn" href="/代理模式.html" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
 
     
 
@@ -747,7 +745,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Spring-MVC-1-——入门.html">
+    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Java虚拟机：类加载器.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="肖悦">
@@ -766,8 +764,8 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Spring-MVC-1-——入门.html" itemprop="url">
-                  Spring MVC(1)——入门
+                <a class="post-title-link" href="/Java虚拟机：类加载器.html" itemprop="url">
+                  Java虚拟机：类加载器
                 </a>
               
             
@@ -793,7 +791,7 @@
                 
               
 
-              <time title="创建时间：2018-03-06 15:11:40" itemprop="dateCreated datePublished" datetime="2018-03-06T15:11:40+08:00">2018-03-06</time>
+              <time title="创建时间：2018-04-23 17:11:37" itemprop="dateCreated datePublished" datetime="2018-04-23T17:11:37+08:00">2018-04-23</time>
             
 
             
@@ -821,7 +819,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java虚拟机/" itemprop="url" rel="index"><span itemprop="name">Java虚拟机</span></a></span>
 
                 
                 
@@ -849,7 +847,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">15k</span>
+                <span title="本文字数">1.6k</span>
               
 
               
@@ -863,7 +861,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">0:14</span>
+                <span title="阅读时长">0:01</span>
               
             </div>
           
@@ -884,18 +882,17 @@
 
       
         
-          <p>Spring MVC全称是Spring Web MVC,是spring框架中的一部分，与struts一样是一个表现层框架。</p>
-<p>Spring MVC是当前最优秀的MVC框架，自从Spring2.5版本发布后，由于支持注解配置，易用性有了大幅度的提高。Spring3.0更加完善，实现了对Struts2的超越。现在越来越多的开发团队选择了Spring MVC。<br>
+          <p>虚拟机把描述类的数据从Class字节码文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的类加载机制。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Spring-MVC-1-——入门.html" rel="contents">
+            <a class="btn" href="/Java虚拟机：类加载器.html" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
 
     
 
@@ -944,7 +941,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Mybatis-5-——与spring整合.html">
+    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Java虚拟机：内存模型.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="肖悦">
@@ -963,8 +960,8 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Mybatis-5-——与spring整合.html" itemprop="url">
-                  Mybatis(5)——与spring整合
+                <a class="post-title-link" href="/Java虚拟机：内存模型.html" itemprop="url">
+                  Java虚拟机：内存模型
                 </a>
               
             
@@ -990,7 +987,7 @@
                 
               
 
-              <time title="创建时间：2018-02-27 16:26:53" itemprop="dateCreated datePublished" datetime="2018-02-27T16:26:53+08:00">2018-02-27</time>
+              <time title="创建时间：2018-04-20 18:34:03" itemprop="dateCreated datePublished" datetime="2018-04-20T18:34:03+08:00">2018-04-20</time>
             
 
             
@@ -1018,7 +1015,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Mybatis/" itemprop="url" rel="index"><span itemprop="name">Mybatis</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java虚拟机/" itemprop="url" rel="index"><span itemprop="name">Java虚拟机</span></a></span>
 
                 
                 
@@ -1046,7 +1043,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">11k</span>
+                <span title="本文字数">6.1k</span>
               
 
               
@@ -1060,7 +1057,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">0:10</span>
+                <span title="阅读时长">0:06</span>
               
             </div>
           
@@ -1081,17 +1078,17 @@
 
       
         
-          <p>整合spring<br>
+          <p>Java虚拟机是Java程序运行的真实环境，要深入理解Java是如何运行的，理解Java虚拟机是必不可少的。典型的例子：内存溢出。当我们理解java虚拟机之后，我们就会明白为何会出现这个问题，我们又当如何去定位并解决这个问题。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Mybatis-5-——与spring整合.html" rel="contents">
+            <a class="btn" href="/Java虚拟机：内存模型.html" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
 
     
 
@@ -1140,7 +1137,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Mybatis-4-——Mapper-xml映射文件.html">
+    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/web-xml不同版本之间的差异.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="肖悦">
@@ -1159,8 +1156,8 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Mybatis-4-——Mapper-xml映射文件.html" itemprop="url">
-                  Mybatis(4)——Mapper.xml映射文件
+                <a class="post-title-link" href="/web-xml不同版本之间的差异.html" itemprop="url">
+                  web.xml不同版本之间的差异
                 </a>
               
             
@@ -1186,7 +1183,7 @@
                 
               
 
-              <time title="创建时间：2018-02-27 16:24:43" itemprop="dateCreated datePublished" datetime="2018-02-27T16:24:43+08:00">2018-02-27</time>
+              <time title="创建时间：2018-04-13 17:31:13" itemprop="dateCreated datePublished" datetime="2018-04-13T17:31:13+08:00">2018-04-13</time>
             
 
             
@@ -1214,7 +1211,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Mybatis/" itemprop="url" rel="index"><span itemprop="name">Mybatis</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
 
                 
                 
@@ -1242,791 +1239,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.7k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">0:05</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Mapper.xml映射文件中定义了操作数据库的sql，每个sql是一个statement，映射文件是mybatis的核心。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Mybatis-4-——Mapper-xml映射文件.html" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Mybatis-3-——SqlMapConfig-xml文件详解.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="肖悦">
-      <meta itemprop="description" content="天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="温故而知新">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Mybatis-3-——SqlMapConfig-xml文件详解.html" itemprop="url">
-                  Mybatis(3)——SqlMapConfig.xml文件详解
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-02-27 16:23:39" itemprop="dateCreated datePublished" datetime="2018-02-27T16:23:39+08:00">2018-02-27</time>
-            
-
-            
-          </span>
-
-          
-		  	<span class="post-updated">
-			    &nbsp; | &nbsp; 更新于
-			    <time itemprop="dateUpdated" datetime="2018-07-27T08:48:19+08:00" content="2018-07-27">
-			      2018-07-27
-			    </time>
-			</span>
-		  
-
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Mybatis/" itemprop="url" rel="index"><span itemprop="name">Mybatis</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">3.6k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">0:03</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>MyBatis 的配置文件包含了会深深影响MyBatis行为的设置（settings）和属性（properties）信息。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Mybatis-3-——SqlMapConfig-xml文件详解.html" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Mybatis-2-——Dao层开发方法.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="肖悦">
-      <meta itemprop="description" content="天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="温故而知新">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Mybatis-2-——Dao层开发方法.html" itemprop="url">
-                  Mybatis(2)——Dao层开发方法
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-02-27 16:21:42" itemprop="dateCreated datePublished" datetime="2018-02-27T16:21:42+08:00">2018-02-27</time>
-            
-
-            
-          </span>
-
-          
-		  	<span class="post-updated">
-			    &nbsp; | &nbsp; 更新于
-			    <time itemprop="dateUpdated" datetime="2018-07-27T08:48:19+08:00" content="2018-07-27">
-			      2018-07-27
-			    </time>
-			</span>
-		  
-
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Mybatis/" itemprop="url" rel="index"><span itemprop="name">Mybatis</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">5.2k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">0:05</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>mybatis的dao层通常有两种开发方式，原始dao开发及mapper接口发开方法。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Mybatis-2-——Dao层开发方法.html" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Mybatis-1-——入门.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="肖悦">
-      <meta itemprop="description" content="天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="温故而知新">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Mybatis-1-——入门.html" itemprop="url">
-                  Mybatis(1)——入门
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-02-27 11:15:13" itemprop="dateCreated datePublished" datetime="2018-02-27T11:15:13+08:00">2018-02-27</time>
-            
-
-            
-          </span>
-
-          
-		  	<span class="post-updated">
-			    &nbsp; | &nbsp; 更新于
-			    <time itemprop="dateUpdated" datetime="2018-07-27T08:48:19+08:00" content="2018-07-27">
-			      2018-07-27
-			    </time>
-			</span>
-		  
-
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Mybatis/" itemprop="url" rel="index"><span itemprop="name">Mybatis</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">9.6k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">0:09</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis，实质上Mybatis对ibatis进行一些改进。<br>MyBatis是一个优秀的持久层框架，它对jdbc的操作数据库的过程进行封装，使开发者只需要关注 SQL 本身，而不需要花费精力去处理例如注册驱动、创建connection、创建statement、手动设置参数、结果集检索等jdbc繁杂的过程代码。<br>Mybatis通过xml或注解的方式将要执行的各种statement（statement、preparedStatemnt、CallableStatement）配置起来，并通过java对象和statement中的sql进行映射生成最终执行的sql语句，最后由mybatis框架执行sql并将结果映射成java对象并返回。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Mybatis-1-——入门.html" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Mysql触发器.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="肖悦">
-      <meta itemprop="description" content="天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="温故而知新">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Mysql触发器.html" itemprop="url">
-                  Mysql触发器
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-02-13 09:34:00" itemprop="dateCreated datePublished" datetime="2018-02-13T09:34:00+08:00">2018-02-13</time>
-            
-
-            
-          </span>
-
-          
-		  	<span class="post-updated">
-			    &nbsp; | &nbsp; 更新于
-			    <time itemprop="dateUpdated" datetime="2018-07-27T08:48:19+08:00" content="2018-07-27">
-			      2018-07-27
-			    </time>
-			</span>
-		  
-
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">2.3k</span>
+                <span title="本文字数">2.5k</span>
               
 
               
@@ -2061,215 +1274,17 @@
 
       
         
-          <p>触发器（TRIGGER）是MySQL的数据库对象之一，从5.0.2版本开始支持。它和函数比较相似，也需要声明和执行，但是它不用程序或人工调用，而是由事件驱动的。</p>
-<p>那么，什么是触发器？</p>
-<p>在MySQL Server里面也就是对某一个表的一定的操作，触发某种条件（Insert,Update,Delete 等），从而自动执行的一段程序。从这种意义上讲触发器是一个特殊的存储过程<br>
+          <p><img src="https://raw.githubusercontent.com/kevinXiao2016/kevinXiao2016.github.io/hexo/imageStorage/web/servletVersion.png" alt="此处输入图片的描述"></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Mysql触发器.html" rel="contents">
+            <a class="btn" href="/web-xml不同版本之间的差异.html" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Struts2-6-——Struts标签、国际化、文件上传下载.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="肖悦">
-      <meta itemprop="description" content="天下事有难易乎？<br/>为之，则难者亦易矣；<br/>不为，则易者亦难矣。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="温故而知新">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Struts2-6-——Struts标签、国际化、文件上传下载.html" itemprop="url">
-                  Struts2(6)——Struts标签、国际化、文件上传下载
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-12-21 20:35:45" itemprop="dateCreated datePublished" datetime="2017-12-21T20:35:45+08:00">2017-12-21</time>
-            
-
-            
-          </span>
-
-          
-		  	<span class="post-updated">
-			    &nbsp; | &nbsp; 更新于
-			    <time itemprop="dateUpdated" datetime="2018-07-27T08:48:19+08:00" content="2018-07-27">
-			      2018-07-27
-			    </time>
-			</span>
-		  
-
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Struts2/" itemprop="url" rel="index"><span itemprop="name">Struts2</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">3.3k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">0:03</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>struts2标签的使用，国际化及文件上传下载。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Struts2-6-——Struts标签、国际化、文件上传下载.html" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
+    </div>
 
     
 
@@ -2307,7 +1322,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2352,7 +1367,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">65</span>
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2573,7 +1588,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">352k</span>
+    <span title="站点总字数">354k</span>
   
 
   
@@ -2582,7 +1597,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5:20</span>
+    <span title="站点阅读时长">5:22</span>
   
 </div>
 

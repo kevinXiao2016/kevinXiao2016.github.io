@@ -1,7 +1,8 @@
 ---
 title: Java中读取properties
 categories:
-  - Spring
+  - Java
+  - JavaSE
 tags:
   - properties
 date: 2017-12-19 11:41:35

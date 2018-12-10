@@ -1,6 +1,7 @@
 ---
 title: volatile的实现原理
 categories:
+  - Java
   - 并发
 tags:
   - Java

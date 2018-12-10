@@ -1,6 +1,7 @@
 ---
 title: Spring MVC(1)——入门
 categories:
+  - Java
   - Spring
 tags:
   - SpringMVC

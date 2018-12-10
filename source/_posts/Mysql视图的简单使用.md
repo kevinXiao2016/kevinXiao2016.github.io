@@ -1,6 +1,7 @@
 ---
 title: Mysql视图的简单使用
 categories:
+  - Java
   - Mysql
 tags:
   - Mysql

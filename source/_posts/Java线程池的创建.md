@@ -1,6 +1,7 @@
 ---
 title: Java线程池的创建
 categories:
+  - Java
   - 并发
 tags:
   - Java

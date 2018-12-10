@@ -1,6 +1,7 @@
 ---
 title: Thread及Runnable
 categories:
+  - Java
   - 并发
 tags:
   - Java

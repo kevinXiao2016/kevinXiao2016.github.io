@@ -1,6 +1,7 @@
 ---
 title: Callable及Future
 categories:
+  - Java
   - 并发
 tags:
   - Java

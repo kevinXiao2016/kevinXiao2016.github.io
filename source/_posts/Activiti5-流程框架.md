@@ -1,7 +1,8 @@
 ---
 title: Activiti5 流程框架
 categories:
-  - JavaEE
+  - Java
+  - Activiti
 tags:
   - activiti
 date: 2017-11-23 17:00:30

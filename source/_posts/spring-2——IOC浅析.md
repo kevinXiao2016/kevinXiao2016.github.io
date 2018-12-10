@@ -1,6 +1,7 @@
 ---
 title: spring(2)——IOC浅析
 categories:
+  - Java
   - Spring
 tags:
   - Spring

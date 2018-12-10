@@ -1,6 +1,7 @@
 ---
 title: Mybatis(5)——与spring整合
 categories:
+  - Java
   - Mybatis
 tags:
   - Mybatis

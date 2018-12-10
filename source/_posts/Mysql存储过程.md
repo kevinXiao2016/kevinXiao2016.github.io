@@ -1,6 +1,7 @@
 ---
 title: Mysql存储过程
 categories:
+  - Java
   - Mysql
 tags:
   - Mysql

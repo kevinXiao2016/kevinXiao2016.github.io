@@ -1,6 +1,7 @@
 ---
 title: 【Solr7】数据导入
 categories:
+  - Java
   - 全文搜索
 tags:
   - Solr

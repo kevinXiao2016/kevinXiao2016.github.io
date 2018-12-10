@@ -1,6 +1,7 @@
 ---
 title: Spring MVC(3)——参数绑定
 categories:
+  - Java
   - Spring
 tags:
   - SpringMVC

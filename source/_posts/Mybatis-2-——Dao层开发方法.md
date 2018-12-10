@@ -1,6 +1,7 @@
 ---
 title: Mybatis(2)——Dao层开发方法
 categories:
+  - Java
   - Mybatis
 tags:
   - Mybatis

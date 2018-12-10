@@ -1,6 +1,7 @@
 ---
 title: Mysql触发器
 categories:
+  - Java
   - Mysql
 tags:
   - Mysql

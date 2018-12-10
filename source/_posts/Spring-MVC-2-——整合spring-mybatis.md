@@ -1,6 +1,7 @@
 ---
 title: Spring MVC(2)——整合spring-mybatis
 categories:
+  - Java
   - Spring
 tags:
   - SpringMVC

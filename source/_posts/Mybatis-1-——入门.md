@@ -1,6 +1,7 @@
 ---
 title: Mybatis(1)——入门
 categories:
+  - Java
   - Mybatis
 tags:
   - Mybatis

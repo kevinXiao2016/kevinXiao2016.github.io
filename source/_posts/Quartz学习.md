@@ -1,7 +1,8 @@
 ---
 title: Quartz学习
 categories:
-  - 框架
+  - Java
+  - Quartz
 tags:
   - quartz
 keyword:

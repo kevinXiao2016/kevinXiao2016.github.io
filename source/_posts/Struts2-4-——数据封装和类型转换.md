@@ -1,6 +1,7 @@
 ---
 title: Struts2(4)——数据封装和类型转换
 categories:
+  - Java
   - Struts2
 tags:
   - Struts2

@@ -1,6 +1,7 @@
 ---
 title: Struts2(2)——搭建struts及spring整合Demo
 categories:
+  - Java
   - Struts2
 tags:
   - Struts2

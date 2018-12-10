@@ -1,6 +1,7 @@
 ---
 title: Struts2(5)——拦截器
 categories:
+  - Java
   - Struts2
 tags:
   - Struts2

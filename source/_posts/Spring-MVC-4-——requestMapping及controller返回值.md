@@ -1,6 +1,7 @@
 ---
 title: Spring MVC(4)——requestMapping及controller返回值
 categories:
+  - Java
   - Spring
 tags:
   - SpringMVC

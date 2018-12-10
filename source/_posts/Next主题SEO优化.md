@@ -4,6 +4,7 @@ categories:
   - Blog
 tags:
   - Next
+  - Blog
 keyword:
   - next主题
   - next优化
@@ -19,6 +20,7 @@ updated: 2018-12-05 17:27:16
 <!--more-->
 
 **本文基于 NexT v6.3.0**
+
 
 ## 1、让百度收录你的站点
 
@@ -192,7 +194,7 @@ baidu_push: true
  6. 提交谷歌索引
 
 
-  [1]: http://pj973z6ct.bkt.clouddn.com/baiduSite.png
+  [1]: http://pj973z6ct.bkt.clouddn.com/BaiduStatistics.png
   [2]: http://pj973z6ct.bkt.clouddn.com/site.png
   [3]: https://ziyuan.baidu.com/
   [4]: http://pj973z6ct.bkt.clouddn.com/addSite.png

@@ -1,6 +1,7 @@
 ---
 title: Struts2(3)——Action配置及访问方式
 categories:
+  - Java
   - Struts2
 tags:
   - Struts2

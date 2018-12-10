@@ -1,6 +1,7 @@
 ---
 title: Mybatis(3)——SqlMapConfig.xml文件详解
 categories:
+  - Java
   - Mybatis
 tags:
   - Mybatis

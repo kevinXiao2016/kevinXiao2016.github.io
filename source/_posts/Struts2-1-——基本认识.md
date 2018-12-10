@@ -1,6 +1,7 @@
 ---
 title: Struts2(1)——基本认识
 categories:
+  - Java
   - Struts2
 tags:
   - Struts2

@@ -1,6 +1,7 @@
 ---
 title: Mybatis(4)——Mapper.xml映射文件
 categories:
+  - Java
   - Mybatis
 tags:
   - Mybatis

@@ -2,6 +2,7 @@
 title: spring(4)——持久层封装
 date: 2017-06-16 17:42:52
 categories:
+  - Java
   - Spring
 tags:
   - Spring

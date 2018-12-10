@@ -1,6 +1,7 @@
 ---
 title: Java虚拟机：类加载器
 categories:
+  - Java
   - Java虚拟机
 tags:
   - Java虚拟机

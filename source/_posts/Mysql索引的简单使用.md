@@ -1,6 +1,7 @@
 ---
 title: Mysql索引的简单使用
 categories:
+  - Java
   - Mysql
 tags:
   - Mysql

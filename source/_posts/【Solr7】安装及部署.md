@@ -1,6 +1,7 @@
 ---
 title: 【Solr7】安装及部署
 categories:
+  - Java
   - 全文搜索
 tags:
   - Solr

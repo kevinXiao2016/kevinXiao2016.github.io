@@ -1,6 +1,7 @@
 ---
 title: Struts2(6)——Struts标签、国际化、文件上传下载
 categories:
+  - Java
   - Struts2
 tags:
   - Struts2

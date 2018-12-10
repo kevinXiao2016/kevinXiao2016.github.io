@@ -1,6 +1,7 @@
 ---
 title: spring(1)——框架简介
 categories:
+  - Java
   - Spring
 tags:
   - Spring

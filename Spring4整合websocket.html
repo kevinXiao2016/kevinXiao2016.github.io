@@ -495,9 +495,8 @@
 <li><p>应对不支持 WebSocket 的场景，许多浏览器不支持 WebSocket 协议；SockJS 是 WebSocket 技术的一种模拟。SockJS 会 尽可能对应 WebSocket API，但如果 WebSocket 技术 不可用的话，会从如下 方案中挑选最优可行方案：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">XHR streaming</span><br><span class="line">XDR streaming</span><br><span class="line">iFrame event source</span><br><span class="line">iFrame HTML file</span><br><span class="line">XHR polling</span><br><span class="line">XDR polling</span><br><span class="line">iFrame XHR polling</span><br><span class="line">JSONP polling</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<ol>
-<li>WebSocket 是发送和接收消息的 底层API，而SockJS 是在 WebSocket 之上的 API；最后 STOMP（面向消息的简单文本协议）是基于 SockJS 的高级API。</li>
+<li><p>WebSocket 是发送和接收消息的 底层API，而SockJS 是在 WebSocket 之上的 API；最后 STOMP（面向消息的简单文本协议）是基于 SockJS 的高级API。</p>
+</li>
 <li>SockJS 所处理的URL 是 “http:” 或 “https:” 模式 </li>
 <li>WebSocket 所处理的URL 是“ws:” or “wss:” 模式</li>
 </ol>

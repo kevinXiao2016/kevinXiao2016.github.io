@@ -31,7 +31,7 @@
 &lt;li&gt;spring 4.0及以上增加了WebSocket的支持(这里使用4.2.5.RELEASE)。&lt;/li&gt;
 &lt;li&gt;spring 支持STOMP协议的WebSocket通信。&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;应对不支持 WebSocket 的场景，许多浏览器不支持 WebSocket 协议；SockJS 是 WebSocket 技术的一种模拟。SockJS 会 尽可能对应 WebSocket API，但如果 WebSocket 技术 不可用的话，会从如下 方案中挑选最优可行方案：&lt;/p&gt;
-&lt;!--�268--&gt;
+&lt;!--�276--&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;WebSocket 是发送和接收消息的 底层API，而SockJS 是在 WebSocket 之上的 API；最后 STOMP（面向消息的简单文本协议）是基于 SockJS 的高级API。&lt;/p&gt;
 &lt;/li&gt;
@@ -97,10 +97,10 @@
     
     </summary>
     
-      <category term="WebSocket" scheme="https://www.greateman.top/categories/WebSocket/"/>
+      <category term="Websocket" scheme="https://www.greateman.top/categories/Websocket/"/>
     
     
-      <category term="WebSocket" scheme="https://www.greateman.top/tags/WebSocket/"/>
+      <category term="Websocket" scheme="https://www.greateman.top/tags/Websocket/"/>
     
   </entry>
   

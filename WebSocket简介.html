@@ -116,18 +116,20 @@
 
 
 
-  <meta name="description" content="这篇记录了mysql中索引的简单使用方法，基本上满足大部分的开发需求。">
-<meta name="keywords" content="Mysql,数据库">
+  <meta name="description" content="1、前言Websocket是随HTML5一起来的新的应用层协议，它是基于TCP的一种新的网络协议。它实现了浏览器与服务器全双工(full-duplex)通信——允许服务器主动发送信息给客户端。">
+<meta name="keywords" content="WebSocket">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mysql索引的简单使用">
-<meta property="og:url" content="https://www.greateman.top/Mysql索引的简单使用.html">
+<meta property="og:title" content="WebSocket简介">
+<meta property="og:url" content="https://www.greateman.top/WebSocket简介.html">
 <meta property="og:site_name" content="温故而知新">
-<meta property="og:description" content="这篇记录了mysql中索引的简单使用方法，基本上满足大部分的开发需求。">
+<meta property="og:description" content="1、前言Websocket是随HTML5一起来的新的应用层协议，它是基于TCP的一种新的网络协议。它实现了浏览器与服务器全双工(full-duplex)通信——允许服务器主动发送信息给客户端。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-10T02:23:07.346Z">
+<meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==">
+<meta property="og:updated_time" content="2018-12-12T02:24:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mysql索引的简单使用">
-<meta name="twitter:description" content="这篇记录了mysql中索引的简单使用方法，基本上满足大部分的开发需求。">
+<meta name="twitter:title" content="WebSocket简介">
+<meta name="twitter:description" content="1、前言Websocket是随HTML5一起来的新的应用层协议，它是基于TCP的一种新的网络协议。它实现了浏览器与服务器全双工(full-duplex)通信——允许服务器主动发送信息给客户端。">
+<meta name="twitter:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==">
 
 
 
@@ -136,7 +138,7 @@
 
 
 
-  <link rel="canonical" href="https://www.greateman.top/Mysql索引的简单使用.html">
+  <link rel="canonical" href="https://www.greateman.top/WebSocket简介.html">
 
 
 
@@ -146,7 +148,7 @@
   };
 </script>
 
-  <title>Mysql索引的简单使用 | 温故而知新</title>
+  <title>WebSocket简介 | 温故而知新</title>
   
 
 
@@ -357,7 +359,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/Mysql索引的简单使用.html">
+    <link itemprop="mainEntityOfPage" href="https://www.greateman.top/WebSocket简介.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="肖悦">
@@ -374,7 +376,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Mysql索引的简单使用
+          <h2 class="post-title" itemprop="name headline">WebSocket简介
               
             
           </h2>
@@ -399,20 +401,13 @@
                 
               
 
-              <time title="创建时间：2018-04-10 21:11:36" itemprop="dateCreated datePublished" datetime="2018-04-10T21:11:36+08:00">2018-04-10</time>
+              <time title="创建时间：2018-12-12 10:24:13" itemprop="dateCreated datePublished" datetime="2018-12-12T10:24:13+08:00">2018-12-12</time>
             
 
             
           </span>
 
           
-		  	<span class="post-updated">
-			    &nbsp; | &nbsp; 更新于
-			    <time itemprop="dateUpdated" datetime="2018-12-10T10:23:07+08:00" content="2018-12-10">
-			      2018-12-10
-			    </time>
-			</span>
-		  
 
 
           
@@ -427,14 +422,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/WebSocket/" itemprop="url" rel="index"><span itemprop="name">WebSocket</span></a></span>
 
                 
                 
@@ -469,7 +457,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.2k</span>
+                <span title="本文字数">693</span>
               
 
               
@@ -483,7 +471,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">0:02</span>
+                <span title="阅读时长">0:01</span>
               
             </div>
           
@@ -503,94 +491,23 @@
       
 
       
-        <p>这篇记录了mysql中索引的简单使用方法，基本上满足大部分的开发需求。</p>
+        <h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p>Websocket是随HTML5一起来的新的应用层协议，它是基于TCP的一种新的网络协议。它实现了浏览器与服务器全双工(full-duplex)通信——允许服务器主动发送信息给客户端。</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="http://pj973z6ct.bkt.clouddn.com/websocket.png" alt="此处输入图片的描述"></p>
 <a id="more"></a>
-<h2 id="1、索引是什么"><a href="#1、索引是什么" class="headerlink" title="1、索引是什么"></a>1、索引是什么</h2><p>索引（Index）是帮助Mysql高效查询数据的一种数据结构，其本质：数据结构。</p>
-<h2 id="2、优势"><a href="#2、优势" class="headerlink" title="2、优势"></a>2、优势</h2><p>好比图书馆建立的书目索引，提高数据检索效率，降低数据库的IO成本。<br>通过索引对数据库进行排序，降低数据排序的成本，降低CPU的消耗。</p>
-<h2 id="3、劣势"><a href="#3、劣势" class="headerlink" title="3、劣势"></a>3、劣势</h2><p>索引也是一张表，该表保存了主键与索引片段，并指向实体表的记录，所以索引也是需要占用空间的。<br>同时会降低更新表的速度，如对表进行INSERT、UPDATE和DELETE。因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件。</p>
-<h2 id="4、分类"><a href="#4、分类" class="headerlink" title="4、分类"></a>4、分类</h2><ol>
-<li>单列索引：即一个索引只包含一个列，一张表可以有多个单列索引。</li>
-<li>唯一索引(UNIQUE)：索引列的值必须唯一，允许为空值。</li>
-<li>全文索引(FULLTEXT)：仅用于MyISAM表。</li>
-<li>组合索引(最左前缀): 多个列构成一个索引，适用于查询条件较复杂的情况。</li>
-</ol>
-<blockquote>
-<p>最左前缀：</p>
-</blockquote>
-<p>mysql查询时只能使用一个索引。建立组合索引时，本质上同时建立了好几个索引，下面以实例讲解：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> people <span class="keyword">ADD</span> <span class="keyword">INDEX</span> lname_fname_age (lame,fname,age);</span><br></pre></td></tr></table></figure>
-<p>创建一个组合索引，相当于同时创建了(lname)单列索引，(lname,fname)组合索引以及(lname,fname,age)组合索引。</p>
-<p><strong>注：在创建多列索引时，要根据业务需求，where子句中使用最频繁的一列放在最左边。</strong></p>
-<p>虽然索引对顺序敏感，但是mysql优化器会自动调整where后面的条件顺序，来匹配合适的索引。</p>
-<h2 id="5、基本语法"><a href="#5、基本语法" class="headerlink" title="5、基本语法"></a>5、基本语法</h2><ol>
-<li><p>创建索引</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span>] <span class="keyword">INDEX</span> indexName <span class="keyword">ON</span> tableName(columnName(<span class="keyword">length</span>))</span><br></pre></td></tr></table></figure>
-<p>如果是CHAR，VARCHAR类型，length可以小于字段实际长度；如果是BLOB和TEXT类型，必须指定 length。</p>
-</li>
-</ol>
-<pre><code><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tableName <span class="keyword">ADD</span> <span class="keyword">INDEX</span> indexName(columnName(<span class="keyword">length</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="2、Websocket原理"><a href="#2、Websocket原理" class="headerlink" title="2、Websocket原理"></a>2、Websocket原理</h2><p>有兴趣的可以看下下面这个回答，来自知乎，比较生动有趣<br><a href="https://www.zhihu.com/question/20215561/answer/40316953" target="_blank" rel="noopener">WebSocket 是什么原理？为什么可以实现持久连接？</a></p>
+<p>websocket与socket有什么区别呢？引用下面的一段话：</p>
+<pre><code>软件通信有七层结构，下三层结构偏向与数据通信，上三层更偏向于数据处理，中间的传输层则是连接上三层与下三层之间的桥梁，每一层都做不同的工作，上层协议依赖与下层协议。基于这个通信结构的概念。
 
-修改表结构添加索引
+Socket 其实并不是一个协议，是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接口。当两台主机通信时，让 Socket 去组织数据，以符合指定的协议。TCP 连接则更依靠于底层的 IP 协议，IP 协议的连接则依赖于链路层等更低层次。
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable (</span><br><span class="line">	<span class="keyword">ID</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	username <span class="built_in">VARCHAR</span> (<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	<span class="keyword">INDEX</span> [ indexName ] (username(<span class="keyword">length</span>))</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+WebSocket 则是一个典型的应用层协议。
 
-创建表的时候直接指定。
-
-
-
-&gt; 使用ALTER 命令添加和删除索引：
-
- - ALTER TABLE tbl_name ADD PRIMARY KEY (column_list):
-    该语句添加一个主键，这意味着索引值必须是唯一的，且不能为NULL。
- - ALTER TABLE tbl_name ADD UNIQUE index_name (column_list):
-    这条语句创建索引的值必须是唯一的（除了NULL外，NULL可能会出现多次）。
- - ALTER TABLE tbl_name ADD INDEX index_name (column_list): 
-    添加普通索引，索引值可出现多次。
- - ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list):
-    该语句指定了索引为 FULLTEXT ，用于全文索引。
-</code></pre><ol>
-<li><p>删除索引</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">INDEX</span> [indexName] <span class="keyword">ON</span> tableName</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li><p>查看索引</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">INDEX</span> <span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="6、Mysql索引结构"><a href="#6、Mysql索引结构" class="headerlink" title="6、Mysql索引结构"></a>6、Mysql索引结构</h2><ul>
-<li><p>BTree：</p>
-<ul>
-<li>可以用于使用 =, &gt;, &gt;=, &lt;, &lt;= 或者 BETWEEN 运算符的列比较</li>
-<li>如果 LIKE 的参数是一个没有以通配符起始的常量字符串的话也可以使用这种索引</li>
-</ul>
-</li>
-<li><p>Hash：</p>
-<ul>
-<li>只能够用于使用 = 或者 &lt;=&gt; 运算符的相等比较(但是速度更快)</li>
-<li>优化器不能够使用 hash 索引来加速 ORDER BY 操作</li>
-<li>无法使用 hash 索引估计两个值之间有多少行</li>
-</ul>
-</li>
-<li><p>full-text：MyISAM的一个特殊索引类型，主要用于全文检索。</p>
-</li>
-<li>R-Tree：MyISAM支持空间索引，主要用于地理空间数据类型，例如GEOMETRY。</li>
-</ul>
-<h2 id="7、哪些情况需要创建索引"><a href="#7、哪些情况需要创建索引" class="headerlink" title="7、哪些情况需要创建索引"></a>7、哪些情况需要创建索引</h2><ol>
-<li>主键自动建立唯一索引</li>
-<li>频繁作为查询条件的字段应该创建索引</li>
-<li>查询中与其他表关联的字段，外键关系建立索引</li>
-<li>单键/组合索引的选择问题，who?(在高并发下倾向创建组合索引)</li>
-<li>查询中排序的字段，排序的字段若通过索引去访问将大大提高排序速度</li>
-<li>查询中统计或者分组字段</li>
-</ol>
-<h2 id="8、哪些情况不需要创建索引"><a href="#8、哪些情况不需要创建索引" class="headerlink" title="8、哪些情况不需要创建索引"></a>8、哪些情况不需要创建索引</h2><ol>
-<li>表记录太少</li>
-<li>经常增删改的表<br>　　　　提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT、UPDATE、和DELETE。<br>　　　　因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件。<br>　　　　数据重复且分布平均的表字段，因此应该只为最经常查询和最经常排序的数据建立索引。</li>
-<li>注意，如果某个数据列包含许多重复的内容，为它建立索引就没有太大的实际效果。</li>
-<li>频繁更新的字段不适合建立索引，因为每次更新不单单是更新了记录还会更新索引</li>
-<li>WHERE条件里用不到的字段不创建索引</li>
-</ol>
+总的来说：Socket 是传输控制层协议，WebSocket 是应用层协议。
+</code></pre><h2 id="3、客户端API"><a href="#3、客户端API" class="headerlink" title="3、客户端API"></a>3、客户端API</h2><p>websocket的API，可以参看<a href="http://www.runoob.com/html/html5-websocket.html" target="_blank" rel="noopener">HTML5 WebSocket</a>。</p>
+<p>API比较简单，重点是接下来的如何应用到我们的程序中。</p>
+<h2 id="4、服务端的实现"><a href="#4、服务端的实现" class="headerlink" title="4、服务端的实现"></a>4、服务端的实现</h2><p>WebSocket 服务器的实现，可以查看<a href="https://en.wikipedia.org/wiki/Comparison_of_WebSocket_implementations" target="_blank" rel="noopener">维基百科的列表</a>。</p>
+<p>因为我是一名Java后端程序猿，在这里记录下基于Java语言的具体实现方法。</p>
+<p><a href="https://www.greateman.top/Tomcat8%E6%95%B4%E5%90%88websocket.html">Tomcat8整合websocket</a><br><a href="https://www.greateman.top/Spring4%E6%95%B4%E5%90%88websocket.html">Spring4整合websocket</a><br><a href="https://www.cnblogs.com/eleven24/p/8680714.html" target="_blank" rel="noopener">Springboot整合websocket</a></p>
 
       
     </div>
@@ -640,9 +557,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Mysql/" rel="tag"># Mysql</a>
-          
-            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+            <a href="/tags/WebSocket/" rel="tag"># WebSocket</a>
           
         </div>
       
@@ -670,8 +585,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Mysql视图的简单使用.html" rel="next" title="Mysql视图的简单使用">
-                <i class="fa fa-chevron-left"></i> Mysql视图的简单使用
+              <a href="/Next主题添加内容折叠.html" rel="next" title="Next主题添加内容折叠">
+                <i class="fa fa-chevron-left"></i> Next主题添加内容折叠
               </a>
             
           </div>
@@ -680,8 +595,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Mysql事务的隔离级别.html" rel="prev" title="Mysql事务的隔离级别">
-                Mysql事务的隔离级别 <i class="fa fa-chevron-right"></i>
+              <a href="/Tomcat8整合websocket.html" rel="prev" title="Tomcat8整合websocket">
+                Tomcat8整合websocket <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -980,7 +895,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、索引是什么"><span class="nav-text">1、索引是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、优势"><span class="nav-text">2、优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、劣势"><span class="nav-text">3、劣势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、分类"><span class="nav-text">4、分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、基本语法"><span class="nav-text">5、基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、Mysql索引结构"><span class="nav-text">6、Mysql索引结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、哪些情况需要创建索引"><span class="nav-text">7、哪些情况需要创建索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、哪些情况不需要创建索引"><span class="nav-text">8、哪些情况不需要创建索引</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、前言"><span class="nav-text">1、前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Websocket原理"><span class="nav-text">2、Websocket原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、客户端API"><span class="nav-text">3、客户端API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、服务端的实现"><span class="nav-text">4、服务端的实现</span></a></li></ol></div>
             
 
           </div>
